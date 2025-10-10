@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="VGM_SimpleSuppressorMuzzle" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+    tags="smallitem,tool,
+    VGM_Accessory,
+    VGM_Muzzle,
+    VGM_MuzzleAttrSuppressor,
+    VGM_MuzzleAttrRifleCompatible,
+    VGM_MuzzleAttrSMGCompatible,
+    VGM_MuzzleAttrMachinePistolCompatible,
+    VGM_MuzzleAttrSMGUniqueCompatible,
+    VGM_MuzzleAttrAssaultRifleCompatible,
+    VGM_MuzzleAttrHMGCompatible"
+    cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,64,64,24" depth="0.551" origin="0.5,0.5" />
+    <Body width="60" height="22" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="10" />
+      <RequiredItem identifier="oxygentank" />
+    </Fabricate>
+  </Item>
+  <Item name="" identifier="VGM_ShortSuppressorMuzzle" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+    tags="smallitem,tool,
+    VGM_Accessory,
+    VGM_Muzzle,
+    VGM_MuzzleAttrSuppressor,
+    VGM_MuzzleAttrRifleCompatible,
+    VGM_MuzzleAttrSMGCompatible,
+    VGM_MuzzleAttrMachinePistolCompatible,
+    VGM_MuzzleAttrSMGUniqueCompatible,
+    VGM_MuzzleAttrAssaultRifleCompatible,
+    VGM_MuzzleAttrHMGCompatible"
+    cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,32,33,10" depth="0.551" origin="0.5,0.5" />
+    <Body width="29" height="9" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="titaniumaluminiumalloy" />
+      <RequiredItem identifier="aluminium" />
+    </Fabricate>
+  </Item>
+  <Item name="" identifier="VGM_LongSuppressorMuzzle" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+    tags="smallitem,tool,
+    VGM_Accessory,
+    VGM_Muzzle,
+    VGM_MuzzleAttrSuppressor,
+    VGM_MuzzleAttrRifleCompatible,
+    VGM_MuzzleAttrSMGUniqueCompatible,
+    VGM_MuzzleAttrAssaultRifleCompatible,
+    VGM_MuzzleAttrHMGCompatible"
+    cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,0,60,12" depth="0.551" origin="0.5,0.5" />
+    <Body width="56" height="11" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="70" />
+      <RequiredItem identifier="titaniumaluminiumalloy" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="fulgurium" />
+    </Fabricate>
+  </Item>
+  <Item name="" identifier="VGM_FlashHiderMuzzle" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+    tags="smallitem,tool,
+    VGM_Accessory,
+    VGM_Muzzle,
+    VGM_MuzzleAttrFlashHider,
+    VGM_MuzzleAttrReduceSpread,
+    VGM_MuzzleAttrRifleCompatible,
+    VGM_MuzzleAttrSMGCompatible,
+    VGM_MuzzleAttrMachinePistolCompatible,
+    VGM_MuzzleAttrSMGUniqueCompatible,
+    VGM_MuzzleAttrAssaultRifleCompatible,
+    VGM_MuzzleAttrHMGCompatible"
+    cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,160,16,8" depth="0.551" origin="0.5,0.5" />
+    <Body width="14" height="7" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredItem identifier="aluminium" />
+      <RequiredItem identifier="steel" />
+    </Fabricate>
+  </Item>
+  <Item name="" identifier="VGM_LongBarrelMuzzle" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+    tags="smallitem,tool,
+    VGM_Accessory,
+    VGM_Muzzle,
+    VGM_MuzzleAttrRifleCompatible,
+    VGM_MuzzleAttrSMGUniqueCompatible,
+    VGM_MuzzleAttrAssaultRifleCompatible,
+    VGM_MuzzleAttrHMGCompatible"
+    cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,128,64,9" depth="0.551" origin="0.5,0.5" />
+    <Body width="60" height="8" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="steel" amount="2" />
+    </Fabricate>
+  </Item>
+</Items>

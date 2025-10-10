@@ -1,0 +1,8 @@
+﻿namespace AutoGenerateXML
+{
+    public static class StatusEffectTags
+    {
+        public static readonly string WasAiming = nameof(WasAiming);
+        public static readonly string PreventSpreadingOnADS = nameof(PreventSpreadingOnADS);
+    }
+}

@@ -1,0 +1,47 @@
+﻿<infotexts language="Simplified Chinese" nowhitespace="true" translatedname="中文(简体)">
+  <!-- Auto Generated -->
+  <entityname.VGM_AngledForeGrip>直角握把</entityname.VGM_AngledForeGrip>
+  <entitydescription.VGM_AngledForeGrip>‖color:gui.orange‖举枪时散布变化‖end‖ ×0.3\n‖color:gui.orange‖散布回正速度‖end‖ ×1.2</entitydescription.VGM_AngledForeGrip>
+  <entityname.VGM_VerticalGrip>垂直握把</entityname.VGM_VerticalGrip>
+  <entitydescription.VGM_VerticalGrip>‖color:gui.orange‖举枪时散布变化‖end‖ ×0.9\n‖color:gui.orange‖散布回正速度‖end‖ ×1.45</entitydescription.VGM_VerticalGrip>
+  <entityname.VGM_AssaultRifleStock>突击步枪原装枪托</entityname.VGM_AssaultRifleStock>
+  <entitydescription.VGM_AssaultRifleStock>‖color:gui.orange‖后坐力减少‖end‖: 80</entitydescription.VGM_AssaultRifleStock>
+  <entityname.VGM_HeavySniperStock>重型人体工程学枪托</entityname.VGM_HeavySniperStock>
+  <entitydescription.VGM_HeavySniperStock>‖color:gui.orange‖后坐力减少‖end‖: 253.5\n‖color:gui.orange‖移动速度‖end‖ ×0.76</entitydescription.VGM_HeavySniperStock>
+  <entityname.VGM_HeavyStock>重型配重式枪托</entityname.VGM_HeavyStock>
+  <entitydescription.VGM_HeavyStock>‖color:gui.orange‖后坐力减少‖end‖: 169\n‖color:gui.orange‖移动速度‖end‖ ×0.81</entitydescription.VGM_HeavyStock>
+  <entityname.VGM_HMGStock>重机枪原装枪托</entityname.VGM_HMGStock>
+  <entitydescription.VGM_HMGStock>‖color:gui.orange‖后坐力减少‖end‖: 130\n‖color:gui.orange‖移动速度‖end‖ ×0.83</entitydescription.VGM_HMGStock>
+  <entityname.VGM_LightSniperStock>轻型射手枪托</entityname.VGM_LightSniperStock>
+  <entitydescription.VGM_LightSniperStock>‖color:gui.orange‖后坐力减少‖end‖: 97.5\n‖color:gui.orange‖移动速度‖end‖ ×0.85</entitydescription.VGM_LightSniperStock>
+  <entityname.VGM_LightStock>轻型管材枪托</entityname.VGM_LightStock>
+  <entitydescription.VGM_LightStock>‖color:gui.orange‖后坐力减少‖end‖: 65\n‖color:gui.orange‖移动速度‖end‖ ×0.9</entitydescription.VGM_LightStock>
+  <entityname.VGM_LightWrenchStock>轻型扳手枪托</entityname.VGM_LightWrenchStock>
+  <entitydescription.VGM_LightWrenchStock>‖color:gui.orange‖后坐力减少‖end‖: 30</entitydescription.VGM_LightWrenchStock>
+  <entityname.VGM_RifleStock>步枪原装枪托</entityname.VGM_RifleStock>
+  <entitydescription.VGM_RifleStock>‖color:gui.orange‖后坐力减少‖end‖: 50\n‖color:gui.orange‖移动速度‖end‖ ×0.91</entitydescription.VGM_RifleStock>
+  <entityname.VGM_ShotgunStock>防暴霰弹枪原装枪托</entityname.VGM_ShotgunStock>
+  <entitydescription.VGM_ShotgunStock>‖color:gui.orange‖后坐力减少‖end‖: 50\n‖color:gui.orange‖移动速度‖end‖ ×0.9</entitydescription.VGM_ShotgunStock>
+  <entityname.VGM_SMGUniqueStock>亡眼步枪原装枪托</entityname.VGM_SMGUniqueStock>
+  <entitydescription.VGM_SMGUniqueStock>‖color:gui.orange‖后坐力减少‖end‖: 45\n‖color:gui.orange‖移动速度‖end‖ ×0.9</entitydescription.VGM_SMGUniqueStock>
+  <entityname.VGM_FlashHiderMuzzle>消焰器</entityname.VGM_FlashHiderMuzzle>
+  <entitydescription.VGM_FlashHiderMuzzle>‖color:gui.orange‖开火时散布变化‖end‖ ×0.8</entitydescription.VGM_FlashHiderMuzzle>
+  <entityname.VGM_LongBarrelMuzzle>延长枪管</entityname.VGM_LongBarrelMuzzle>
+  <entitydescription.VGM_LongBarrelMuzzle>‖color:gui.orange‖武器伤害‖end‖ ×1.2\n‖color:gui.orange‖穿甲‖end‖ +10%</entitydescription.VGM_LongBarrelMuzzle>
+  <entityname.VGM_LongSuppressorMuzzle>加长型‌消音器</entityname.VGM_LongSuppressorMuzzle>
+  <entitydescription.VGM_LongSuppressorMuzzle>‖color:gui.orange‖武器伤害‖end‖ ×1.2</entitydescription.VGM_LongSuppressorMuzzle>
+  <entityname.VGM_ShortSuppressorMuzzle>短‌消音器</entityname.VGM_ShortSuppressorMuzzle>
+  <entitydescription.VGM_ShortSuppressorMuzzle>‖color:gui.orange‖武器伤害‖end‖ ×1.1</entitydescription.VGM_ShortSuppressorMuzzle>
+  <entityname.VGM_SimpleSuppressorMuzzle>气罐消音器</entityname.VGM_SimpleSuppressorMuzzle>
+  <entitydescription.VGM_SimpleSuppressorMuzzle></entitydescription.VGM_SimpleSuppressorMuzzle>
+  <entityname.VGM_ACOGScope>四倍瞄准镜</entityname.VGM_ACOGScope>
+  <entitydescription.VGM_ACOGScope>‖color:gui.orange‖举枪时散布变化‖end‖ ×1.7\n‖color:gui.orange‖散布回正速度‖end‖ ×0.9\n‖color:gui.orange‖散布下限‖end‖ ×0.25\n‖color:gui.orange‖视野阻挡‖end‖: 80%</entitydescription.VGM_ACOGScope>
+  <entityname.VGM_HolographicSight>全息瞄准镜</entityname.VGM_HolographicSight>
+  <entitydescription.VGM_HolographicSight>‖color:gui.orange‖举枪时散布变化‖end‖ ×1.3\n‖color:gui.orange‖散布回正速度‖end‖ ×1.05\n‖color:gui.orange‖视野阻挡‖end‖: 30%</entitydescription.VGM_HolographicSight>
+  <entityname.VGM_RedDotSight>红点瞄准镜</entityname.VGM_RedDotSight>
+  <entitydescription.VGM_RedDotSight>‖color:gui.orange‖举枪时散布变化‖end‖ ×1.35\n‖color:gui.orange‖散布回正速度‖end‖ ×1.05\n‖color:gui.orange‖视野阻挡‖end‖: 20%</entitydescription.VGM_RedDotSight>
+  <entityname.VGM_RifleScope>步枪瞄准镜</entityname.VGM_RifleScope>
+  <entitydescription.VGM_RifleScope>‖color:gui.orange‖举枪时散布变化‖end‖ ×1.8\n‖color:gui.orange‖散布回正速度‖end‖ ×0.85\n‖color:gui.orange‖散布下限‖end‖ ×0.1875\n‖color:gui.orange‖视野阻挡‖end‖: 80%</entitydescription.VGM_RifleScope>
+  <entityname.VGM_SniperScope>狙击瞄准镜</entityname.VGM_SniperScope>
+  <entitydescription.VGM_SniperScope>‖color:gui.orange‖举枪时散布变化‖end‖ ×1.9\n‖color:gui.orange‖散布回正速度‖end‖ ×0.8\n‖color:gui.orange‖散布下限‖end‖ ×0.125\n‖color:gui.orange‖视野阻挡‖end‖: 80%</entitydescription.VGM_SniperScope>
+</infotexts>

@@ -1,0 +1,11 @@
+﻿<infotexts language="Simplified Chinese" nowhitespace="true" translatedname="中文(简体)">
+  <entityname.VGM_RGBLaserPointer>RGB激光指示器</entityname.VGM_RGBLaserPointer>
+  <entityname.VGM_HealthScanner>健康扫描仪</entityname.VGM_HealthScanner>
+  <entityname.VGM_ThermalScanner>热成像仪</entityname.VGM_ThermalScanner>
+
+  <entityname.VGM_SMGLongMagazine>冲锋枪延长弹匣</entityname.VGM_SMGLongMagazine>
+  <entityname.VGM_SMGDrumMagazine>冲锋枪弹鼓</entityname.VGM_SMGDrumMagazine>
+  <entityname.VGM_AssaultRifleLongMagazine>突击步枪延长弹匣</entityname.VGM_AssaultRifleLongMagazine>
+  <entityname.VGM_AssaultRifleDrumMagazine>突击步枪弹鼓</entityname.VGM_AssaultRifleDrumMagazine>
+  <entityname.VGM_HMGDrumMagazine>重机枪弹鼓</entityname.VGM_HMGDrumMagazine>
+</infotexts>

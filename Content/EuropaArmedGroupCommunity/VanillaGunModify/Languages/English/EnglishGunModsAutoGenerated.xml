@@ -1,0 +1,47 @@
+﻿<infotexts language="English" nowhitespace="true" translatedname="English">
+  <!-- Auto Generated -->
+  <entityname.VGM_AngledForeGrip>Angled Foregrip</entityname.VGM_AngledForeGrip>
+  <entitydescription.VGM_AngledForeGrip>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×0.3\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.2</entitydescription.VGM_AngledForeGrip>
+  <entityname.VGM_VerticalGrip>Vertical Grip</entityname.VGM_VerticalGrip>
+  <entitydescription.VGM_VerticalGrip>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×0.9\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.45</entitydescription.VGM_VerticalGrip>
+  <entityname.VGM_AssaultRifleStock>Assault Rifle OEM Stock</entityname.VGM_AssaultRifleStock>
+  <entitydescription.VGM_AssaultRifleStock>‖color:gui.orange‖Recoil Reduction‖end‖: 80</entitydescription.VGM_AssaultRifleStock>
+  <entityname.VGM_HeavySniperStock>Heavy Ergonomic Stock</entityname.VGM_HeavySniperStock>
+  <entitydescription.VGM_HeavySniperStock>‖color:gui.orange‖Recoil Reduction‖end‖: 253.5\n‖color:gui.orange‖Movement Speed‖end‖ ×0.76</entitydescription.VGM_HeavySniperStock>
+  <entityname.VGM_HeavyStock>Heavy Counterweight Stock</entityname.VGM_HeavyStock>
+  <entitydescription.VGM_HeavyStock>‖color:gui.orange‖Recoil Reduction‖end‖: 169\n‖color:gui.orange‖Movement Speed‖end‖ ×0.81</entitydescription.VGM_HeavyStock>
+  <entityname.VGM_HMGStock>HMG OEM Stock</entityname.VGM_HMGStock>
+  <entitydescription.VGM_HMGStock>‖color:gui.orange‖Recoil Reduction‖end‖: 130\n‖color:gui.orange‖Movement Speed‖end‖ ×0.83</entitydescription.VGM_HMGStock>
+  <entityname.VGM_LightSniperStock>Light Marksman Stock</entityname.VGM_LightSniperStock>
+  <entitydescription.VGM_LightSniperStock>‖color:gui.orange‖Recoil Reduction‖end‖: 97.5\n‖color:gui.orange‖Movement Speed‖end‖ ×0.85</entitydescription.VGM_LightSniperStock>
+  <entityname.VGM_LightStock>Light Tubular Stock</entityname.VGM_LightStock>
+  <entitydescription.VGM_LightStock>‖color:gui.orange‖Recoil Reduction‖end‖: 65\n‖color:gui.orange‖Movement Speed‖end‖ ×0.9</entitydescription.VGM_LightStock>
+  <entityname.VGM_LightWrenchStock>Light Wrench Stock</entityname.VGM_LightWrenchStock>
+  <entitydescription.VGM_LightWrenchStock>‖color:gui.orange‖Recoil Reduction‖end‖: 30</entitydescription.VGM_LightWrenchStock>
+  <entityname.VGM_RifleStock>Rifle OEM Stock</entityname.VGM_RifleStock>
+  <entitydescription.VGM_RifleStock>‖color:gui.orange‖Recoil Reduction‖end‖: 50\n‖color:gui.orange‖Movement Speed‖end‖ ×0.91</entitydescription.VGM_RifleStock>
+  <entityname.VGM_ShotgunStock>Riot Shotgun OEM Stock</entityname.VGM_ShotgunStock>
+  <entitydescription.VGM_ShotgunStock>‖color:gui.orange‖Recoil Reduction‖end‖: 50\n‖color:gui.orange‖Movement Speed‖end‖ ×0.9</entitydescription.VGM_ShotgunStock>
+  <entityname.VGM_SMGUniqueStock>Deadeye Carbine OEM Stock</entityname.VGM_SMGUniqueStock>
+  <entitydescription.VGM_SMGUniqueStock>‖color:gui.orange‖Recoil Reduction‖end‖: 45\n‖color:gui.orange‖Movement Speed‖end‖ ×0.9</entitydescription.VGM_SMGUniqueStock>
+  <entityname.VGM_FlashHiderMuzzle>Flash Hider</entityname.VGM_FlashHiderMuzzle>
+  <entitydescription.VGM_FlashHiderMuzzle>‖color:gui.orange‖Spread Changes When Fire‖end‖ ×0.8</entitydescription.VGM_FlashHiderMuzzle>
+  <entityname.VGM_LongBarrelMuzzle>Extended Barrel</entityname.VGM_LongBarrelMuzzle>
+  <entitydescription.VGM_LongBarrelMuzzle>‖color:gui.orange‖Weapon Damage‖end‖ ×1.2\n‖color:gui.orange‖Armor Penetration‖end‖ +10%</entitydescription.VGM_LongBarrelMuzzle>
+  <entityname.VGM_LongSuppressorMuzzle>Long Suppressor</entityname.VGM_LongSuppressorMuzzle>
+  <entitydescription.VGM_LongSuppressorMuzzle>‖color:gui.orange‖Weapon Damage‖end‖ ×1.2</entitydescription.VGM_LongSuppressorMuzzle>
+  <entityname.VGM_ShortSuppressorMuzzle>Short Suppressor</entityname.VGM_ShortSuppressorMuzzle>
+  <entitydescription.VGM_ShortSuppressorMuzzle>‖color:gui.orange‖Weapon Damage‖end‖ ×1.1</entitydescription.VGM_ShortSuppressorMuzzle>
+  <entityname.VGM_SimpleSuppressorMuzzle>Gas Can Silencer</entityname.VGM_SimpleSuppressorMuzzle>
+  <entitydescription.VGM_SimpleSuppressorMuzzle></entitydescription.VGM_SimpleSuppressorMuzzle>
+  <entityname.VGM_ACOGScope>4× Scope</entityname.VGM_ACOGScope>
+  <entitydescription.VGM_ACOGScope>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.7\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×0.9\n‖color:gui.orange‖Minimum Spread‖end‖ ×0.25\n‖color:gui.orange‖Obstruct Vision‖end‖: 80%</entitydescription.VGM_ACOGScope>
+  <entityname.VGM_HolographicSight>Holographic Sight</entityname.VGM_HolographicSight>
+  <entitydescription.VGM_HolographicSight>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.3\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.05\n‖color:gui.orange‖Obstruct Vision‖end‖: 30%</entitydescription.VGM_HolographicSight>
+  <entityname.VGM_RedDotSight>Red Dot Sight</entityname.VGM_RedDotSight>
+  <entitydescription.VGM_RedDotSight>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.35\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.05\n‖color:gui.orange‖Obstruct Vision‖end‖: 20%</entitydescription.VGM_RedDotSight>
+  <entityname.VGM_RifleScope>Rifle Stock</entityname.VGM_RifleScope>
+  <entitydescription.VGM_RifleScope>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.8\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×0.85\n‖color:gui.orange‖Minimum Spread‖end‖ ×0.1875\n‖color:gui.orange‖Obstruct Vision‖end‖: 80%</entitydescription.VGM_RifleScope>
+  <entityname.VGM_SniperScope>Sniper Scope</entityname.VGM_SniperScope>
+  <entitydescription.VGM_SniperScope>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.9\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×0.8\n‖color:gui.orange‖Minimum Spread‖end‖ ×0.125\n‖color:gui.orange‖Obstruct Vision‖end‖: 80%</entitydescription.VGM_SniperScope>
+</infotexts>

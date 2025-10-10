@@ -1,0 +1,11 @@
+﻿<infotexts language="English" nowhitespace="true" translatedname="English">
+  <entityname.VGM_RGBLaserPointer>RGB Laser Pointer</entityname.VGM_RGBLaserPointer>
+  <entityname.VGM_HealthScanner>Health Scanner</entityname.VGM_HealthScanner>
+  <entityname.VGM_ThermalScanner>Thermal Scanner</entityname.VGM_ThermalScanner>
+
+  <entityname.VGM_SMGLongMagazine>SMG Extended Magazine</entityname.VGM_SMGLongMagazine>
+  <entityname.VGM_SMGDrumMagazine>SMG Drum Magazine</entityname.VGM_SMGDrumMagazine>
+  <entityname.VGM_AssaultRifleLongMagazine>Assault Rifle Extended Magazine</entityname.VGM_AssaultRifleLongMagazine>
+  <entityname.VGM_AssaultRifleDrumMagazine>Assault Rifle Drum Magazine</entityname.VGM_AssaultRifleDrumMagazine>
+  <entityname.VGM_HMGDrumMagazine>HMG Drum Magazine</entityname.VGM_HMGDrumMagazine>
+</infotexts>
