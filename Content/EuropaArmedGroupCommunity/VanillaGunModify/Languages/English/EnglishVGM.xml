@@ -1,4 +1,6 @@
 ﻿<infotexts language="English" nowhitespace="true" translatedname="English">
+  <entityname.VGM_Fabricator>Weapon Modification Fabricator</entityname.VGM_Fabricator>
+
   <entityname.VGM_RGBLaserPointer>RGB Laser Pointer</entityname.VGM_RGBLaserPointer>
   <entityname.VGM_HealthScanner>Health Scanner</entityname.VGM_HealthScanner>
   <entityname.VGM_ThermalScanner>Thermal Scanner</entityname.VGM_ThermalScanner>
