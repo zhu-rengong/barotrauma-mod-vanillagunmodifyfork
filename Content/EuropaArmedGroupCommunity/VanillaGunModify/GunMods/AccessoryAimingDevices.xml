@@ -10,7 +10,9 @@
     VGM_AimingDeviceAttrSMGUniqueCompatible,
     VGM_AimingDeviceAttrAssaultRifleCompatible,
     VGM_AimingDeviceAttrHMGCompatible,
-    VGM_AimingDeviceAttrShotgunCompatible"
+    VGM_AimingDeviceAttrShotgunCompatible,
+    VGM_AimingDeviceAttrRevolverCompatible,
+    VGM_AimingDeviceAttrHandcannonCompatible"
     hideconditionbar="true"
     cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,0,22,13" depth="0.555" origin="0.5,0.5" />
@@ -37,7 +39,9 @@
     VGM_AimingDeviceAttrSMGUniqueCompatible,
     VGM_AimingDeviceAttrAssaultRifleCompatible,
     VGM_AimingDeviceAttrHMGCompatible,
-    VGM_AimingDeviceAttrShotgunCompatible"
+    VGM_AimingDeviceAttrShotgunCompatible,
+    VGM_AimingDeviceAttrRevolverCompatible,
+    VGM_AimingDeviceAttrHandcannonCompatible"
     hideconditionbar="true"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,32,27,21" depth="0.555" origin="0.5,0.5" />
@@ -67,7 +71,9 @@
     VGM_AimingDeviceAttrSMGUniqueCompatible,
     VGM_AimingDeviceAttrAssaultRifleCompatible,
     VGM_AimingDeviceAttrHMGCompatible,
-    VGM_AimingDeviceAttrShotgunCompatible"
+    VGM_AimingDeviceAttrShotgunCompatible,
+    VGM_AimingDeviceAttrRevolverCompatible,
+    VGM_AimingDeviceAttrHandcannonCompatible"
     hideconditionbar="true"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,64,41,26" depth="0.555" origin="0.5,0.5" />
@@ -96,7 +102,9 @@
     VGM_AimingDeviceAttrSMGUniqueCompatible,
     VGM_AimingDeviceAttrAssaultRifleCompatible,
     VGM_AimingDeviceAttrHMGCompatible,
-    VGM_AimingDeviceAttrShotgunCompatible"
+    VGM_AimingDeviceAttrShotgunCompatible,
+    VGM_AimingDeviceAttrRevolverCompatible,
+    VGM_AimingDeviceAttrHandcannonCompatible"
     hideconditionbar="true"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,128,66,20" depth="0.555" origin="0.5,0.5" />
@@ -139,7 +147,9 @@
     VGM_AimingDeviceAttrSMGUniqueCompatible,
     VGM_AimingDeviceAttrAssaultRifleCompatible,
     VGM_AimingDeviceAttrHMGCompatible,
-    VGM_AimingDeviceAttrShotgunCompatible"
+    VGM_AimingDeviceAttrShotgunCompatible,
+    VGM_AimingDeviceAttrRevolverCompatible,
+    VGM_AimingDeviceAttrHandcannonCompatible"
     hideconditionbar="true"
     cargocontaineridentifier="metalcrate" scale="0.66" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,96,71,19" depth="0.555" origin="0.5,0.5" />

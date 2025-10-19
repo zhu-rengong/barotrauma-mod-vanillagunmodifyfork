@@ -9,6 +9,9 @@
         public static readonly string VGM_AssaultRifle = nameof(VGM_AssaultRifle);
         public static readonly string VGM_HMG = nameof(VGM_HMG);
         public static readonly string VGM_Shotgun = nameof(VGM_Shotgun);
+        public static readonly string VGM_ShotgunUnique = nameof(VGM_ShotgunUnique);
+        public static readonly string VGM_Revolver = nameof(VGM_Revolver);
+        public static readonly string VGM_Handcannon = nameof(VGM_Handcannon);
 
         public static readonly string VGM_RGBLaserPointer = nameof(VGM_RGBLaserPointer);
 
@@ -17,6 +20,7 @@
         public static readonly string VGM_AssaultRifleStock = nameof(VGM_AssaultRifleStock);
         public static readonly string VGM_HMGStock = nameof(VGM_HMGStock);
         public static readonly string VGM_ShotgunStock = nameof(VGM_ShotgunStock);
+        public static readonly string VGM_ShotgunUniqueStock = nameof(VGM_ShotgunUniqueStock);
         public static readonly string VGM_LightStock = nameof(VGM_LightStock);
         public static readonly string VGM_LightSniperStock = nameof(VGM_LightSniperStock);
         public static readonly string VGM_LightWrenchStock = nameof(VGM_LightWrenchStock);

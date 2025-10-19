@@ -50,13 +50,24 @@
     <Body width="54" height="36" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
+  <Item name="" identifier="VGM_ShotgunUniqueStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
+    tags="smallitem,tool,
+    VGM_Accessory,
+    VGM_Stock,
+    VGM_StockAttrShotgunUniqueCompatible"
+    cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="0,64,49,39" depth="0.554" origin="0.5,0.5" />
+    <Body width="45" height="35" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
   <Item name="" identifier="VGM_LightStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
     tags="smallitem,tool,
     VGM_Accessory,
     VGM_Stock,
     VGM_StockAttrRifleCompatible,
     VGM_StockAttrSMGUniqueCompatible,
-    VGM_StockAttrShotgunCompatible"
+    VGM_StockAttrShotgunCompatible,
+    VGM_StockAttrShotgunUniqueCompatible"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="128,0,61,30" depth="0.554" origin="0.5,0.5" />
     <Body width="57" height="28" density="15" />
@@ -72,7 +83,8 @@
     VGM_Stock,
     VGM_StockAttrRifleCompatible,
     VGM_StockAttrSMGUniqueCompatible,
-    VGM_StockAttrShotgunCompatible"
+    VGM_StockAttrShotgunCompatible,
+    VGM_StockAttrShotgunUniqueCompatible"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="128,64,60,27" depth="0.554" origin="0.5,0.5" />
     <Body width="56" height="25" density="15" />
@@ -89,7 +101,8 @@
     VGM_Stock,
     VGM_StockAttrRifleCompatible,
     VGM_StockAttrSMGUniqueCompatible,
-    VGM_StockAttrShotgunCompatible"
+    VGM_StockAttrShotgunCompatible,
+    VGM_StockAttrShotgunUniqueCompatible"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,192,62,33" depth="0.554" origin="0.5,0.5" />
     <Body width="58" height="31" density="15" />

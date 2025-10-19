@@ -24,6 +24,9 @@ namespace AutoGenerateXML
                 { $@"entityname.{Identifiers.VGM_AssaultRifle}", [ (LanguageId.English, "Assault Rifle (Modifiable)"), (LanguageId.SimplifiedChinese, "突击步枪(可改装的)") ] },
                 { $@"entityname.{Identifiers.VGM_HMG}", [ (LanguageId.English, "HMG (Modifiable)"), (LanguageId.SimplifiedChinese, "重机枪(可改装的)") ] },
                 { $@"entityname.{Identifiers.VGM_Shotgun}", [ (LanguageId.English, "Riot Shotgun (Modifiable)"), (LanguageId.SimplifiedChinese, "防暴霰弹枪(可改装的)") ] },
+                { $@"entityname.{Identifiers.VGM_ShotgunUnique}", [ (LanguageId.English, "Boom Stick (Modifiable)"), (LanguageId.SimplifiedChinese, "爆鸣(可改装的)") ] },
+                { $@"entityname.{Identifiers.VGM_Revolver}", [ (LanguageId.English, "Revolver (Modifiable)"), (LanguageId.SimplifiedChinese, "左轮手枪(可改装的)") ] },
+                { $@"entityname.{Identifiers.VGM_Handcannon}", [ (LanguageId.English, "Handcannon (Modifiable)"), (LanguageId.SimplifiedChinese, "手炮(可改装的)") ] },
 
                 { $@"entityname.{Identifiers.VGM_RGBLaserPointer}", [ (LanguageId.English, "RGB Laser Pointer"), (LanguageId.SimplifiedChinese, "RGB激光指示器") ] },
 
@@ -32,6 +35,7 @@ namespace AutoGenerateXML
                 { $@"entityname.{Identifiers.VGM_AssaultRifleStock}", [ (LanguageId.English, "Assault Rifle OEM Stock"), (LanguageId.SimplifiedChinese, "突击步枪原装枪托") ] },
                 { $@"entityname.{Identifiers.VGM_HMGStock}", [ (LanguageId.English, "HMG OEM Stock"), (LanguageId.SimplifiedChinese, "重机枪原装枪托") ] },
                 { $@"entityname.{Identifiers.VGM_ShotgunStock}", [ (LanguageId.English, "Riot Shotgun OEM Stock"), (LanguageId.SimplifiedChinese, "防暴霰弹枪原装枪托") ] },
+                { $@"entityname.{Identifiers.VGM_ShotgunUniqueStock}", [ (LanguageId.English, "Boom Stick OEM Stock"), (LanguageId.SimplifiedChinese, "爆鸣原装枪托") ] },
                 { $@"entityname.{Identifiers.VGM_LightStock}", [ (LanguageId.English, "Light Tubular Stock"), (LanguageId.SimplifiedChinese, "轻型管材枪托") ] },
                 { $@"entityname.{Identifiers.VGM_LightSniperStock}", [ (LanguageId.English, "Light Marksman Stock"), (LanguageId.SimplifiedChinese, "轻型射手枪托") ] },
                 { $@"entityname.{Identifiers.VGM_LightWrenchStock}", [ (LanguageId.English, "Light Wrench Stock"), (LanguageId.SimplifiedChinese, "轻型扳手枪托") ] },

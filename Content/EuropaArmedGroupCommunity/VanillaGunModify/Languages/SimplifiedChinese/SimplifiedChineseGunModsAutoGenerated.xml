@@ -22,6 +22,8 @@
   <entitydescription.VGM_RifleStock>‖color:gui.orange‖后坐力减少‖end‖: 50\n‖color:gui.orange‖移动速度‖end‖ ×0.91</entitydescription.VGM_RifleStock>
   <entityname.VGM_ShotgunStock>防暴霰弹枪原装枪托</entityname.VGM_ShotgunStock>
   <entitydescription.VGM_ShotgunStock>‖color:gui.orange‖后坐力减少‖end‖: 50\n‖color:gui.orange‖移动速度‖end‖ ×0.9</entitydescription.VGM_ShotgunStock>
+  <entityname.VGM_ShotgunUniqueStock>爆鸣原装枪托</entityname.VGM_ShotgunUniqueStock>
+  <entitydescription.VGM_ShotgunUniqueStock>‖color:gui.orange‖后坐力减少‖end‖: 50\n‖color:gui.orange‖移动速度‖end‖ ×0.9</entitydescription.VGM_ShotgunUniqueStock>
   <entityname.VGM_SMGUniqueStock>亡眼步枪原装枪托</entityname.VGM_SMGUniqueStock>
   <entitydescription.VGM_SMGUniqueStock>‖color:gui.orange‖后坐力减少‖end‖: 45\n‖color:gui.orange‖移动速度‖end‖ ×0.9</entitydescription.VGM_SMGUniqueStock>
   <entityname.VGM_FlashHiderMuzzle>消焰器</entityname.VGM_FlashHiderMuzzle>

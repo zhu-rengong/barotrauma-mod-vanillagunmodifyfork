@@ -38,14 +38,20 @@ namespace AutoGenerateXML
             {
                 RecoilReduction = 80,
             };
-            
+
             stats[Identifiers.VGM_HMGStock] = new()
             {
                 RecoilReduction = 130,
                 StocklessBasedSpeedMultiplier = 0.83f,
             };
-                        
+
             stats[Identifiers.VGM_ShotgunStock] = new()
+            {
+                RecoilReduction = 50,
+                StocklessBasedSpeedMultiplier = 0.9f,
+            };
+
+            stats[Identifiers.VGM_ShotgunUniqueStock] = new()
             {
                 RecoilReduction = 50,
                 StocklessBasedSpeedMultiplier = 0.9f,

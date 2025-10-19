@@ -3,6 +3,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Contracts;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using static AutoGenerateXML.ItemXMLExtensions;
@@ -71,6 +72,10 @@ namespace AutoGenerateXML
             Identifiers.VGM_LongSuppressorMuzzle,
         ];
 
+        public static readonly string[] AllMuzzlesAttrFlashHider = [
+            Identifiers.VGM_FlashHiderMuzzle,
+        ];
+
         public static readonly string[] AllGrips = [
             Identifiers.VGM_AngledForeGrip,
             Identifiers.VGM_VerticalGrip
@@ -97,6 +102,44 @@ namespace AutoGenerateXML
                 && NotAllSame(generatedHotTagWasAiming, hasCalledGenerateScannerActivationXMLsString, hasCalledGenerateStatusHUDXMLsString, hasCalledGenerateScannerOnContainedXMLsString))
             {
                 ThrowError("The functionality of Scanner is incomplete.");
+            }
+
+            if (NotAllSame(CompatibleGrips is not null,
+                hasCalledGenerateGripModifySpreadChangesOnAimDownSightXMLsString,
+                hasCalledGenerateGripSpreadRecoveryXMLsString,
+                hasCalledGenerateGripOnContainedXMLsString))
+            {
+                ThrowError("The functionality of Grip is incomplete.");
+            }
+
+            if (NotAllSame(CompatibleStocks is not null,
+                hasCalledGenerateStockModifySpeedMultiplierXMLsString,
+                hasCalledGenerateStockSimulatedRecoilXMLsString,
+                hasCalledGenerateStockOnContainedXMLsString))
+            {
+                ThrowError("The functionality of Stock is incomplete.");
+            }
+
+            if (NotAllSame(CompatibleMuzzles is not null,
+                hasCalledGenerateMuzzleModifySpreadChangesOnShootXMLsString,
+                hasCalledGenerateMuzzleOnContainedXMLsString))
+            {
+                ThrowError("The functionality of Muzzle is incomplete.");
+            }
+
+            if (NotAllSame(hasCalledGenerateFlashHiderMuzzleOnShootXMLsString,
+                    CompatibleMuzzles is not null && CompatibleMuzzles.Any(muzzle => AllMuzzlesAttrFlashHider.Contains(muzzle.Identifier))))
+            {
+                ThrowError("The functionality of Flash Hider is incomplete.");
+            }
+
+            if (NotAllSame(CompatibleAimingDevices is not null,
+                hasCalledGenerateAimingDeviceModifySpreadChangesOnAimDownSightXMLsString,
+                hasCalledGenerateAimingDeviceSpreadRecoveryXMLsString,
+                hasCalledGenerateAimingDeviceObstructVisionXMLsString,
+                hasCalledGenerateAimingDeviceOnContainedXMLsString))
+            {
+                ThrowError("The functionality of Aiming Device is incomplete.");
             }
 
             string ThrowError(string message) => throw new Exception(message);
@@ -188,8 +231,11 @@ $@"<StatusEffect type=""OnActive"" target=""Character"" speedmultiplier=""{Stock
             return stringBuilder.ToString();
         }
 
+        private bool hasCalledGenerateStockModifySpeedMultiplierXMLsString = false;
         public string GenerateStockModifySpeedMultiplierXMLsString()
         {
+            hasCalledGenerateStockModifySpeedMultiplierXMLsString = true;
+
             if (CompatibleStocks is null) { throw new NullReferenceException($@"Unable to generate stock code because '{GunName}' has no stock defined."); }
 
             StringBuilder stringBuilder = new();
@@ -227,8 +273,11 @@ $@"<!-- [Gun] Reset spread for ADS -->
 </StatusEffect>";
         }
 
+        private bool hasCalledGenerateGripModifySpreadChangesOnAimDownSightXMLsString = false;
         public string GenerateGripModifySpreadChangesOnAimDownSightXMLsString()
         {
+            hasCalledGenerateGripModifySpreadChangesOnAimDownSightXMLsString = true;
+
             if (CompatibleGrips is null) { throw new NullReferenceException($@"Unable to generate grip code because '{GunName}' has no grip defined."); }
 
             StringBuilder stringBuilder = new();
@@ -259,8 +308,11 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
             return stringBuilder.ToString();
         }
 
+        private bool hasCalledGenerateAimingDeviceModifySpreadChangesOnAimDownSightXMLsString = false;
         public string GenerateAimingDeviceModifySpreadChangesOnAimDownSightXMLsString()
         {
+            hasCalledGenerateAimingDeviceModifySpreadChangesOnAimDownSightXMLsString = true;
+
             if (CompatibleAimingDevices is null) { throw new NullReferenceException($@"Unable to generate aiming device code because '{GunName}' has no aiming device defined."); }
 
             StringBuilder stringBuilder = new();
@@ -305,8 +357,11 @@ $@"<!-- [Gun] Spread recovery -->
 </StatusEffect>";
         }
 
+        private bool hasCalledGenerateGripSpreadRecoveryXMLsString = false;
         public string GenerateGripSpreadRecoveryXMLsString()
         {
+            hasCalledGenerateGripSpreadRecoveryXMLsString = true;
+
             if (CompatibleGrips is null) { throw new NullReferenceException($@"Unable to generate grip code because '{GunName}' has no grip defined."); }
 
             StringBuilder stringBuilder = new();
@@ -340,8 +395,11 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
             return stringBuilder.ToString();
         }
 
+        private bool hasCalledGenerateAimingDeviceSpreadRecoveryXMLsString = false;
         public string GenerateAimingDeviceSpreadRecoveryXMLsString()
         {
+            hasCalledGenerateAimingDeviceSpreadRecoveryXMLsString = true;
+
             if (CompatibleAimingDevices is null) { throw new NullReferenceException($@"Unable to generate aiming device code because '{GunName}' has no aiming device defined."); }
 
             StringBuilder stringBuilder = new();
@@ -401,8 +459,11 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
             return stringBuilder.ToString();
         }
 
+        private bool hasCalledGenerateAimingDeviceObstructVisionXMLsString = false;
         public string GenerateAimingDeviceObstructVisionXMLsString()
         {
+            hasCalledGenerateAimingDeviceObstructVisionXMLsString = true;
+
             if (CompatibleAimingDevices is null) { throw new NullReferenceException($@"Unable to generate aiming device code because '{GunName}' has no aiming device defined."); }
 
             StringBuilder stringBuilder = new();
@@ -563,8 +624,11 @@ $@"<StatusEffect type=""OnUse"" target=""This"" soundrange=""{SuppressedSoundRan
             return stringBuilder.ToString();
         }
 
+        private bool hasCalledGenerateFlashHiderMuzzleOnShootXMLsString = false;
         public string GenerateFlashHiderMuzzleOnShootXMLsString()
         {
+            hasCalledGenerateFlashHiderMuzzleOnShootXMLsString = true;
+
             return
 $@"<!-- [Muzzle] Flash hider -->
 <StatusEffect type=""OnUse"" target=""This"">
@@ -616,8 +680,11 @@ $@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeap
             return stringBuilder.ToString();
         }
 
+        private bool hasCalledGenerateMuzzleModifySpreadChangesOnShootXMLsString = false;
         public string GenerateMuzzleModifySpreadChangesOnShootXMLsString()
         {
+            hasCalledGenerateMuzzleModifySpreadChangesOnShootXMLsString = true;
+
             if (CompatibleMuzzles is null) { throw new NullReferenceException($@"Unable to generate muzzle code because '{GunName}' has no muzzle defined."); }
 
             StringBuilder stringBuilder = new();
@@ -735,8 +802,11 @@ $@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""Propulsion
             return stringBuilder.ToString();
         }
 
+        private bool hasCalledGenerateStockSimulatedRecoilXMLsString = false;
         public string GenerateStockSimulatedRecoilXMLsString()
         {
+            hasCalledGenerateStockSimulatedRecoilXMLsString = true;
+
             if (CompatibleStocks is null) { throw new NullReferenceException($@"Unable to generate stock code because '{GunName}' has no stock defined."); }
 
             StringBuilder stringBuilder = new();
@@ -794,9 +864,12 @@ $@"<Propulsion usablein=""None"" applytohands=""true"">
 </Propulsion>";
         }
 
+        private bool hasCalledGenerateStockOnContainedXMLsString = false;
         public record struct ContainableStock(string Identifier, float[] ItemPos);
         public string GenerateStockOnContainedXMLsString()
         {
+            hasCalledGenerateStockOnContainedXMLsString = true;
+
             if (CompatibleStocks is null) { throw new NullReferenceException($@"Unable to generate stock code because '{GunName}' has no stock defined."); }
 
             StringBuilder stringBuilder = new();
@@ -818,9 +891,12 @@ $@"<Propulsion usablein=""None"" applytohands=""true"">
 $@"<Containable items=""{Identifiers.VGM_RGBLaserPointer},flashlight,glowstick,flare,alienflare"" hide=""false"" itempos=""{ConcatValues(itemPos)}"" setactive=""true"" />";
         }
 
+        private bool hasCalledGenerateGripOnContainedXMLsString = false;
         public record struct ContainableGrip(string Identifier, float[] ItemPos);
         public string GenerateGripOnContainedXMLsString()
         {
+            hasCalledGenerateGripOnContainedXMLsString = true;
+
             if (CompatibleGrips is null) { throw new NullReferenceException($@"Unable to generate grip code because '{GunName}' has no grip defined."); }
 
             StringBuilder stringBuilder = new();
@@ -848,9 +924,12 @@ $@"<Containable tag=""{Tags.VGM_Grip}Attr{GunName}Compatible"" excludebroken=""f
             return stringBuilder.ToString();
         }
 
+        private bool hasCalledGenerateAimingDeviceOnContainedXMLsString = false;
         public record struct ContainableAimingDevice(string Identifier, float[] ItemPos);
         public string GenerateAimingDeviceOnContainedXMLsString()
         {
+            hasCalledGenerateAimingDeviceOnContainedXMLsString = true;
+
             if (CompatibleAimingDevices is null) { throw new NullReferenceException($@"Unable to generate aiming device code because '{GunName}' has no aiming device defined."); }
 
             StringBuilder stringBuilder = new();
@@ -891,8 +970,12 @@ $@"<Containable tag=""{Tags.VGM_AimingDevice}Attr{GunName}Compatible"" excludebr
                 BarrelPos = barrelPos ?? [null, null];
             }
         }
+
+        private bool hasCalledGenerateMuzzleOnContainedXMLsString = false;
         public string GenerateMuzzleOnContainedXMLsString()
         {
+            hasCalledGenerateMuzzleOnContainedXMLsString = true;
+
             if (CompatibleMuzzles is null) { throw new NullReferenceException($@"Unable to generate muzzle code because '{GunName}' has no muzzle defined."); }
 
             StringBuilder stringBuilder = new();

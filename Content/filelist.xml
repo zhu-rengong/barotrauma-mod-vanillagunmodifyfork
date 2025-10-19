@@ -8,6 +8,9 @@
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/AssaultRifle.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/HMG.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Shotgun.xml" />
+  <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/ShotgunUnique.xml" />
+  <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Revolver.xml" />
+  <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Handcannon.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/Magazines.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/Accessories.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/AccessoryGrips.xml" />
