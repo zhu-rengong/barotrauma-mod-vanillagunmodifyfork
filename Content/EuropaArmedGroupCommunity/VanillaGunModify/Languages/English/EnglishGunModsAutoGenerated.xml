@@ -42,7 +42,7 @@
   <entitydescription.VGM_HolographicSight>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.3\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.05\n‖color:gui.orange‖Obstruct Vision‖end‖: 30%</entitydescription.VGM_HolographicSight>
   <entityname.VGM_RedDotSight>Red Dot Sight</entityname.VGM_RedDotSight>
   <entitydescription.VGM_RedDotSight>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.35\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.05\n‖color:gui.orange‖Obstruct Vision‖end‖: 20%</entitydescription.VGM_RedDotSight>
-  <entityname.VGM_RifleScope>Rifle Stock</entityname.VGM_RifleScope>
+  <entityname.VGM_RifleScope>Rifle Scope</entityname.VGM_RifleScope>
   <entitydescription.VGM_RifleScope>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.8\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×0.85\n‖color:gui.orange‖Minimum Spread‖end‖ ×0.1875\n‖color:gui.orange‖Obstruct Vision‖end‖: 80%</entitydescription.VGM_RifleScope>
   <entityname.VGM_SniperScope>Sniper Scope</entityname.VGM_SniperScope>
   <entitydescription.VGM_SniperScope>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×1.9\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×0.8\n‖color:gui.orange‖Minimum Spread‖end‖ ×0.125\n‖color:gui.orange‖Obstruct Vision‖end‖: 80%</entitydescription.VGM_SniperScope>

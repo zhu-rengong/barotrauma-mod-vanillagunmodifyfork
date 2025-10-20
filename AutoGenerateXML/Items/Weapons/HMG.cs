@@ -86,7 +86,7 @@ $@"
     {GenerateRectangleBodyXMLString(width: 172, height: 67, density: 25)}
 
     <Holdable {GenerateHoldableXMLAttributesString(
-            slots: ["Any", "RightHand+LeftHand"],
+            slots: ["RightHand+LeftHand"],
             controlPos: true,
             holdPos: [55, -22],
             aimPos: [70, -7],
@@ -112,6 +112,10 @@ $@"
         {GenerateHotTagWasAimingXMLsString()}
         {GenerateHotTagPreventSpreadingOnADSXMLsString()}
     </Holdable>
+
+    <Wearable slots=""Bag"" canbeselected=""false"" canbepicked=""true"" pickkey=""Select"" msg=""ItemMsgEquipSelect"">
+      <sprite name=""VGM HMG Worn"" texture=""%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png"" canbehiddenbyotherwearables=""false"" rotation=""90"" depth=""0.6"" sourcerect=""0,480,178,71"" limb=""Torso"" depthlimb=""LeftArm"" scale=""0.5"" origin=""0.5,0.8"" />
+    </Wearable>
 
     {GenerateStatusHUDXMLsString()}
     {GenerateAiTargetXMLsString()}

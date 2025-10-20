@@ -10,7 +10,7 @@
     </Fabricate>
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png" sourcerect="0,480,178,71" depth="0.52" origin="0.5,0.5" />
     <Body width="172" height="67" density="25" />
-    <Holdable slots="Any,RightHand+LeftHand" controlpos="True" holdpos="55,-22" aimpos="70,-7" handle1="-60,-10" handle2="4,12" holdangle="-30">
+    <Holdable slots="RightHand+LeftHand" controlpos="True" holdpos="55,-22" aimpos="70,-7" handle1="-60,-10" handle2="4,12" holdangle="-30">
       <!-- [Gun] Movement speed modification -->
       <StatusEffect type="OnActive" target="Character" speedmultiplier="0.9" setvalue="true">
         <RequiredItem tag="VGM_Accessory" excludedtag="VGM_Stock" type="Contained" targetslot="2" matchonempty="true" />
@@ -188,6 +188,9 @@
       <!-- [HotTag] Activated when aiming -->
       <StatusEffect type="OnSecondaryUse" target="This" statuseffecttags="PreventSpreadingOnADS" duration="0.15" stackable="false" />
     </Holdable>
+    <Wearable slots="Bag" canbeselected="false" canbepicked="true" pickkey="Select" msg="ItemMsgEquipSelect">
+      <sprite name="VGM HMG Worn" texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png" canbehiddenbyotherwearables="false" rotation="90" depth="0.6" sourcerect="0,480,178,71" limb="Torso" depthlimb="LeftArm" scale="0.5" origin="0.5,0.8" />
+    </Wearable>
     <StatusHUD drawhudwhenequipped="false" />
     <AiTarget sightrange="2000" soundrange="3000" fadeouttime="5" />
     <RangedWeapon weapondamagemodifier="1" penetration="0" reload="0.1" spread="8" unskilledspread="44" barrelpos="87,18" combatpriority="80" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.15">

@@ -54,7 +54,7 @@ namespace AutoGenerateXML
                 { $@"entityname.{Identifiers.VGM_RedDotSight}", [ (LanguageId.English, "Red Dot Sight"), (LanguageId.SimplifiedChinese, "红点瞄准镜") ] },
                 { $@"entityname.{Identifiers.VGM_HolographicSight}", [ (LanguageId.English, "Holographic Sight"), (LanguageId.SimplifiedChinese, "全息瞄准镜") ] },
                 { $@"entityname.{Identifiers.VGM_ACOGScope}", [ (LanguageId.English, "4× Scope"), (LanguageId.SimplifiedChinese, "四倍瞄准镜") ] },
-                { $@"entityname.{Identifiers.VGM_RifleScope}", [ (LanguageId.English, "Rifle Stock"), (LanguageId.SimplifiedChinese, "步枪瞄准镜") ] },
+                { $@"entityname.{Identifiers.VGM_RifleScope}", [ (LanguageId.English, "Rifle Scope"), (LanguageId.SimplifiedChinese, "步枪瞄准镜") ] },
                 { $@"entityname.{Identifiers.VGM_SniperScope}", [ (LanguageId.English, "Sniper Scope"), (LanguageId.SimplifiedChinese, "狙击瞄准镜") ] },
 
                 { $@"entityname.{Identifiers.VGM_HealthScanner}", [ (LanguageId.English, "Health Scanner"), (LanguageId.SimplifiedChinese, "医疗扫描仪") ] },

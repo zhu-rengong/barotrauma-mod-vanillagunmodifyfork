@@ -201,7 +201,7 @@
     <Propulsion usablein="None" applytohands="true">
       <StatusEffect type="OnUse" target="This" targetitemcomponent="Propulsion" usablein="None" isactive="false" />
     </Propulsion>
-    <ItemContainer capacity="1" maxstacksize="6" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet">
+    <ItemContainer capacity="1" maxstacksize="2" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet">
       <Containable items="shotgunammo" hide="true" />
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
       <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />

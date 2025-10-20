@@ -130,7 +130,7 @@ $@"
 
     {GeneratePropulsionXMLsString()}
 
-    <ItemContainer capacity=""1"" maxstacksize=""6"" hideitems=""false"" containedstateindicatorslot=""0"" containedstateindicatorstyle=""bullet"">
+    <ItemContainer capacity=""1"" maxstacksize=""2"" hideitems=""false"" containedstateindicatorslot=""0"" containedstateindicatorstyle=""bullet"">
         <Containable items=""shotgunammo"" hide=""true"" />
 
         {GenerateSlotIconBulletsXMLString(0)}
