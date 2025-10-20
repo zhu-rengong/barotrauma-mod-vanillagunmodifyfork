@@ -51,6 +51,7 @@ namespace AutoGenerateXML
         public virtual ContainableStock[]? CompatibleStocks { get; } = null;
         public virtual ContainableMuzzle[]? CompatibleMuzzles { get; } = null;
         public virtual ContainableAimingDevice[]? CompatibleAimingDevices { get; } = null;
+        public virtual ContainableScanner[]? CompatibleScanners { get; } = null;
 
         public virtual float NormalSoundRangeOnShoot => 3000;
         public virtual float SuppressedSoundRangeOnShoot => 800;
@@ -98,8 +99,16 @@ namespace AutoGenerateXML
                 ThrowError("The functionality of FiringModeBurst is incomplete.");
             }
 
-            if ((hasCalledGenerateScannerActivationXMLsString || hasCalledGenerateStatusHUDXMLsString || hasCalledGenerateScannerOnContainedXMLsString)
-                && NotAllSame(generatedHotTagWasAiming, hasCalledGenerateScannerActivationXMLsString, hasCalledGenerateStatusHUDXMLsString, hasCalledGenerateScannerOnContainedXMLsString))
+            if ((CompatibleScanners is not null
+                || hasCalledGenerateScannerActivationXMLsString
+                || hasCalledGenerateStatusHUDXMLsString
+                || hasCalledGenerateScannerOnContainedXMLsString)
+                && NotAllSame(
+                    generatedHotTagWasAiming,
+                    CompatibleScanners is not null,
+                    hasCalledGenerateScannerActivationXMLsString,
+                    hasCalledGenerateStatusHUDXMLsString,
+                    hasCalledGenerateScannerOnContainedXMLsString))
             {
                 ThrowError("The functionality of Scanner is incomplete.");
             }
@@ -906,19 +915,19 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
 
             CompatibleGrips.ForEach(grip =>
             {
-                stringBuilder.AppendLine($@"<Containable identifier=""{grip.Identifier}"" hide=""false"" itempos=""{ConcatValues(grip.ItemPos)}"" />");
+                var stat = AccessoryGrip.Stats[grip.Identifier];
+
+                stringBuilder.AppendLine(
+$@"<Containable identifier=""{grip.Identifier}"" hide=""false"" itempos=""{ConcatValues(grip.ItemPos)}"">
+    {(stat.HoldAngle.HasValue
+? $@"<StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""Holdable"" holdangle=""{stat.HoldAngle.Value}"" setvalue=""true"" interval=""0.5"" />"
+: string.Empty)}
+</Containable>");
             });
 
             stringBuilder.AppendLine(
-$@"<Containable tag=""{Tags.VGM_Grip}Attr{GunName}Compatible"" excludebroken=""false"" excludefullcondition=""false"" hide=""false"">
-    <StatusEffect type=""OnContaining"" target=""Contained"" condition=""3.402823466E+38"" setvalue=""true"" oneshot=""true"" />
-    <StatusEffect type=""OnRemoved"" target=""Contained"" condition=""3.402823466E+38"" setvalue=""true"" />
+$@"<Containable tag=""{Tags.VGM_Grip}Attr{GunName}Compatible"" hide=""false"">
     <StatusEffect type=""OnRemoved"" target=""This"" targetitemcomponent=""Holdable"" holdangle=""{HoldAngle}"" setvalue=""true"" />
-</Containable>
-<Containable tag=""{Tags.VGM_Grip}Attr{GunName}Compatible"" excludebroken=""true"" excludefullcondition=""false"" hide=""false"">
-    <StatusEffect type=""OnContaining"" target=""Contained"" condition=""0.0"" setvalue=""true"">
-        <Use />
-    </StatusEffect>
 </Containable>");
 
             return stringBuilder.ToString();
@@ -937,22 +946,23 @@ $@"<Containable tag=""{Tags.VGM_Grip}Attr{GunName}Compatible"" excludebroken=""f
 
             CompatibleAimingDevices.ForEach(aimingDevice =>
             {
+                var stat = AccessoryAimingDevice.Stats[aimingDevice.Identifier];
+
                 stringBuilder.AppendLine(
-$@"<Containable identifier=""{aimingDevice.Identifier}"" hide=""false"" itempos=""{ConcatValues(aimingDevice.ItemPos)}"" />");
+$@"<Containable identifier=""{aimingDevice.Identifier}"" hide=""false"" itempos=""{ConcatValues(aimingDevice.ItemPos)}"">
+    {(stat.CameraAimOffset.HasValue
+? $@"<StatusEffect type=""OnInserted"" target=""This"" targetitemcomponent=""Holdable"" cameraaimoffset=""{stat.CameraAimOffset.Value}"" setvalue=""true"" />
+    <StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""RangedWeapon"" crosshairscale=""{CrosshairScale * stat.CameraAimOffset.Value / 240}"" setvalue=""true"" interval=""0.5"" />"
+: string.Empty)}
+</Containable>");
             });
 
             stringBuilder.AppendLine(
-$@"<Containable tag=""{Tags.VGM_AimingDevice}Attr{GunName}Compatible"" excludebroken=""false"" excludefullcondition=""false"" hide=""false"">
-    <StatusEffect type=""OnContaining"" target=""Contained"" condition=""3.402823466E+38"" setvalue=""true"" oneshot=""true"" />
-    <StatusEffect type=""OnRemoved"" target=""Contained"" condition=""3.402823466E+38"" setvalue=""true"" />
+$@"<Containable tag=""{Tags.VGM_AimingDevice}Attr{GunName}Compatible"" hide=""false"">
     <StatusEffect type=""OnRemoved"" target=""This"" targetitemcomponent=""Holdable"" cameraaimoffset=""0.0"" setvalue=""true"" />
     <StatusEffect type=""OnRemoved"" target=""This"" targetitemcomponent=""RangedWeapon"" crosshairscale=""{CrosshairScale}"" setvalue=""true"" />
 </Containable>
-<Containable tag=""{Tags.VGM_AimingDevice}Attr{GunName}Compatible"" excludebroken=""true"" excludefullcondition=""false"" hide=""false"">
-    <StatusEffect type=""OnContaining"" target=""Contained"" condition=""0.0"" setvalue=""true"">
-        <Use />
-    </StatusEffect>
-</Containable>");
+<Containable tag=""{Tags.VGM_AimingDevice}Attr{GunName}Compatible"" excludebroken=""true"" excludefullcondition=""false"" hide=""false"" />");
 
             return stringBuilder.ToString();
         }
@@ -1017,29 +1027,36 @@ $@"<Containable tag=""{Tags.VGM_Muzzle}Attr{GunName}Compatible"" hide=""false"">
 
         private bool hasCalledGenerateScannerOnContainedXMLsString = false;
         public record struct ContainableScanner(string Identifier, float[] ItemPos);
-        public string GenerateScannerOnContainedXMLsString(ContainableScanner[] containableScanners)
+        public string GenerateScannerOnContainedXMLsString()
         {
             hasCalledGenerateScannerOnContainedXMLsString = true;
 
-            StringBuilder stringBuilder = new();
-            stringBuilder.AppendLine(
-$@"<!-- [Scanner] -->");
+            if (CompatibleScanners is null) { throw new NullReferenceException($@"Unable to generate scanner code because '{GunName}' has no scanner defined."); }
 
-            containableScanners.ForEach(scanner =>
+            StringBuilder stringBuilder = new();
+
+            bool hasModifier = false;
+
+            CompatibleScanners.ForEach(scanner =>
             {
-                stringBuilder.AppendLine($@"<Containable identifier=""{scanner.Identifier}"" hide=""false"" itempos=""{ConcatValues(scanner.ItemPos)}"" />");
+                var stat = AccessoryScanner.Stats[scanner.Identifier];
+
+                stringBuilder.AppendLine(
+$@"<Containable identifier=""{scanner.Identifier}"" hide=""false"" itempos=""{ConcatValues(scanner.ItemPos)}"">
+    <StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""StatusHUD"" 
+        range=""{stat.Range}""
+        thermalgoggles=""{stat.ThermalGoggles}""
+        showdeadcharacters=""{stat.ShowDeadCharacters}""
+        showtexts=""{stat.ShowTexts}""
+        overlaycolor=""{ConcatValues(stat.OverlayColor)}"" setvalue=""true"" interval=""0.5"" />
+</Containable>");
+                hasModifier = true;
             });
 
-            stringBuilder.AppendLine(
-$@"<Containable tag=""{Tags.VGM_Scanner}"" excludebroken=""false"" excludefullcondition=""false"" hide=""false"">
-    <StatusEffect type=""OnContaining"" target=""Contained"" condition=""3.402823466E+38"" setvalue=""true"" oneshot=""true"" />
-    <StatusEffect type=""OnRemoved"" target=""Contained"" condition=""3.402823466E+38"" setvalue=""true"" />
-</Containable>
-<Containable tag=""{Tags.VGM_Scanner}"" excludebroken=""true"" excludefullcondition=""false"" hide=""false"">
-    <StatusEffect type=""OnContaining"" target=""Contained"" condition=""0.0"" setvalue=""true"">
-        <Use />
-    </StatusEffect>
-</Containable>");
+            if (hasModifier)
+            {
+                stringBuilder.Insert(0, "<!-- [Scanner] -->\n");
+            }
 
             return stringBuilder.ToString();
         }

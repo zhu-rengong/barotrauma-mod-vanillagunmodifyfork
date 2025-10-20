@@ -69,6 +69,11 @@ namespace AutoGenerateXML.Items.Weapons
             new(Identifiers.VGM_SniperScope, ItemPos: [-14,20]),
         ];
 
+        public override ContainableScanner[] CompatibleScanners => [
+            new(Identifiers.VGM_HealthScanner, ItemPos: [1,12]),
+            new(Identifiers.VGM_ThermalScanner, ItemPos: [1,12]),
+        ];
+
         public override string Generate()
         {
             string gunXmlString =
@@ -186,10 +191,7 @@ $@"
         </SubContainer>
 
         <SubContainer capacity=""1"" maxstacksize=""1"">
-            {GenerateScannerOnContainedXMLsString([
-                 new(Identifiers.VGM_HealthScanner, ItemPos: [1,12]),
-                 new(Identifiers.VGM_ThermalScanner, ItemPos: [1,12]),
-            ])}
+            {GenerateScannerOnContainedXMLsString()}
         </SubContainer>
 
         {GenerateSpawnOEMStockXMLsString()}

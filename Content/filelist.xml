@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="VanillaGunModify (EuropaArmedGroupCommunity)" modversion="1.0.2" corepackage="False" steamworkshopid="3589812359" gameversion="1.10.7.0">
+<contentpackage name="VanillaGunModify (EuropaArmedGroupCommunity)" modversion="1.0.3" corepackage="False" steamworkshopid="3589812359" gameversion="1.10.7.0">
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Fabricator/Fabricator.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Rifle.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/SMG.xml" />

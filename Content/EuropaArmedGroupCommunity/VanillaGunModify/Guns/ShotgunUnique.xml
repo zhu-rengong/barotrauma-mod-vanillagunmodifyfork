@@ -210,17 +210,14 @@
       <SubContainer capacity="1" maxstacksize="1">
         <!-- [Grip] Changes the gun's properties through the use of sub-items,
 and sets the sub-item's condition to full on round loaded to prevent the accessory mod effects from being reset. -->
-        <Containable identifier="VGM_AngledForeGrip" hide="false" itempos="11,-6" />
-        <Containable identifier="VGM_VerticalGrip" hide="false" itempos="17,-6" />
-        <Containable tag="VGM_GripAttrShotgunUniqueCompatible" excludebroken="false" excludefullcondition="false" hide="false">
-          <StatusEffect type="OnContaining" target="Contained" condition="3.402823466E+38" setvalue="true" oneshot="true" />
-          <StatusEffect type="OnRemoved" target="Contained" condition="3.402823466E+38" setvalue="true" />
-          <StatusEffect type="OnRemoved" target="This" targetitemcomponent="Holdable" holdangle="-40" setvalue="true" />
+        <Containable identifier="VGM_AngledForeGrip" hide="false" itempos="11,-6">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" holdangle="20" setvalue="true" interval="0.5" />
         </Containable>
-        <Containable tag="VGM_GripAttrShotgunUniqueCompatible" excludebroken="true" excludefullcondition="false" hide="false">
-          <StatusEffect type="OnContaining" target="Contained" condition="0.0" setvalue="true">
-            <Use />
-          </StatusEffect>
+        <Containable identifier="VGM_VerticalGrip" hide="false" itempos="17,-6">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" holdangle="-15" setvalue="true" interval="0.5" />
+        </Containable>
+        <Containable tag="VGM_GripAttrShotgunUniqueCompatible" hide="false">
+          <StatusEffect type="OnRemoved" target="This" targetitemcomponent="Holdable" holdangle="-40" setvalue="true" />
         </Containable>
         <Containable items="VGM_RGBLaserPointer,flashlight,glowstick,flare,alienflare" hide="false" itempos="18,-3" setactive="true" />
       </SubContainer>
@@ -234,16 +231,11 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
       </SubContainer>
       <SubContainer capacity="1" maxstacksize="1">
         <!-- [Scanner] -->
-        <Containable identifier="VGM_HealthScanner" hide="false" itempos="3,11" />
-        <Containable identifier="VGM_ThermalScanner" hide="false" itempos="3,11" />
-        <Containable tag="VGM_Scanner" excludebroken="false" excludefullcondition="false" hide="false">
-          <StatusEffect type="OnContaining" target="Contained" condition="3.402823466E+38" setvalue="true" oneshot="true" />
-          <StatusEffect type="OnRemoved" target="Contained" condition="3.402823466E+38" setvalue="true" />
+        <Containable identifier="VGM_HealthScanner" hide="false" itempos="3,11">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" range="500" thermalgoggles="False" showdeadcharacters="True" showtexts="True" overlaycolor="72,119,72,120" setvalue="true" interval="0.5" />
         </Containable>
-        <Containable tag="VGM_Scanner" excludebroken="true" excludefullcondition="false" hide="false">
-          <StatusEffect type="OnContaining" target="Contained" condition="0.0" setvalue="true">
-            <Use />
-          </StatusEffect>
+        <Containable identifier="VGM_ThermalScanner" hide="false" itempos="3,11">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" range="3000" thermalgoggles="True" showdeadcharacters="False" showtexts="False" overlaycolor="176,0,0,120" setvalue="true" interval="0.5" />
         </Containable>
       </SubContainer>
       <!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->

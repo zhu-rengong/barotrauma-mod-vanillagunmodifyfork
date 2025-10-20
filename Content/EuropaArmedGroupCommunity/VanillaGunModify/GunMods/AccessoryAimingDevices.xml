@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <Item name="" identifier="VGM_RedDotSight" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+  <Item name="" identifier="VGM_RedDotSight" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
     tags="smallitem,tool,
     VGM_Accessory,
     VGM_AimingDevice,
@@ -13,15 +13,10 @@
     VGM_AimingDeviceAttrShotgunCompatible,
     VGM_AimingDeviceAttrRevolverCompatible,
     VGM_AimingDeviceAttrHandcannonCompatible"
-    hideconditionbar="true"
     cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,0,22,13" depth="0.555" origin="0.5,0.5" />
     <Body width="18" height="12" density="15" />
-    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect">
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Holdable" cameraaimoffset="350" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-    </Throwable>
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
       <RequiredItem identifier="aluminium" />
@@ -29,7 +24,7 @@
       <RequiredItem identifier="fpgacircuit" />
     </Fabricate>
   </Item>
-  <Item name="" identifier="VGM_HolographicSight" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+  <Item name="" identifier="VGM_HolographicSight" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
     tags="smallitem,tool,
     VGM_Accessory,
     VGM_AimingDevice,
@@ -42,18 +37,10 @@
     VGM_AimingDeviceAttrShotgunCompatible,
     VGM_AimingDeviceAttrRevolverCompatible,
     VGM_AimingDeviceAttrHandcannonCompatible"
-    hideconditionbar="true"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,32,27,21" depth="0.555" origin="0.5,0.5" />
     <Body width="25" height="19" density="15" />
-    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect">
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Holdable" cameraaimoffset="350" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="RangedWeapon" crosshairscale="0.3" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-    </Throwable>
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
       <RequiredItem identifier="aluminium" />
@@ -61,7 +48,7 @@
       <RequiredItem identifier="fpgacircuit" />
     </Fabricate>
   </Item>
-  <Item name="" identifier="VGM_ACOGScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+  <Item name="" identifier="VGM_ACOGScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
     tags="smallitem,tool,
     VGM_Accessory,
     VGM_AimingDevice,
@@ -74,18 +61,10 @@
     VGM_AimingDeviceAttrShotgunCompatible,
     VGM_AimingDeviceAttrRevolverCompatible,
     VGM_AimingDeviceAttrHandcannonCompatible"
-    hideconditionbar="true"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,64,41,26" depth="0.555" origin="0.5,0.5" />
     <Body width="37" height="24" density="15" />
-    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect">
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Holdable" cameraaimoffset="450" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="RangedWeapon" crosshairscale="0.35" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-    </Throwable>
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
       <RequiredItem identifier="aluminium" />
@@ -94,7 +73,7 @@
       <RequiredItem identifier="fpgacircuit" />
     </Fabricate>
   </Item>
-  <Item identifier="VGM_RifleScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+  <Item identifier="VGM_RifleScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
     tags="smallitem,tool,
     VGM_Accessory,
     VGM_AimingDevice,
@@ -105,7 +84,6 @@
     VGM_AimingDeviceAttrShotgunCompatible,
     VGM_AimingDeviceAttrRevolverCompatible,
     VGM_AimingDeviceAttrHandcannonCompatible"
-    hideconditionbar="true"
     cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,128,66,20" depth="0.555" origin="0.5,0.5" />
     <Body width="62" height="18" density="15" />
@@ -130,16 +108,9 @@
       <Item identifier="plastic" />
       <Item identifier="silicon" amount="2" />
     </Deconstruct>
-    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect">
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Holdable" cameraaimoffset="625" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="RangedWeapon" crosshairscale="0.425" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-    </Throwable>
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
-  <Item name="" identifier="VGM_SniperScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" 
+  <Item name="" identifier="VGM_SniperScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
     tags="smallitem,tool,
     VGM_Accessory,
     VGM_AimingDevice,
@@ -150,18 +121,10 @@
     VGM_AimingDeviceAttrShotgunCompatible,
     VGM_AimingDeviceAttrRevolverCompatible,
     VGM_AimingDeviceAttrHandcannonCompatible"
-    hideconditionbar="true"
     cargocontaineridentifier="metalcrate" scale="0.66" impactsoundtag="impact_metal_light">
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,96,71,19" depth="0.555" origin="0.5,0.5" />
     <Body width="67" height="17" density="15" />
-    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect">
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Holdable" cameraaimoffset="800" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="RangedWeapon" crosshairscale="0.5" setvalue="true">
-        <RequiredItem tag="gun" type="Container" />
-      </StatusEffect>
-    </Throwable>
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
       <RequiredItem identifier="aluminium" />

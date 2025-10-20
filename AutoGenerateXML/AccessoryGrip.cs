@@ -10,6 +10,7 @@ namespace AutoGenerateXML
 
         public float? SpreadRecoveryMultiplier;
         public float? SpreadChangesOnAimDownSightMultiplier;
+        public float? HoldAngle;
 
         static AccessoryGrip()
         {
@@ -18,13 +19,15 @@ namespace AutoGenerateXML
             stats[Identifiers.VGM_AngledForeGrip] = new()
             {
                 SpreadRecoveryMultiplier = 1.2f,
-                SpreadChangesOnAimDownSightMultiplier = 0.3f
+                SpreadChangesOnAimDownSightMultiplier = 0.3f,
+                HoldAngle = 20,
             };
 
             stats[Identifiers.VGM_VerticalGrip] = new()
             {
                 SpreadRecoveryMultiplier = 1.45f,
-                SpreadChangesOnAimDownSightMultiplier = 0.9f
+                SpreadChangesOnAimDownSightMultiplier = 0.9f,
+                HoldAngle = -15,
             };
 
             Stats = stats.ToImmutableDictionary();
