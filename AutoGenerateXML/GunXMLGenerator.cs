@@ -304,7 +304,7 @@ $@"<!-- [Gun] Reset spread for ADS -->
                 stringBuilder.AppendLine(
 $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{spreadModifierOnADS}"" unskilledspread=""{spreadModifierOnADS}"" disabledeltatime=""true"">
     <Conditional hasstatustag=""! {StatusEffectTags.PreventSpreadingOnADS}"" />
-    <RequiredItem identifier=""{containableGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{containableGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" />
 </StatusEffect>");
                 hasModifier = true;
             });
@@ -339,7 +339,7 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
                 stringBuilder.AppendLine(
 $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{spreadModifierOnADS}"" unskilledspread=""{spreadModifierOnADS}"" disabledeltatime=""true"">
     <Conditional hasstatustag=""! {StatusEffectTags.PreventSpreadingOnADS}"" />
-    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
 </StatusEffect>");
 
                 hasModifier = true;
@@ -387,11 +387,11 @@ $@"<!-- [Gun] Spread recovery -->
                 stringBuilder.AppendLine(
 $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
     <Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + extraSpreadRecovery / 2}"" />
-    <RequiredItem identifier=""{compatibleGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{compatibleGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" />
 </StatusEffect>
 <StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
     <Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + extraSpreadRecovery / 2}"" />
-    <RequiredItem identifier=""{compatibleGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{compatibleGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" />
 </StatusEffect>");
                 hasModifier = true;
             });
@@ -432,14 +432,14 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
         ? $@"<Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + neutralSpreadModifier + extraSpreadRecovery / 2}"" />"
         : $@"<Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />"
     )}
-    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
 </StatusEffect>
 <StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
     {(extraSpreadRecovery > 0.0f
         ? $@"<Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + neutralSpreadModifier + extraSpreadRecovery / 2}"" />"
         : $@"<Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />"
     )}
-    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
 </StatusEffect>");
 
                 hasModifier = true;
@@ -450,12 +450,12 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
 $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-SpreadRecovery}"" disabledeltatime=""true"" comparison=""And"">
     <Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />
     <Conditional targetitemcomponent=""RangedWeapon"" spread=""lte {MinimumSpread + SpreadRecovery / 2}"" />
-    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
 </StatusEffect>
 <StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-SpreadRecovery}"" disabledeltatime=""true"" comparison=""And"">
     <Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />
     <Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""lte {MinimumUnskilledSpread + SpreadRecovery / 2}"" />
-    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
 </StatusEffect>");
                 }
             });
@@ -487,7 +487,7 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
                     stringBuilder.AppendLine(
 $@"<StatusEffect type=""OnSecondaryUse"" target=""Character"" obstructvisionamount=""{stat.ObstructVisionAmount.Value}"" setvalue=""true"" comparison=""And"">
     <Conditional islocalplayer=""true"" obstructvisionamount=""lt {stat.ObstructVisionAmount.Value}""/>
-    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" excludebroken=""false"" />
+    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
 </StatusEffect>");
                     hasModifier = true;
                 }
@@ -509,7 +509,7 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""Character"" obstructvisionamou
 $@"<!-- [Scanner] Perform by aiming when the gun is equipped with a scanner. -->
 <StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""StatusHUD"" drawhudwhenequipped=""true"" isactive=""true"">
     <Conditional hasstatustag=""{StatusEffectTags.WasAiming}"" />
-    <RequiredItem tag=""{Tags.VGM_Scanner}"" excludebroken=""false"" type=""Contained"" targetslot=""{ScannerSlotIndex}"" />
+    <RequiredItem tag=""{Tags.VGM_Scanner}"" type=""Contained"" targetslot=""{ScannerSlotIndex}"" />
 </StatusEffect>
 <StatusEffect type=""OnActive"" target=""This"" targetitemcomponent=""StatusHUD"" drawhudwhenequipped=""false"" isactive=""false"">
     <Conditional hasstatustag=""! {StatusEffectTags.WasAiming}"" />
@@ -961,8 +961,7 @@ $@"<Containable identifier=""{aimingDevice.Identifier}"" hide=""false"" itempos=
 $@"<Containable tag=""{Tags.VGM_AimingDevice}Attr{GunName}Compatible"" hide=""false"">
     <StatusEffect type=""OnRemoved"" target=""This"" targetitemcomponent=""Holdable"" cameraaimoffset=""0.0"" setvalue=""true"" />
     <StatusEffect type=""OnRemoved"" target=""This"" targetitemcomponent=""RangedWeapon"" crosshairscale=""{CrosshairScale}"" setvalue=""true"" />
-</Containable>
-<Containable tag=""{Tags.VGM_AimingDevice}Attr{GunName}Compatible"" excludebroken=""true"" excludefullcondition=""false"" hide=""false"" />");
+</Containable>");
 
             return stringBuilder.ToString();
         }

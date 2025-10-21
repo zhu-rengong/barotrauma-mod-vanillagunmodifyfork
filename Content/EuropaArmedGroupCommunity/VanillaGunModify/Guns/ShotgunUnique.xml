@@ -32,11 +32,11 @@
       <!-- [Grip] Modify spread on ADS -->
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-3.5" unskilledspread="-3.5" disabledeltatime="true">
         <Conditional hasstatustag="! PreventSpreadingOnADS" />
-        <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" excludebroken="false" />
+        <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.5000001" unskilledspread="-0.5000001" disabledeltatime="true">
         <Conditional hasstatustag="! PreventSpreadingOnADS" />
-        <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" excludebroken="false" />
+        <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" />
       </StatusEffect>
       <!-- [Gun] Spread recovery -->
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.9" disabledeltatime="true">
@@ -48,24 +48,24 @@
       <!-- [Grip] Spread recovery -->
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.18000004" disabledeltatime="true">
         <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.09" />
-        <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" excludebroken="false" />
+        <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.18000004" disabledeltatime="true">
         <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.09" />
-        <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" excludebroken="false" />
+        <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.40500003" disabledeltatime="true">
         <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.2025" />
-        <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" excludebroken="false" />
+        <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.40500003" disabledeltatime="true">
         <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.2025" />
-        <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" excludebroken="false" />
+        <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" />
       </StatusEffect>
       <!-- [Scanner] Perform by aiming when the gun is equipped with a scanner. -->
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" isactive="true">
         <Conditional hasstatustag="WasAiming" />
-        <RequiredItem tag="VGM_Scanner" excludebroken="false" type="Contained" targetslot="3" />
+        <RequiredItem tag="VGM_Scanner" type="Contained" targetslot="3" />
       </StatusEffect>
       <StatusEffect type="OnActive" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" isactive="false">
         <Conditional hasstatustag="! WasAiming" />
