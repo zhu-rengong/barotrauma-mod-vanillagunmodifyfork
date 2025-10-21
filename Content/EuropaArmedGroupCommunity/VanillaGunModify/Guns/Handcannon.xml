@@ -144,7 +144,11 @@
     <RangedWeapon weapondamagemodifier="1" penetration="0" reload="1" spread="0.1" unskilledspread="8" barrelpos="54,17" combatpriority="90" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.15">
       <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
       <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
-      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="7.0,7.0" colormultiplier="255,200,115,200" />
+      <!-- [Muzzle] Flash when fire -->
+      <StatusEffect type="OnUse" target="This" offset="0,8.5">
+        <ParticleEmitter particle="impactfirearm" particleamount="6" scalemin="3.5" scalemax="7" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="27" distancemax="27" />
+        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_Muzzle" type="Contained" targetslot="-1" matchonempty="true" />
+      </StatusEffect>
       <StatusEffect type="OnUse" target="This">
         <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" copyentityangle="true" />
       </StatusEffect>

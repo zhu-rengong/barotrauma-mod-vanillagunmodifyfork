@@ -108,7 +108,8 @@ $@"
 
     <RangedWeapon {GenerateRangedWeaponXMLAttributesString()}>
         {GenerateDefaultCrosshairXMLsString()}
-        <ParticleEmitter particle=""muzzleflash"" particleamount=""1"" velocitymin=""0"" velocitymax=""0"" />
+
+        {GenerateMuzzleFlashXMLsString()}
 
         {GenerateGunfireOnShootXMLsString(
             normalSoundFiles: [

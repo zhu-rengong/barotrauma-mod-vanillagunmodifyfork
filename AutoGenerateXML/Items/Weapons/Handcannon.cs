@@ -84,7 +84,8 @@ $@"
 
     <RangedWeapon {GenerateRangedWeaponXMLAttributesString()}>
         {GenerateDefaultCrosshairXMLsString()}
-        <ParticleEmitter particle=""impactfirearm"" particleamount=""1"" velocitymin=""0"" velocitymax=""0"" scalemultiplier=""7.0,7.0"" colormultiplier=""255,200,115,200"" />
+
+        {GenerateMuzzleFlashXMLsString("impactfirearm", amount: 6, scale: [3.5f, 7.0f], color: [0.95f, 1.00f, 0.65f, 0.34f])}
 
         <StatusEffect type=""OnUse"" target=""This"">
           <ParticleEmitter particle=""casingfirearm"" particleamount=""1"" anglemin=""90"" anglemax=""150"" velocitymin=""50"" velocitymax=""250"" copyentityangle=""true"" />

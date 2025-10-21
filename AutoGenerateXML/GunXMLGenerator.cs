@@ -562,6 +562,47 @@ drawhudwhenequipped=""true""
 crosshairscale=""{CrosshairScale}""";
         }
 
+        public string GenerateMuzzleFlashXMLsString(string particle = "muzzleflash", int amount = 6, float[]? scale = null, float[]? color = null)
+        {
+            scale ??= [0.7f, 1.4f];
+            color ??= [0.95f, 1.00f, 0.65f, 0.34f];
+
+            StringBuilder stringBuilder = new();
+
+            stringBuilder.AppendLine($@"<!-- [Muzzle] Flash when fire -->");
+
+            float emitDistance = BarrelPos[0] * Scale;
+
+            stringBuilder.AppendLine(
+$@"<StatusEffect type=""OnUse"" target=""This"" offset=""0,{BarrelPos[1] * Scale}"">
+    <ParticleEmitter particle=""{particle}"" particleamount=""{amount}"" scalemin=""{scale[0]}"" scalemax=""{scale[1]}"" colormultiplier=""{ConcatValues(color)}""
+        copyentityangle=""true"" distancemin=""{emitDistance}"" distancemax=""{emitDistance}"" />
+    <RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_Muzzle}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />
+</StatusEffect>");
+
+            if (CompatibleMuzzles is not null)
+            {
+                CompatibleMuzzles.ForEach(muzzle =>
+                {
+                    var stat = AccessoryMuzzle.Stats[muzzle.Identifier];
+
+                    float emitDistance = stat.BarrelLength * stat.Scale / 2;
+
+                    stringBuilder.AppendLine(
+$@"<StatusEffect type=""OnUse"" target=""Contained"" targetslot=""{MuzzleSlotIndex}"">
+    <ParticleEmitter particle=""{(!string.IsNullOrEmpty(stat.FlashOverrideParticle) ? stat.FlashOverrideParticle : particle)}"" particleamount=""{amount}""
+        scalemin=""{scale[0]}"" scalemax=""{scale[1]}""
+        {(stat.FlashScaleMultiplier is not null ? $@"scalemultiplier=""{ConcatValues(stat.FlashScaleMultiplier)}""" : string.Empty)}
+        colormultiplier=""{(ConcatValues(stat.FlashAlphaMultiplier.HasValue ? [color[0], color[1], color[2], color[3] * stat.FlashAlphaMultiplier.Value] : color))}""
+        copyentityangle=""true"" distancemin=""{emitDistance}"" distancemax=""{emitDistance}"" />
+    <RequiredItem identifier=""{muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>");
+                });
+            }
+
+            return stringBuilder.ToString();
+        }
+
         public string GenerateMajorRequiredWeaponsSkillXMLsString()
         {
             return $@"<RequiredSkill identifier=""weapons"" level=""{RequiredWeaponsSkill}"" />";

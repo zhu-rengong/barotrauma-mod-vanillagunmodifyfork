@@ -196,7 +196,31 @@
     <RangedWeapon weapondamagemodifier="1" penetration="0" reload="0.1" spread="8" unskilledspread="44" barrelpos="87,18" combatpriority="80" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.15">
       <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
       <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
-      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <!-- [Muzzle] Flash when fire -->
+      <StatusEffect type="OnUse" target="This" offset="0,9">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="43.5" distancemax="43.5" />
+        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_Muzzle" type="Contained" targetslot="3" matchonempty="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetslot="3">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="16" distancemax="16" />
+        <RequiredItem identifier="VGM_SimpleSuppressorMuzzle" type="Contained" targetslot="3" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetslot="3">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" scalemultiplier="1.1,1.1" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="8.25" distancemax="8.25" />
+        <RequiredItem identifier="VGM_ShortSuppressorMuzzle" type="Contained" targetslot="3" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetslot="3">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" scalemultiplier="1.15,1.15" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="15" distancemax="15" />
+        <RequiredItem identifier="VGM_LongSuppressorMuzzle" type="Contained" targetslot="3" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetslot="3">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" scalemultiplier="0.5,0.5" colormultiplier="0.95,1,0.65,0.272" copyentityangle="true" distancemin="4" distancemax="4" />
+        <RequiredItem identifier="VGM_FlashHiderMuzzle" type="Contained" targetslot="3" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetslot="3">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" scalemultiplier="1.25,1.25" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="16" distancemax="16" />
+        <RequiredItem identifier="VGM_LongBarrelMuzzle" type="Contained" targetslot="3" />
+      </StatusEffect>
       <StatusEffect type="OnUse" target="This">
         <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" copyentityangle="true" />
       </StatusEffect>

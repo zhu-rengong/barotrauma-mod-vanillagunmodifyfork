@@ -84,7 +84,8 @@ $@"
 
     <RangedWeapon {GenerateRangedWeaponXMLAttributesString()} DualWieldReloadTimePenaltyMultiplier=""1.75"" DualWieldAccuracyPenalty=""8"">
         {GenerateDefaultCrosshairXMLsString()}
-        <ParticleEmitter particle=""muzzleflash"" particleamount=""1"" velocitymin=""0"" velocitymax=""0"" />
+        
+        {GenerateMuzzleFlashXMLsString()}
 
         <StatusEffect type=""OnUse"" target=""This"">
           <ParticleEmitter particle=""casingfirearm"" particleamount=""1"" anglemin=""90"" anglemax=""150"" velocitymin=""50"" velocitymax=""250"" copyentityangle=""true"" />
