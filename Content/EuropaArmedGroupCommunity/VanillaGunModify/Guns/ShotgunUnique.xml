@@ -92,7 +92,6 @@
       <!-- [Muzzle] Flash when fire -->
       <StatusEffect type="OnUse" target="This" offset="0,5">
         <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="37.5" distancemax="37.5" />
-        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_Muzzle" type="Contained" targetslot="-1" matchonempty="true" />
       </StatusEffect>
       <!-- [FiringModeBurst] The number of shots fired during the gun's burst process is recorded, and a firing cooldown is applied. -->
       <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" tags="firingmodeburst_1,firingmodeburst_active" duration="0.183">
@@ -243,9 +242,19 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         </Containable>
       </SubContainer>
       <!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
-      <StatusEffect type="OnSpawn" target="This">
-        <SpawnItem identifier="VGM_ShotgunUniqueStock" spawnposition="ThisInventory" SpawnIfCantBeContained="false" SpawnIfInventoryFull="false" />
+      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.1" evententitytag="gun">
         <Conditional HasBeenInstantiatedOnce="false" />
+        <TriggerEvent>
+          <ScriptedEvent identifier="VGM_TrySpawnShotgunUniqueOEMStock">
+            <StatusEffectAction targettag="gun">
+              <StatusEffect type="OnSpawn" target="This">
+                <SpawnItem identifier="VGM_ShotgunUniqueStock" spawnposition="ThisInventory" SpawnIfCantBeContained="false" SpawnIfInventoryFull="false" />
+                <Conditional hasstatustag="FirstInitialized" />
+                <RequiredItem tag="fabricator" type="Container" />
+              </StatusEffect>
+            </StatusEffectAction>
+          </ScriptedEvent>
+        </TriggerEvent>
       </StatusEffect>
     </ItemContainer>
     <Quality>

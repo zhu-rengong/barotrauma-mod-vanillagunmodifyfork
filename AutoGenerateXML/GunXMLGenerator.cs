@@ -151,6 +151,31 @@ namespace AutoGenerateXML
                 ThrowError("The functionality of Aiming Device is incomplete.");
             }
 
+            if (CompatibleGrips is not null && LowerAccessorySlotIndex < 0)
+            {
+                ThrowError("Grip is compatible but not define slot index for it.");
+            }
+
+            if (NotAllSame(CompatibleStocks is not null, StockSlotIndex > -1))
+            {
+                ThrowError("Having compatible stocks defined and stock slot index defined must be both true or both false.");
+            }
+            
+            if (NotAllSame(CompatibleMuzzles is not null, MuzzleSlotIndex > -1))
+            {
+                ThrowError("Having compatible muzzles defined and muzzle slot index defined must be both true or both false.");
+            }
+
+            if (CompatibleAimingDevices is not null && UpperAccessorySlotIndex < 0)
+            {
+                ThrowError("Aiming device is compatible but not define slot index for it.");
+            }
+
+            if (NotAllSame(CompatibleScanners is not null, ScannerSlotIndex > -1))
+            {
+                ThrowError("Having compatible scanners defined and scanner slot index defined must be both true or both false.");
+            }
+
             string ThrowError(string message) => throw new Exception(message);
 
             bool NotAllSame(params bool[] values)
@@ -179,9 +204,19 @@ $@"<PreferredContainer primary=""secarmcab"" secondary=""armcab,weaponholder"" /
             {
                 return
 $@"<!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
-<StatusEffect type=""OnSpawn"" target=""This"">
-    <SpawnItem identifier=""{Identifier}Stock"" spawnposition=""ThisInventory"" SpawnIfCantBeContained=""false"" SpawnIfInventoryFull=""false"" />
-    <Conditional HasBeenInstantiatedOnce=""false""/>
+<StatusEffect type=""OnSpawn"" target=""This"" statuseffecttags=""{StatusEffectTags.FirstInitialized}"" duration=""0.1"" evententitytag=""gun"">
+    <Conditional HasBeenInstantiatedOnce=""false"" />
+    <TriggerEvent>
+        <ScriptedEvent identifier=""VGM_TrySpawn{GunName}OEMStock"">
+        <StatusEffectAction targettag=""gun"">
+            <StatusEffect type=""OnSpawn"" target=""This"">
+                <SpawnItem identifier=""VGM_{GunName}Stock"" spawnposition=""ThisInventory"" SpawnIfCantBeContained=""false"" SpawnIfInventoryFull=""false"" />
+                <Conditional hasstatustag=""{StatusEffectTags.FirstInitialized}"" />
+                <RequiredItem tag=""fabricator"" type=""Container"" />
+            </StatusEffect>
+        </StatusEffectAction>
+        </ScriptedEvent>
+    </TriggerEvent>
 </StatusEffect>";
             }
             else
@@ -577,7 +612,9 @@ crosshairscale=""{CrosshairScale}""";
 $@"<StatusEffect type=""OnUse"" target=""This"" offset=""0,{BarrelPos[1] * Scale}"">
     <ParticleEmitter particle=""{particle}"" particleamount=""{amount}"" scalemin=""{scale[0]}"" scalemax=""{scale[1]}"" colormultiplier=""{ConcatValues(color)}""
         copyentityangle=""true"" distancemin=""{emitDistance}"" distancemax=""{emitDistance}"" />
-    <RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_Muzzle}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />
+    {(CompatibleMuzzles is not null
+        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_Muzzle}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
+        : string.Empty)}
 </StatusEffect>");
 
             if (CompatibleMuzzles is not null)

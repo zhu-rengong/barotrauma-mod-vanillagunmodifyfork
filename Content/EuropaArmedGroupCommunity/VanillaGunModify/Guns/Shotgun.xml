@@ -170,7 +170,6 @@
       <!-- [Muzzle] Flash when fire -->
       <StatusEffect type="OnUse" target="This" offset="0,3.5">
         <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="33" distancemax="33" />
-        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_Muzzle" type="Contained" targetslot="-1" matchonempty="true" />
       </StatusEffect>
       <!-- [Gun] Gunfire -->
       <StatusEffect type="OnUse" target="This" forceplaysounds="true">
@@ -334,9 +333,19 @@
         </Containable>
       </SubContainer>
       <!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
-      <StatusEffect type="OnSpawn" target="This">
-        <SpawnItem identifier="VGM_ShotgunStock" spawnposition="ThisInventory" SpawnIfCantBeContained="false" SpawnIfInventoryFull="false" />
+      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.1" evententitytag="gun">
         <Conditional HasBeenInstantiatedOnce="false" />
+        <TriggerEvent>
+          <ScriptedEvent identifier="VGM_TrySpawnShotgunOEMStock">
+            <StatusEffectAction targettag="gun">
+              <StatusEffect type="OnSpawn" target="This">
+                <SpawnItem identifier="VGM_ShotgunStock" spawnposition="ThisInventory" SpawnIfCantBeContained="false" SpawnIfInventoryFull="false" />
+                <Conditional hasstatustag="FirstInitialized" />
+                <RequiredItem tag="fabricator" type="Container" />
+              </StatusEffect>
+            </StatusEffectAction>
+          </ScriptedEvent>
+        </TriggerEvent>
       </StatusEffect>
     </ItemContainer>
     <Quality>

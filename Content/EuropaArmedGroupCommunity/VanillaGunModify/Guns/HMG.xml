@@ -428,9 +428,19 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         </Containable>
       </SubContainer>
       <!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
-      <StatusEffect type="OnSpawn" target="This">
-        <SpawnItem identifier="VGM_HMGStock" spawnposition="ThisInventory" SpawnIfCantBeContained="false" SpawnIfInventoryFull="false" />
+      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.1" evententitytag="gun">
         <Conditional HasBeenInstantiatedOnce="false" />
+        <TriggerEvent>
+          <ScriptedEvent identifier="VGM_TrySpawnHMGOEMStock">
+            <StatusEffectAction targettag="gun">
+              <StatusEffect type="OnSpawn" target="This">
+                <SpawnItem identifier="VGM_HMGStock" spawnposition="ThisInventory" SpawnIfCantBeContained="false" SpawnIfInventoryFull="false" />
+                <Conditional hasstatustag="FirstInitialized" />
+                <RequiredItem tag="fabricator" type="Container" />
+              </StatusEffect>
+            </StatusEffectAction>
+          </ScriptedEvent>
+        </TriggerEvent>
       </StatusEffect>
     </ItemContainer>
     <Quality>
