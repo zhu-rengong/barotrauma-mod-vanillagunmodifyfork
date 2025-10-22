@@ -33,6 +33,7 @@
         public static readonly string VGM_SimpleSuppressorMuzzle = nameof(VGM_SimpleSuppressorMuzzle);
         public static readonly string VGM_LongBarrelMuzzle = nameof(VGM_LongBarrelMuzzle);
         public static readonly string VGM_FlashHiderMuzzle = nameof(VGM_FlashHiderMuzzle);
+        public static readonly string VGM_ChokeTubeMuzzle = nameof(VGM_ChokeTubeMuzzle);
 
         public static readonly string VGM_AngledForeGrip = nameof(VGM_AngledForeGrip);
         public static readonly string VGM_VerticalGrip = nameof(VGM_VerticalGrip);

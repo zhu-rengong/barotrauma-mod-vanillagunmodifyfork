@@ -17,8 +17,9 @@ namespace AutoGenerateXML.Items.Weapons
         public override string Identifier => Identifiers.VGM_ShotgunUnique;
         public override string SelfTags => "mediumitem,weapon,gun,provocativetohumanai,mountableweapon,shotgununique";
 
-        public override int StockSlotIndex => 2;
-        public override int ScannerSlotIndex => 3;
+        public override int MuzzleSlotIndex => 2;
+        public override int StockSlotIndex => 3;
+        public override int ScannerSlotIndex => 4;
         public override int LowerAccessorySlotIndex => 1;
 
         public override float? HoldAngle => -40;
@@ -43,6 +44,10 @@ namespace AutoGenerateXML.Items.Weapons
         public override ContainableGrip[] CompatibleGrips => [
             new(Identifiers.VGM_AngledForeGrip, ItemPos: [11,-6]),
             new(Identifiers.VGM_VerticalGrip, ItemPos: [17,-6]),
+        ];
+
+        public override ContainableMuzzle[] CompatibleMuzzles => [
+            new(Identifiers.VGM_ChokeTubeMuzzle),
         ];
 
         public override ContainableStock[] CompatibleStocks => [
@@ -119,6 +124,7 @@ $@"
         )}
 
         {GenerateGunSpreadChangesOnShootXMLsString()}
+        {GenerateMuzzleModifySpreadChangesOnShootXMLsString()}
 
         {GenerateGunSimulatedRecoilXMLsString()}
         {GenerateStockSimulatedRecoilXMLsString()}
@@ -137,16 +143,23 @@ $@"
     {GeneratePropulsionXMLsString()}
 
     <ItemContainer capacity=""1"" maxstacksize=""2"" hideitems=""false"" containedstateindicatorslot=""0"" containedstateindicatorstyle=""bullet"">
-        <Containable items=""shotgunammo"" hide=""true"" />
+        <Containable items=""shotgunammo"" hide=""true"">
+            {GenerateMuzzleSpreadChokeXMLsString()}
+        </Containable>
 
         {GenerateSlotIconBulletsXMLString(0)}
         {GenerateSlotIconFlashlightXMLString(1)}
-        {GenerateSlotIconStockXMLString(2)}
-        {GenerateSlotIconScannerXMLString(3)}
+        {GenerateSlotIconMuzzleXMLString(2)}
+        {GenerateSlotIconStockXMLString(3)}
+        {GenerateSlotIconScannerXMLString(4)}
 
         <SubContainer capacity=""1"" maxstacksize=""1"">
             {GenerateGripOnContainedXMLsString()}
             {GenerateContainableGenericAccessories(itemPos: [18, -3])}
+        </SubContainer>
+
+        <SubContainer capacity=""1"" maxstacksize=""1"">
+            {GenerateMuzzleOnContainedXMLsString()}
         </SubContainer>
 
         <SubContainer capacity=""1"" maxstacksize=""1"">

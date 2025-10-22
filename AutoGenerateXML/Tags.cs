@@ -9,7 +9,7 @@
         public static readonly string VGM_GripAttrSpreadRecovery = nameof(VGM_GripAttrSpreadRecovery);
         public static readonly string VGM_AimingDevice = nameof(VGM_AimingDevice);
         public static readonly string VGM_Muzzle = nameof(VGM_Muzzle);
-        public static readonly string VGM_MuzzleAttrReduceSpread = nameof(VGM_MuzzleAttrReduceSpread);
+        public static readonly string VGM_MuzzleAttrOverrideSpreadChangesOnShoot = nameof(VGM_MuzzleAttrOverrideSpreadChangesOnShoot);
         public static readonly string VGM_MuzzleAttrSuppressor = nameof(VGM_MuzzleAttrSuppressor);
         public static readonly string VGM_MuzzleAttrFlashHider = nameof(VGM_MuzzleAttrFlashHider);
     }

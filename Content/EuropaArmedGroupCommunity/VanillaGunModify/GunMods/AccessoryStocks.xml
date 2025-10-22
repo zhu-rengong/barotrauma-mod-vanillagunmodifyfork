@@ -115,18 +115,6 @@
           <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500" />
           <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
         </StatusEffect>
-        <StatusEffect type="OnActive" target="Parent" spread="1" unskilledspread="5" setvalue="true" interval="1">
-          <Conditional HasTag="shotgun" />
-        </StatusEffect>
-        <StatusEffect type="OnActive" target="Parent" spread="0.5" unskilledspread="4" setvalue="true" interval="1">
-          <Conditional HasTag="rifle" />
-        </StatusEffect>
-        <StatusEffect type="OnActive" target="Parent" spread="4" unskilledspread="10" setvalue="true" interval="1">
-          <Conditional HasTag="smgunique" />
-        </StatusEffect>
-        <StatusEffect type="OnActive" target="Parent" spread="3" unskilledspread="6" setvalue="true" interval="1">
-          <Conditional HasTag="shotgununique" />
-        </StatusEffect>
       </Attack>
     </MeleeWeapon>
     <aitarget sightrange="500" soundrange="500" fadeouttime="1" />

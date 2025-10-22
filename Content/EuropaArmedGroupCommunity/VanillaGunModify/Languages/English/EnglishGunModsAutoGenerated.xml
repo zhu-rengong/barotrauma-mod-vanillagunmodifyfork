@@ -26,6 +26,8 @@
   <entitydescription.VGM_ShotgunUniqueStock>‖color:gui.orange‖Recoil Reduction‖end‖: 50\n‖color:gui.orange‖Movement Speed‖end‖ ×0.9</entitydescription.VGM_ShotgunUniqueStock>
   <entityname.VGM_SMGUniqueStock>Deadeye Carbine OEM Stock</entityname.VGM_SMGUniqueStock>
   <entitydescription.VGM_SMGUniqueStock>‖color:gui.orange‖Recoil Reduction‖end‖: 45\n‖color:gui.orange‖Movement Speed‖end‖ ×0.9</entitydescription.VGM_SMGUniqueStock>
+  <entityname.VGM_ChokeTubeMuzzle>Choke Tube</entityname.VGM_ChokeTubeMuzzle>
+  <entitydescription.VGM_ChokeTubeMuzzle>‖color:gui.orange‖Maximum Shots Choke‖end‖: 8°</entitydescription.VGM_ChokeTubeMuzzle>
   <entityname.VGM_FlashHiderMuzzle>Flash Hider</entityname.VGM_FlashHiderMuzzle>
   <entitydescription.VGM_FlashHiderMuzzle>‖color:gui.orange‖Spread Changes When Fire‖end‖ ×0.8</entitydescription.VGM_FlashHiderMuzzle>
   <entityname.VGM_LongBarrelMuzzle>Extended Barrel</entityname.VGM_LongBarrelMuzzle>

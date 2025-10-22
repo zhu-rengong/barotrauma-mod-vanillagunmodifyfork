@@ -243,18 +243,18 @@
       </StatusEffect>
       <!-- [Gun] Spread on shoot -->
       <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" spread="3.2333333" disabledeltatime="true">
-        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_MuzzleAttrReduceSpread" type="Contained" targetslot="3" matchonempty="true" />
+        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_MuzzleAttrOverrideSpreadChangesOnShoot" type="Contained" targetslot="3" matchonempty="true" />
       </StatusEffect>
       <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" spread="0.92380947" stackable="true" duration="0.116" disabledeltatime="true" checkconditionalalways="true">
         <Conditional targetitemcomponent="RangedWeapon" spread="lt 15.038095" />
-        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_MuzzleAttrReduceSpread" type="Contained" targetslot="3" matchonempty="true" />
+        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_MuzzleAttrOverrideSpreadChangesOnShoot" type="Contained" targetslot="3" matchonempty="true" />
       </StatusEffect>
       <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="3.2333333" disabledeltatime="true">
-        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_MuzzleAttrReduceSpread" type="Contained" targetslot="3" matchonempty="true" />
+        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_MuzzleAttrOverrideSpreadChangesOnShoot" type="Contained" targetslot="3" matchonempty="true" />
       </StatusEffect>
       <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="0.92380947" stackable="true" duration="0.116" disabledeltatime="true" checkconditionalalways="true">
         <Conditional targetitemcomponent="RangedWeapon" unskilledspread="lt 18.038095" />
-        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_MuzzleAttrReduceSpread" type="Contained" targetslot="3" matchonempty="true" />
+        <RequiredItem tag="VGM_Accessory" excludedtag="VGM_MuzzleAttrOverrideSpreadChangesOnShoot" type="Contained" targetslot="3" matchonempty="true" />
       </StatusEffect>
       <!-- [Muzzle] Modify spread on shoot -->
       <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" spread="2.5866666" disabledeltatime="true">
@@ -451,7 +451,7 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         <TriggerEvent>
           <ScriptedEvent identifier="VGM_TrySpawnRifleOEMStock">
             <StatusEffectAction targettag="gun">
-              <StatusEffect type="OnSpawn" target="This">
+              <StatusEffect target="This">
                 <SpawnItem identifier="VGM_RifleStock" spawnposition="ThisInventory" SpawnIfCantBeContained="false" SpawnIfInventoryFull="false" />
                 <Conditional hasstatustag="FirstInitialized" />
                 <RequiredItem tag="fabricator" type="Container" />

@@ -47,6 +47,7 @@ namespace AutoGenerateXML
                 { $@"entityname.{Identifiers.VGM_SimpleSuppressorMuzzle}", [ (LanguageId.English, "Gas Can Silencer"), (LanguageId.SimplifiedChinese, "气罐消音器") ] },
                 { $@"entityname.{Identifiers.VGM_LongBarrelMuzzle}", [ (LanguageId.English, "Extended Barrel"), (LanguageId.SimplifiedChinese, "延长枪管") ] },
                 { $@"entityname.{Identifiers.VGM_FlashHiderMuzzle}", [ (LanguageId.English, "Flash Hider"), (LanguageId.SimplifiedChinese, "消焰器") ] },
+                { $@"entityname.{Identifiers.VGM_ChokeTubeMuzzle}", [ (LanguageId.English, "Choke Tube"), (LanguageId.SimplifiedChinese, "收束器") ] },
 
                 { $@"entityname.{Identifiers.VGM_AngledForeGrip}", [ (LanguageId.English, "Angled Foregrip"), (LanguageId.SimplifiedChinese, "直角握把") ] },
                 { $@"entityname.{Identifiers.VGM_VerticalGrip}", [ (LanguageId.English, "Vertical Grip"), (LanguageId.SimplifiedChinese, "垂直握把") ] },
@@ -80,6 +81,7 @@ namespace AutoGenerateXML
                 { $@"gunmodsstatname.spreadrecoveryratemodifier", [ (LanguageId.English, "Spread Recovery Rate"), (LanguageId.SimplifiedChinese, "散布回正速度") ] },
                 { $@"gunmodsstatname.minimumspreadonrecoveringmodifier", [ (LanguageId.English, "Minimum Spread"), (LanguageId.SimplifiedChinese, "散布下限") ] },
                 { $@"gunmodsstatname.obstructvisionamount", [ (LanguageId.English, "Obstruct Vision"), (LanguageId.SimplifiedChinese, "视野阻挡") ] },
+                { $@"gunmodsstatname.maximumshotschoke", [ (LanguageId.English, "Maximum Shots Choke"), (LanguageId.SimplifiedChinese, "最大弹丸收束") ] },
             }.ToImmutableDictionary();
         }
 

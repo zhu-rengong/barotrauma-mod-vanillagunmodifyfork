@@ -190,6 +190,11 @@ $@"<infotexts {TextManager.TextFileRootXMLAttributesString}>
                 {
                     stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadchangeswhenfiremodifier")}‖end‖ ×{stat.SpreadChangesOnShootMultiplier.Value}\n");
                 }
+                
+                if (stat.SpreadChoke.HasValue)
+                {
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.maximumshotschoke")}‖end‖: {stat.SpreadChoke.Value}°\n");
+                }
 
                 stringBuilder.Replace(@"\n", "", stringBuilder.Length - 2, 2);
                 stringBuilder.AppendLine($@"</entitydescription.{identifier}>");

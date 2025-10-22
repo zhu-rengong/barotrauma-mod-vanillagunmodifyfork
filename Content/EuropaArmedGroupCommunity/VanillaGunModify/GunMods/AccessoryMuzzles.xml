@@ -70,7 +70,7 @@
     VGM_Accessory,
     VGM_Muzzle,
     VGM_MuzzleAttrFlashHider,
-    VGM_MuzzleAttrReduceSpread,
+    VGM_MuzzleAttrOverrideSpreadChangesOnShoot,
     VGM_MuzzleAttrRifleCompatible,
     VGM_MuzzleAttrSMGCompatible,
     VGM_MuzzleAttrMachinePistolCompatible,
@@ -102,6 +102,23 @@
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="60" />
       <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="steel" amount="2" />
+    </Fabricate>
+  </Item>
+  <Item name="" identifier="VGM_ChokeTubeMuzzle" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
+    tags="smallitem,tool,
+    VGM_Accessory,
+    VGM_Muzzle,
+    VGM_MuzzleAttrChoke,
+    VGM_MuzzleAttrShotgunCompatible,
+    VGM_MuzzleAttrShotgunUniqueCompatible"
+    cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,256,20,8" depth="0.551" origin="0.5,0.5" />
+    <Body width="18" height="7" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="aluminium" />
       <RequiredItem identifier="steel" amount="2" />
     </Fabricate>
   </Item>

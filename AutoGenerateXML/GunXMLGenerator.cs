@@ -64,18 +64,21 @@ namespace AutoGenerateXML
             Identifiers.VGM_ShortSuppressorMuzzle,
             Identifiers.VGM_LongSuppressorMuzzle,
             Identifiers.VGM_FlashHiderMuzzle,
-            Identifiers.VGM_LongBarrelMuzzle
+            Identifiers.VGM_LongBarrelMuzzle,
+            Identifiers.VGM_ChokeTubeMuzzle,
         ];
 
-        public static readonly string[] AllMuzzlesAttrSuppressor = [
-            Identifiers.VGM_SimpleSuppressorMuzzle,
-            Identifiers.VGM_ShortSuppressorMuzzle,
-            Identifiers.VGM_LongSuppressorMuzzle,
-        ];
+        public static readonly string[] AllMuzzlesAttrSuppressor = AccessoryMuzzle.Stats.Where(kv => kv.Value.IsSuppressor).Select(kv => kv.Key).ToArray();
 
-        public static readonly string[] AllMuzzlesAttrFlashHider = [
-            Identifiers.VGM_FlashHiderMuzzle,
-        ];
+        public static readonly string[] AllMuzzlesAttrFlashHider = AccessoryMuzzle.Stats.Where(kv => kv.Value.IsFlashHider).Select(kv => kv.Key).ToArray();
+
+        public static readonly string[] AllMuzzlesAttrOverrideSpreadChangesOnShoot =
+            AccessoryMuzzle.Stats.Where(kv => kv.Value.SpreadChangesOnShootMultiplier.HasValue)
+                .Select(kv => kv.Key).ToArray();
+
+        public static readonly string[] AllMuzzlesAttrChoke =
+            AccessoryMuzzle.Stats.Where(kv => kv.Value.SpreadChoke.HasValue)
+                .Select(kv => kv.Key).ToArray();
 
         public static readonly string[] AllGrips = [
             Identifiers.VGM_AngledForeGrip,
@@ -89,6 +92,18 @@ namespace AutoGenerateXML
             Identifiers.VGM_RifleScope,
             Identifiers.VGM_SniperScope
         ];
+
+        public bool HasAnyCompatibleMuzzleAttrSuppressor => CompatibleMuzzles is not null
+                && CompatibleMuzzles.Any(v => AllMuzzlesAttrSuppressor.Contains(v.Identifier));
+
+        public bool HasAnyCompatibleMuzzleAttrFlashHider => CompatibleMuzzles is not null
+                && CompatibleMuzzles.Any(v => AllMuzzlesAttrFlashHider.Contains(v.Identifier));
+
+        public bool HasAnyCompatibleMuzzleAttrOverrideSpreadChangesOnShoot => CompatibleMuzzles is not null
+                && CompatibleMuzzles.Any(v => AllMuzzlesAttrOverrideSpreadChangesOnShoot.Contains(v.Identifier));
+        
+        public bool HasAnyCompatibleMuzzleAttrChoke => CompatibleMuzzles is not null
+                && CompatibleMuzzles.Any(v => AllMuzzlesAttrChoke.Contains(v.Identifier));
 
         public static readonly float MaxSpreadPerTickOnShoot = 1.0f;
 
@@ -136,10 +151,14 @@ namespace AutoGenerateXML
                 ThrowError("The functionality of Muzzle is incomplete.");
             }
 
-            if (NotAllSame(hasCalledGenerateFlashHiderMuzzleOnShootXMLsString,
-                    CompatibleMuzzles is not null && CompatibleMuzzles.Any(muzzle => AllMuzzlesAttrFlashHider.Contains(muzzle.Identifier))))
+            if (NotAllSame(hasCalledGenerateFlashHiderMuzzleOnShootXMLsString, HasAnyCompatibleMuzzleAttrFlashHider))
             {
                 ThrowError("The functionality of Flash Hider is incomplete.");
+            }
+
+            if (NotAllSame(hasCalledGenerateMuzzleSpreadChokeXMLsString, HasAnyCompatibleMuzzleAttrChoke))
+            {
+                ThrowError("The functionality of Spread Choke is incomplete.");
             }
 
             if (NotAllSame(CompatibleAimingDevices is not null,
@@ -160,7 +179,7 @@ namespace AutoGenerateXML
             {
                 ThrowError("Having compatible stocks defined and stock slot index defined must be both true or both false.");
             }
-            
+
             if (NotAllSame(CompatibleMuzzles is not null, MuzzleSlotIndex > -1))
             {
                 ThrowError("Having compatible muzzles defined and muzzle slot index defined must be both true or both false.");
@@ -209,7 +228,7 @@ $@"<!-- [Stock] If the gun is initialized for the first time, it will come with 
     <TriggerEvent>
         <ScriptedEvent identifier=""VGM_TrySpawn{GunName}OEMStock"">
         <StatusEffectAction targettag=""gun"">
-            <StatusEffect type=""OnSpawn"" target=""This"">
+            <StatusEffect target=""This"">
                 <SpawnItem identifier=""VGM_{GunName}Stock"" spawnposition=""ThisInventory"" SpawnIfCantBeContained=""false"" SpawnIfInventoryFull=""false"" />
                 <Conditional hasstatustag=""{StatusEffectTags.FirstInitialized}"" />
                 <RequiredItem tag=""fabricator"" type=""Container"" />
@@ -676,12 +695,12 @@ $@"<StatusEffect type=""OnUse"" target=""This"" forceplaysounds=""true"">
             })
         )
     )}
-    {(CompatibleMuzzles is not null
+    {(HasAnyCompatibleMuzzleAttrSuppressor
         ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrSuppressor}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
         : string.Empty)}
 </StatusEffect>");
 
-            if (CompatibleMuzzles is not null && CompatibleMuzzles.Any(muzzle => AllMuzzlesAttrSuppressor.Contains(muzzle.Identifier)))
+            if (HasAnyCompatibleMuzzleAttrSuppressor)
             {
                 suppressedSoundFiles = suppressedSoundFiles ?? [
                     @"%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Sounds/weapon_fire_suppressed_1.ogg",
@@ -730,6 +749,7 @@ $@"<!-- [Muzzle] Flash hider -->
         public string GenerateGunSpreadChangesOnShootXMLsString()
         {
             StringBuilder stringBuilder = new();
+
             stringBuilder.AppendLine("<!-- [Gun] Spread on shoot -->");
             float instantSpread = SpreadChangesOnShoot * 1.0f / 3.0f;
             float durationSpread = SpreadChangesOnShoot - instantSpread;
@@ -742,25 +762,25 @@ $@"<!-- [Muzzle] Flash hider -->
 
             stringBuilder.AppendLine(
 $@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{instantSpread}"" disabledeltatime=""true"">
-    {(CompatibleMuzzles is not null
-        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrReduceSpread}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
+    {(HasAnyCompatibleMuzzleAttrOverrideSpreadChangesOnShoot
+        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrOverrideSpreadChangesOnShoot}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
         : string.Empty)}
 </StatusEffect>
 <StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{spreadPerTick}"" stackable=""true"" duration=""{GetTickDurationString(ticks)}"" disabledeltatime=""true"" checkconditionalalways=""true"">
     <Conditional targetitemcomponent=""RangedWeapon"" spread=""lt {MinimumSpread + SpreadLimit - spreadPerTick / 2}"" />
-    {(CompatibleMuzzles is not null
-        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrReduceSpread}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
+    {(HasAnyCompatibleMuzzleAttrOverrideSpreadChangesOnShoot
+        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrOverrideSpreadChangesOnShoot}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
         : string.Empty)}
 </StatusEffect>
 <StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{instantSpread}"" disabledeltatime=""true"">
-    {(CompatibleMuzzles is not null
-        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrReduceSpread}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
+    {(HasAnyCompatibleMuzzleAttrOverrideSpreadChangesOnShoot
+        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrOverrideSpreadChangesOnShoot}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
         : string.Empty)}
 </StatusEffect>
 <StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{spreadPerTick}"" stackable=""true"" duration=""{GetTickDurationString(ticks)}"" disabledeltatime=""true"" checkconditionalalways=""true"">
     <Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""lt {MinimumUnskilledSpread + SpreadLimit - spreadPerTick / 2}"" />
-    {(CompatibleMuzzles is not null
-        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrReduceSpread}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
+    {(HasAnyCompatibleMuzzleAttrOverrideSpreadChangesOnShoot
+        ? $@"<RequiredItem tag=""{Tags.VGM_Accessory}"" excludedtag=""{Tags.VGM_MuzzleAttrOverrideSpreadChangesOnShoot}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" matchonempty=""true"" />"
         : string.Empty)}
 </StatusEffect>");
 
@@ -1073,11 +1093,11 @@ $@"<Containable tag=""{Tags.VGM_AimingDevice}Attr{GunName}Compatible"" hide=""fa
                 var stat = AccessoryMuzzle.Stats[muzzle.Identifier];
 
                 if (muzzle.ItemPos is null) { muzzle.ItemPos = []; }
-                if (muzzle.ItemPos.Length < 1 || !muzzle.ItemPos[0].HasValue) { muzzle.ItemPos[0] = MathF.Floor(BarrelPos[0] * Scale + stat.BarrelLength * Scale / 2); }
+                if (muzzle.ItemPos.Length < 1 || !muzzle.ItemPos[0].HasValue) { muzzle.ItemPos[0] = MathF.Floor(BarrelPos[0] * Scale + stat.Scale * (stat.BarrelLength / 2 - stat.BarrelEmbeddedDepth)); }
                 if (muzzle.ItemPos.Length < 2 || !muzzle.ItemPos[1].HasValue) { muzzle.ItemPos[1] = MathF.Round(BarrelPos[1] * Scale); }
 
                 if (muzzle.BarrelPos is null) { muzzle.BarrelPos = []; }
-                if (muzzle.BarrelPos.Length < 1 || !muzzle.BarrelPos[0].HasValue) { muzzle.BarrelPos[0] = MathF.Floor(BarrelPos[0] + stat.BarrelLength); }
+                if (muzzle.BarrelPos.Length < 1 || !muzzle.BarrelPos[0].HasValue) { muzzle.BarrelPos[0] = MathF.Floor(BarrelPos[0] + stat.BarrelLength - stat.BarrelEmbeddedDepth); }
                 if (muzzle.BarrelPos.Length < 2 || !muzzle.BarrelPos[1].HasValue) { muzzle.BarrelPos[1] = BarrelPos[1]; }
 
                 stringBuilder.AppendLine(
@@ -1098,6 +1118,47 @@ $@"<Containable identifier=""{muzzle.Identifier}"" hide=""false"" itempos=""{Con
 $@"<Containable tag=""{Tags.VGM_Muzzle}Attr{GunName}Compatible"" hide=""false"">
     <StatusEffect type=""OnRemoved"" target=""This"" weapondamagemodifier=""{WeaponDamageModifier}"" penetration=""{Penetration}"" barrelpos=""{ConcatValues(BarrelPos)}"" setvalue=""true"" disabledeltatime=""true"" />
 </Containable>");
+
+            return stringBuilder.ToString();
+        }
+
+        private bool hasCalledGenerateMuzzleSpreadChokeXMLsString = false;
+        public string GenerateMuzzleSpreadChokeXMLsString()
+        {
+            hasCalledGenerateMuzzleSpreadChokeXMLsString = true;
+
+            if (CompatibleMuzzles is null) { throw new NullReferenceException($@"Unable to generate muzzle code because '{GunName}' has no muzzle defined."); }
+
+            StringBuilder stringBuilder = new();
+
+            bool hasModifier = false;
+
+            CompatibleMuzzles.ForEach(muzzle =>
+            {
+                var stat = AccessoryMuzzle.Stats[muzzle.Identifier];
+                if (stat.SpreadChoke.HasValue)
+                {
+                    stringBuilder.AppendLine(
+$@"<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" statuseffecttags=""{StatusEffectTags.Choked}"" duration=""{GetTickDurationString(1)}"" comparison=""And"">
+    <Conditional targetitemcomponent=""Projectile"" hitscancount=""gt 1"" user=""! null"" spread=""gt {stat.SpreadChokeLimit}"" />
+    <RequiredItem identifier=""{muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{-stat.SpreadChoke.Value}"" disabledeltatime=""true"">
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""{StatusEffectTags.Choked}"" />
+    <RequiredItem identifier=""{muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{stat.SpreadChokeLimit}"" setvalue=""true"" comparison=""And"">
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""{StatusEffectTags.Choked}"" spread=""lt {stat.SpreadChokeLimit}"" />
+    <RequiredItem identifier=""{muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>");
+                    hasModifier = true;
+                }
+            });
+
+            if (hasModifier)
+            {
+                stringBuilder.Insert(0, "<!-- [Muzzle] Spread choke -->\n");
+            }
 
             return stringBuilder.ToString();
         }
