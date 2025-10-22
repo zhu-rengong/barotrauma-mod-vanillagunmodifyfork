@@ -45,6 +45,7 @@ namespace AutoGenerateXML.Items.Weapons
         public override ContainableGrip[] CompatibleGrips => [
             new(Identifiers.VGM_AngledForeGrip, ItemPos: [10,-2]),
             new(Identifiers.VGM_VerticalGrip, ItemPos: [11,-4]),
+            new(Identifiers.VGM_BipodGrip, ItemPos: [13,-12]),
         ];
 
         public override ContainableStock[] CompatibleStocks => [
@@ -107,9 +108,9 @@ $@"
         {GenerateGripModifySpreadChangesOnAimDownSightXMLsString()}
         {GenerateAimingDeviceModifySpreadChangesOnAimDownSightXMLsString()}
 
-        {GenerateGunSpreadRecoveryXMLsString()}
         {GenerateGripSpreadRecoveryXMLsString()}
         {GenerateAimingDeviceSpreadRecoveryXMLsString()}
+        {GenerateGunSpreadRecoveryXMLsString()}
 
         {GenerateAimingDeviceObstructVisionXMLsString()}
         

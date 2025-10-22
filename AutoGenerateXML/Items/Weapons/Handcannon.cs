@@ -72,8 +72,8 @@ $@"
         {GenerateGunSpreadChangesOnAimDownSightXMLsString()}
         {GenerateAimingDeviceModifySpreadChangesOnAimDownSightXMLsString()}
 
-        {GenerateGunSpreadRecoveryXMLsString()}
         {GenerateAimingDeviceSpreadRecoveryXMLsString()}
+        {GenerateGunSpreadRecoveryXMLsString()}
 
         {GenerateAimingDeviceObstructVisionXMLsString()}
 

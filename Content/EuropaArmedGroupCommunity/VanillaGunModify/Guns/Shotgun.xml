@@ -50,83 +50,99 @@
         <Conditional hasstatustag="! PreventSpreadingOnADS" />
         <RequiredItem identifier="VGM_SniperScope" type="Contained" targetslot="4" />
       </StatusEffect>
-      <!-- [Gun] Spread recovery -->
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.9" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.45" />
-      </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.9" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.45" />
-      </StatusEffect>
       <!-- [AimingDevice] Spread recovery -->
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.044999957" disabledeltatime="true">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
         <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.0225" />
         <RequiredItem identifier="VGM_RedDotSight" type="Contained" targetslot="4" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.044999957" disabledeltatime="true">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.044999957" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+        <RequiredItem identifier="VGM_RedDotSight" type="Contained" targetslot="4" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
         <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.0225" />
         <RequiredItem identifier="VGM_RedDotSight" type="Contained" targetslot="4" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.044999957" disabledeltatime="true">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.044999957" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
+        <RequiredItem identifier="VGM_RedDotSight" type="Contained" targetslot="4" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
         <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.0225" />
         <RequiredItem identifier="VGM_HolographicSight" type="Contained" targetslot="4" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.044999957" disabledeltatime="true">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.044999957" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+        <RequiredItem identifier="VGM_HolographicSight" type="Contained" targetslot="4" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
         <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.0225" />
         <RequiredItem identifier="VGM_HolographicSight" type="Contained" targetslot="4" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.044999957" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
+        <RequiredItem identifier="VGM_HolographicSight" type="Contained" targetslot="4" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.95" />
+        <RequiredItem identifier="VGM_ACOGScope" type="Contained" targetslot="4" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="0.09000002" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.95" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+        <RequiredItem identifier="VGM_ACOGScope" type="Contained" targetslot="4" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.95" />
         <RequiredItem identifier="VGM_ACOGScope" type="Contained" targetslot="4" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="0.09000002" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.95" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
         <RequiredItem identifier="VGM_ACOGScope" type="Contained" targetslot="4" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.9" disabledeltatime="true" comparison="And">
-        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.95" />
-        <Conditional targetitemcomponent="RangedWeapon" spread="lte 2.45" />
-        <RequiredItem identifier="VGM_ACOGScope" type="Contained" targetslot="4" />
-      </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.9" disabledeltatime="true" comparison="And">
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.95" />
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="lte 6.45" />
-        <RequiredItem identifier="VGM_ACOGScope" type="Contained" targetslot="4" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.825" />
+        <RequiredItem identifier="VGM_RifleScope" type="Contained" targetslot="4" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="0.13499998" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.825" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+        <RequiredItem identifier="VGM_RifleScope" type="Contained" targetslot="4" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.825" />
         <RequiredItem identifier="VGM_RifleScope" type="Contained" targetslot="4" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="0.13499998" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.825" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
         <RequiredItem identifier="VGM_RifleScope" type="Contained" targetslot="4" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.9" disabledeltatime="true" comparison="And">
-        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.825" />
-        <Conditional targetitemcomponent="RangedWeapon" spread="lte 2.45" />
-        <RequiredItem identifier="VGM_RifleScope" type="Contained" targetslot="4" />
-      </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.9" disabledeltatime="true" comparison="And">
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.825" />
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="lte 6.45" />
-        <RequiredItem identifier="VGM_RifleScope" type="Contained" targetslot="4" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.7" />
+        <RequiredItem identifier="VGM_SniperScope" type="Contained" targetslot="4" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="0.17999998" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.7" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+        <RequiredItem identifier="VGM_SniperScope" type="Contained" targetslot="4" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.7" />
         <RequiredItem identifier="VGM_SniperScope" type="Contained" targetslot="4" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="0.17999998" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.7" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
         <RequiredItem identifier="VGM_SniperScope" type="Contained" targetslot="4" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.9" disabledeltatime="true" comparison="And">
-        <Conditional targetitemcomponent="RangedWeapon" spread="gt 0.7" />
-        <Conditional targetitemcomponent="RangedWeapon" spread="lte 2.45" />
-        <RequiredItem identifier="VGM_SniperScope" type="Contained" targetslot="4" />
+      <!-- [Gun] Spread recovery -->
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.45" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.9" disabledeltatime="true" comparison="And">
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 4.7" />
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="lte 6.45" />
-        <RequiredItem identifier="VGM_SniperScope" type="Contained" targetslot="4" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.9" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.45" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.9" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
       </StatusEffect>
       <!-- [AimingDevice] Obstruct vision -->
       <StatusEffect type="OnSecondaryUse" target="Character" obstructvisionamount="0.2" setvalue="true" comparison="And">
@@ -310,7 +326,7 @@
       <SubContainer capacity="1" maxstacksize="1">
         <!-- [Muzzle] When inserted, modifies the gun's weapon damage (serializable) and continuously sets the gun's barrelpos (non-serializable). -->
         <Containable identifier="VGM_ChokeTubeMuzzle" hide="false" itempos="34,4">
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="78,7" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="79,7" setvalue="true" />
         </Containable>
         <Containable tag="VGM_MuzzleAttrShotgunCompatible" hide="false">
           <StatusEffect type="OnRemoved" target="This" weapondamagemodifier="1" penetration="0" barrelpos="66,7" setvalue="true" disabledeltatime="true" />

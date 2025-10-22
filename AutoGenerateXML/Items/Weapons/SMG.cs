@@ -93,9 +93,9 @@ $@"
         {GenerateGripModifySpreadChangesOnAimDownSightXMLsString()}
         {GenerateAimingDeviceModifySpreadChangesOnAimDownSightXMLsString()}
 
-        {GenerateGunSpreadRecoveryXMLsString()}
         {GenerateGripSpreadRecoveryXMLsString()}
         {GenerateAimingDeviceSpreadRecoveryXMLsString()}
+        {GenerateGunSpreadRecoveryXMLsString()}
 
         {GenerateAimingDeviceObstructVisionXMLsString()}
         

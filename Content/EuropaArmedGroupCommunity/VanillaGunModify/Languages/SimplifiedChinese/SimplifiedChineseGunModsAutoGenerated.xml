@@ -2,6 +2,8 @@
   <!-- Auto Generated -->
   <entityname.VGM_AngledForeGrip>直角握把</entityname.VGM_AngledForeGrip>
   <entitydescription.VGM_AngledForeGrip>‖color:gui.orange‖举枪时散布变化‖end‖ ×0.3\n‖color:gui.orange‖散布回正速度‖end‖ ×1.2</entitydescription.VGM_AngledForeGrip>
+  <entityname.VGM_BipodGrip>两脚架</entityname.VGM_BipodGrip>
+  <entitydescription.VGM_BipodGrip>‖color:gui.orange‖举枪时散布变化‖end‖ ×2.5\n‖color:gui.orange‖散布回正速度‖end‖ ×1.7\n‖color:gui.orange‖散布下限‖end‖ ×0.5</entitydescription.VGM_BipodGrip>
   <entityname.VGM_VerticalGrip>垂直握把</entityname.VGM_VerticalGrip>
   <entitydescription.VGM_VerticalGrip>‖color:gui.orange‖举枪时散布变化‖end‖ ×0.9\n‖color:gui.orange‖散布回正速度‖end‖ ×1.45</entitydescription.VGM_VerticalGrip>
   <entityname.VGM_AssaultRifleStock>突击步枪原装枪托</entityname.VGM_AssaultRifleStock>

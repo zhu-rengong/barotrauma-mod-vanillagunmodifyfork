@@ -38,29 +38,51 @@
         <Conditional hasstatustag="! PreventSpreadingOnADS" />
         <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" />
       </StatusEffect>
-      <!-- [Gun] Spread recovery -->
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.9" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.45" />
-      </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.9" disabledeltatime="true">
-        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.45" />
-      </StatusEffect>
       <!-- [Grip] Spread recovery -->
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.18000004" disabledeltatime="true">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
         <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.09" />
         <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.18000004" disabledeltatime="true">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.18000004" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+        <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
         <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.09" />
         <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.40500003" disabledeltatime="true">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.18000004" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
+        <RequiredItem identifier="VGM_AngledForeGrip" type="Contained" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
         <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.2025" />
         <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.40500003" disabledeltatime="true">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.40500003" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+        <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
         <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.2025" />
         <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.40500003" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
+        <RequiredItem identifier="VGM_VerticalGrip" type="Contained" targetslot="1" />
+      </StatusEffect>
+      <!-- [Gun] Spread recovery -->
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" spread="gt 2.45" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-0.9" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowSpreadRecovery" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" statuseffecttags="AllowUnskilledSpreadRecovery" duration="0.016">
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 6.45" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-0.9" disabledeltatime="true">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="AllowUnskilledSpreadRecovery" />
       </StatusEffect>
       <!-- [Scanner] Perform by aiming when the gun is equipped with a scanner. -->
       <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" isactive="true">
@@ -86,11 +108,11 @@
     </Holdable>
     <StatusHUD drawhudwhenequipped="false" />
     <AiTarget sightrange="2000" soundrange="3000" fadeouttime="5" />
-    <RangedWeapon weapondamagemodifier="1" penetration="0" reload="2" spread="2" unskilledspread="6" barrelpos="75,10" combatpriority="80" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.15">
+    <RangedWeapon weapondamagemodifier="1" penetration="0" reload="2" spread="2" unskilledspread="6" barrelpos="75,11" combatpriority="80" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.15">
       <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
       <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
       <!-- [Muzzle] Flash when fire -->
-      <StatusEffect type="OnUse" target="This" offset="0,5">
+      <StatusEffect type="OnUse" target="This" offset="0,5.5">
         <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="37.5" distancemax="37.5" />
         <RequiredItem tag="VGM_Accessory" excludedtag="VGM_Muzzle" type="Contained" targetslot="2" matchonempty="true" />
       </StatusEffect>
@@ -246,11 +268,11 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
       </SubContainer>
       <SubContainer capacity="1" maxstacksize="1">
         <!-- [Muzzle] When inserted, modifies the gun's weapon damage (serializable) and continuously sets the gun's barrelpos (non-serializable). -->
-        <Containable identifier="VGM_ChokeTubeMuzzle" hide="false" itempos="38,5">
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="87,10" setvalue="true" />
+        <Containable identifier="VGM_ChokeTubeMuzzle" hide="false" itempos="39,6">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="88,11" setvalue="true" />
         </Containable>
         <Containable tag="VGM_MuzzleAttrShotgunUniqueCompatible" hide="false">
-          <StatusEffect type="OnRemoved" target="This" weapondamagemodifier="1" penetration="0" barrelpos="75,10" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" weapondamagemodifier="1" penetration="0" barrelpos="75,11" setvalue="true" disabledeltatime="true" />
         </Containable>
       </SubContainer>
       <SubContainer capacity="1" maxstacksize="1">

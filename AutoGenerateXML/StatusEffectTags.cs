@@ -6,5 +6,7 @@
         public static readonly string PreventSpreadingOnADS = nameof(PreventSpreadingOnADS);
         public static readonly string FirstInitialized = nameof(FirstInitialized);
         public static readonly string Choked = nameof(Choked);
+        public static readonly string AllowSpreadRecovery = nameof(AllowSpreadRecovery);
+        public static readonly string AllowUnskilledSpreadRecovery = nameof(AllowUnskilledSpreadRecovery);
     }
 }

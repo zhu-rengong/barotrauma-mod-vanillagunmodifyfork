@@ -132,6 +132,11 @@ $@"<infotexts {TextManager.TextFileRootXMLAttributesString}>
                     stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadrecoveryratemodifier")}‖end‖ ×{stat.SpreadRecoveryMultiplier.Value}\n");
                 }
 
+                if (stat.MinimumSpreadOnRecoveringMultiplier.HasValue)
+                {
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.minimumspreadonrecoveringmodifier")}‖end‖ ×{stat.MinimumSpreadOnRecoveringMultiplier.Value}\n");
+                }
+
                 stringBuilder.Replace(@"\n", "", stringBuilder.Length - 2, 2);
                 stringBuilder.AppendLine($@"</entitydescription.{identifier}>");
             });

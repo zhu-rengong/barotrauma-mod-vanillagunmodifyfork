@@ -37,6 +37,7 @@
 
         public static readonly string VGM_AngledForeGrip = nameof(VGM_AngledForeGrip);
         public static readonly string VGM_VerticalGrip = nameof(VGM_VerticalGrip);
+        public static readonly string VGM_BipodGrip = nameof(VGM_BipodGrip);
 
         public static readonly string VGM_RedDotSight = nameof(VGM_RedDotSight);
         public static readonly string VGM_HolographicSight = nameof(VGM_HolographicSight);

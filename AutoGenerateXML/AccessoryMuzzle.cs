@@ -69,7 +69,7 @@ namespace AutoGenerateXML
             stats[Identifiers.VGM_ChokeTubeMuzzle] = new()
             {
                 BarrelLength = 20,
-                BarrelEmbeddedDepth = 8,
+                BarrelEmbeddedDepth = 7,
                 SpreadChoke = 8,
                 SpreadChokeLimit = 2,
             };

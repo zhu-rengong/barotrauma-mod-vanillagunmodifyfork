@@ -24,7 +24,7 @@ namespace AutoGenerateXML.Items.Weapons
 
         public override float? HoldAngle => -40;
 
-        public override float[] BarrelPos => [75, 10];
+        public override float[] BarrelPos => [75, 11];
         public override float WeaponDamageModifier => 1.0f;
         public override float Penetration => 0.0f;
         public override float RequiredWeaponsSkill => 50;
@@ -93,8 +93,8 @@ $@"
         {GenerateGunSpreadChangesOnAimDownSightXMLsString()}
         {GenerateGripModifySpreadChangesOnAimDownSightXMLsString()}
 
-        {GenerateGunSpreadRecoveryXMLsString()}
         {GenerateGripSpreadRecoveryXMLsString()}
+        {GenerateGunSpreadRecoveryXMLsString()}
         
         {GenerateScannerActivationXMLsString()}
 

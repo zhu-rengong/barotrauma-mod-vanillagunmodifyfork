@@ -51,6 +51,7 @@ namespace AutoGenerateXML
 
                 { $@"entityname.{Identifiers.VGM_AngledForeGrip}", [ (LanguageId.English, "Angled Foregrip"), (LanguageId.SimplifiedChinese, "直角握把") ] },
                 { $@"entityname.{Identifiers.VGM_VerticalGrip}", [ (LanguageId.English, "Vertical Grip"), (LanguageId.SimplifiedChinese, "垂直握把") ] },
+                { $@"entityname.{Identifiers.VGM_BipodGrip}", [ (LanguageId.English, "Bipod Grip"), (LanguageId.SimplifiedChinese, "两脚架") ] },
 
                 { $@"entityname.{Identifiers.VGM_RedDotSight}", [ (LanguageId.English, "Red Dot Sight"), (LanguageId.SimplifiedChinese, "红点瞄准镜") ] },
                 { $@"entityname.{Identifiers.VGM_HolographicSight}", [ (LanguageId.English, "Holographic Sight"), (LanguageId.SimplifiedChinese, "全息瞄准镜") ] },

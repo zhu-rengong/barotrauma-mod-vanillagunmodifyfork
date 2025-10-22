@@ -2,6 +2,8 @@
   <!-- Auto Generated -->
   <entityname.VGM_AngledForeGrip>Angled Foregrip</entityname.VGM_AngledForeGrip>
   <entitydescription.VGM_AngledForeGrip>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×0.3\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.2</entitydescription.VGM_AngledForeGrip>
+  <entityname.VGM_BipodGrip>Bipod Grip</entityname.VGM_BipodGrip>
+  <entitydescription.VGM_BipodGrip>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×2.5\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.7\n‖color:gui.orange‖Minimum Spread‖end‖ ×0.5</entitydescription.VGM_BipodGrip>
   <entityname.VGM_VerticalGrip>Vertical Grip</entityname.VGM_VerticalGrip>
   <entitydescription.VGM_VerticalGrip>‖color:gui.orange‖Spread Changes When ADS‖end‖ ×0.9\n‖color:gui.orange‖Spread Recovery Rate‖end‖ ×1.45</entitydescription.VGM_VerticalGrip>
   <entityname.VGM_AssaultRifleStock>Assault Rifle OEM Stock</entityname.VGM_AssaultRifleStock>

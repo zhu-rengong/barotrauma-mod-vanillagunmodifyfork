@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using static AutoGenerateXML.GunXMLGenerator;
 using static AutoGenerateXML.ItemXMLExtensions;
 
 namespace AutoGenerateXML
@@ -412,11 +413,17 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
         {
             return
 $@"<!-- [Gun] Spread recovery -->
-<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-SpreadRecovery}"" disabledeltatime=""true"">
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" statuseffecttags=""{StatusEffectTags.AllowSpreadRecovery}"" duration=""{GetTickDurationString(1)}"">
     <Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + SpreadRecovery / 2}"" />
 </StatusEffect>
-<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-SpreadRecovery}"" disabledeltatime=""true"">
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-SpreadRecovery}"" disabledeltatime=""true"">
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""{StatusEffectTags.AllowSpreadRecovery}"" />
+</StatusEffect>
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" statuseffecttags=""{StatusEffectTags.AllowUnskilledSpreadRecovery}"" duration=""{GetTickDurationString(1)}"">
     <Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + SpreadRecovery / 2}"" />
+</StatusEffect>
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-SpreadRecovery}"" disabledeltatime=""true"">
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""{StatusEffectTags.AllowUnskilledSpreadRecovery}"" />
 </StatusEffect>";
         }
 
@@ -438,15 +445,34 @@ $@"<!-- [Gun] Spread recovery -->
                 if (!stat.SpreadRecoveryMultiplier.HasValue) { return; }
 
                 float extraSpreadRecovery = SpreadRecovery * (stat.SpreadRecoveryMultiplier.Value - 1.0f);
+                float spreadRecoveryThreshold = MinimumSpread;
+                if (stat.MinimumSpreadOnRecoveringMultiplier.HasValue) { spreadRecoveryThreshold *= stat.MinimumSpreadOnRecoveringMultiplier.Value; }
+                float neutralSpreadModifier = spreadRecoveryThreshold - MinimumSpread;
+
                 stringBuilder.AppendLine(
-$@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
-    <Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + extraSpreadRecovery / 2}"" />
+$@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" statuseffecttags=""{StatusEffectTags.AllowSpreadRecovery}"" duration=""{GetTickDurationString(1)}"">
+    {(extraSpreadRecovery > 0.0f
+        ? $@"<Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + neutralSpreadModifier + extraSpreadRecovery / 2}"" />"
+        : $@"<Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />"
+    )}
+    <RequiredItem identifier=""{compatibleGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""{StatusEffectTags.AllowSpreadRecovery}"" />
+    <RequiredItem identifier=""{compatibleGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" statuseffecttags=""{StatusEffectTags.AllowUnskilledSpreadRecovery}"" duration=""{GetTickDurationString(1)}"">
+    {(extraSpreadRecovery > 0.0f
+        ? $@"<Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + neutralSpreadModifier + extraSpreadRecovery / 2}"" />"
+        : $@"<Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />"
+    )}
     <RequiredItem identifier=""{compatibleGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" />
 </StatusEffect>
 <StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
-    <Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + extraSpreadRecovery / 2}"" />
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""{StatusEffectTags.AllowUnskilledSpreadRecovery}"" />
     <RequiredItem identifier=""{compatibleGrip.Identifier}"" type=""Contained"" targetslot=""{LowerAccessorySlotIndex}"" />
 </StatusEffect>");
+
                 hasModifier = true;
             });
 
@@ -481,37 +507,30 @@ $@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""R
                 float neutralSpreadModifier = spreadRecoveryThreshold - MinimumSpread;
 
                 stringBuilder.AppendLine(
-$@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
+$@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" statuseffecttags=""{StatusEffectTags.AllowSpreadRecovery}"" duration=""{GetTickDurationString(1)}"">
     {(extraSpreadRecovery > 0.0f
         ? $@"<Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + neutralSpreadModifier + extraSpreadRecovery / 2}"" />"
         : $@"<Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />"
     )}
     <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
 </StatusEffect>
-<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""{StatusEffectTags.AllowSpreadRecovery}"" />
+    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" statuseffecttags=""{StatusEffectTags.AllowUnskilledSpreadRecovery}"" duration=""{GetTickDurationString(1)}"">
     {(extraSpreadRecovery > 0.0f
         ? $@"<Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + neutralSpreadModifier + extraSpreadRecovery / 2}"" />"
         : $@"<Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />"
     )}
     <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-extraSpreadRecovery}"" disabledeltatime=""true"">
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""{StatusEffectTags.AllowUnskilledSpreadRecovery}"" />
+    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
 </StatusEffect>");
 
                 hasModifier = true;
-
-                if (neutralSpreadModifier < 0.0f)
-                {
-                    stringBuilder.AppendLine(
-$@"<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" spread=""{-SpreadRecovery}"" disabledeltatime=""true"" comparison=""And"">
-    <Conditional targetitemcomponent=""RangedWeapon"" spread=""gt {MinimumSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />
-    <Conditional targetitemcomponent=""RangedWeapon"" spread=""lte {MinimumSpread + SpreadRecovery / 2}"" />
-    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
-</StatusEffect>
-<StatusEffect type=""OnSecondaryUse"" target=""This"" targetitemcomponent=""RangedWeapon"" unskilledspread=""{-SpreadRecovery}"" disabledeltatime=""true"" comparison=""And"">
-    <Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""gt {MinimumUnskilledSpread + neutralSpreadModifier + SpreadRecovery / 2}"" />
-    <Conditional targetitemcomponent=""RangedWeapon"" unskilledspread=""lte {MinimumUnskilledSpread + SpreadRecovery / 2}"" />
-    <RequiredItem identifier=""{containableAimingDevice.Identifier}"" type=""Contained"" targetslot=""{UpperAccessorySlotIndex}"" />
-</StatusEffect>");
-                }
             });
 
             if (hasModifier)

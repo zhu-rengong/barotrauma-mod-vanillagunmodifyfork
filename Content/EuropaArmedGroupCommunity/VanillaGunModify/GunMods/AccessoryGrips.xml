@@ -40,4 +40,22 @@
       <RequiredItem identifier="aluminium" />
     </Fabricate>
   </Item>
+  <Item name="" identifier="VGM_BipodGrip" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)"
+    tags="smallitem,tool,
+    VGM_Accessory,
+    VGM_Grip,
+    VGM_GripAttrSpreadRecovery,
+    VGM_GripAttrRifleCompatible,
+    VGM_GripAttrSMGUniqueCompatible,
+    VGM_GripAttrAssaultRifleCompatible,
+    VGM_GripAttrHMGCompatible"
+    cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="384,288,22,58" depth="0.553" origin="0.5,0.5" />
+    <Body width="20" height="54" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredItem identifier="aluminium" />
+    </Fabricate>
+  </Item>
 </Items>
