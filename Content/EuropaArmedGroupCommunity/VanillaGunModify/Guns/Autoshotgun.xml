@@ -10,7 +10,7 @@
     </Fabricate>
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png" sourcerect="256,0,151,61" depth="0.52" origin="0.5,0.5" />
     <Body width="147" height="57" density="25" />
-    <Holdable slots="Any,RightHand+LeftHand" controlpos="True" holdpos="36,-17" aimpos="52,-5" handle1="-14,-17" handle2="7,-3" holdangle="-20">
+    <Holdable slots="RightHand+LeftHand" controlpos="True" holdpos="36,-17" aimpos="52,-5" handle1="-14,-17" handle2="7,-3" holdangle="-20">
       <!-- [Gun] Movement speed modification -->
       <StatusEffect type="OnActive" target="Character" speedmultiplier="0.9" setvalue="true" />
       <!-- [Gun] Reset spread for ADS -->
@@ -228,6 +228,9 @@
       <!-- [HotTag] Activated when aiming -->
       <StatusEffect type="OnSecondaryUse" target="This" statuseffecttags="PreventSpreadingOnADS" duration="0.15" stackable="false" />
     </Holdable>
+    <Wearable slots="Bag" canbeselected="false" canbepicked="true" pickkey="Select" msg="ItemMsgEquipSelect">
+      <sprite name="VGM Autoshotgun Worn" texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png" canbehiddenbyotherwearables="false" rotation="90" depth="0.6" sourcerect="256,0,151,61" limb="Torso" depthlimb="LeftArm" scale="0.62" origin="0.5,0.92" />
+    </Wearable>
     <StatusHUD drawhudwhenequipped="false" />
     <AiTarget sightrange="2000" soundrange="3000" fadeouttime="5" />
     <RangedWeapon weapondamagemodifier="0.9" penetration="0" reload="0.45" spread="5" unskilledspread="18" barrelpos="74,8" combatpriority="80" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.15">
@@ -241,6 +244,10 @@
       <StatusEffect type="OnUse" target="Contained" targetslot="3">
         <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="5" distancemax="5" />
         <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetslot="3">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="7" distancemax="7" />
+        <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
       </StatusEffect>
       <!-- [Gun] Gunfire -->
       <StatusEffect type="OnUse" target="This" forceplaysounds="true">
@@ -290,6 +297,14 @@
           <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" spread="lt 2" />
           <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" statuseffecttags="Choked" duration="0.016" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gt 1" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="15" disabledeltatime="true">
+          <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
       <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
@@ -318,6 +333,9 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         <!-- [Muzzle] When inserted, modifies the gun's weapon damage (serializable) and continuously sets the gun's barrelpos (non-serializable). -->
         <Containable identifier="VGM_ChokeTubeMuzzle" hide="false" itempos="47,5">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="84,8" setvalue="true" />
+        </Containable>
+        <Containable identifier="VGM_DuckbillMuzzle" hide="false" itempos="51,5">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="94,8" setvalue="true" />
         </Containable>
         <Containable tag="VGM_MuzzleAttrAutoshotgunCompatible" hide="false">
           <StatusEffect type="OnRemoved" target="This" weapondamagemodifier="0.9" penetration="0" barrelpos="74,8" setvalue="true" disabledeltatime="true" />

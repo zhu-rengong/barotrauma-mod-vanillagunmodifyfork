@@ -122,7 +122,7 @@ $@"
     </Holdable>
 
     <Wearable slots=""Bag"" canbeselected=""false"" canbepicked=""true"" pickkey=""Select"" msg=""ItemMsgEquipSelect"">
-      <sprite name=""VGM Assault Rifle Worn"" texture=""%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png"" canbehiddenbyotherwearables=""false"" rotation=""90"" depth=""0.6"" sourcerect=""0,192,158,60"" limb=""Torso"" depthlimb=""LeftArm"" scale=""0.5"" origin=""0.5,0.8"" />
+      <sprite name=""{Name.FollowedByModPrefix()} Worn"" texture=""%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png"" canbehiddenbyotherwearables=""false"" rotation=""90"" depth=""0.6"" sourcerect=""0,192,158,60"" limb=""Torso"" depthlimb=""LeftArm"" scale=""{Scale}"" origin=""0.5,0.8"" />
     </Wearable>
 
     {GenerateStatusHUDXMLsString()}

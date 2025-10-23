@@ -50,6 +50,7 @@ namespace AutoGenerateXML.Items.Weapons
 
         public override List<ContainableMuzzle> ContainableMuzzles => [
             new(MuzzleXMLGenerator.All[Identifiers.VGM_ChokeTubeMuzzle]),
+            new(MuzzleXMLGenerator.All[Identifiers.VGM_DuckbillMuzzle]),
         ];
 
         public override List<ContainableStock> ContainableStocks => [

@@ -34,6 +34,7 @@
         public static readonly string VGM_LongBarrelMuzzle = nameof(VGM_LongBarrelMuzzle);
         public static readonly string VGM_FlashHiderMuzzle = nameof(VGM_FlashHiderMuzzle);
         public static readonly string VGM_ChokeTubeMuzzle = nameof(VGM_ChokeTubeMuzzle);
+        public static readonly string VGM_DuckbillMuzzle = nameof(VGM_DuckbillMuzzle);
 
         public static readonly string VGM_AngledForeGrip = nameof(VGM_AngledForeGrip);
         public static readonly string VGM_VerticalGrip = nameof(VGM_VerticalGrip);
@@ -47,6 +48,7 @@
 
         public static readonly string VGM_HealthScanner = nameof(VGM_HealthScanner);
         public static readonly string VGM_ThermalScanner = nameof(VGM_ThermalScanner);
-
+        
+        public static readonly string VGM_ShotgunTubeExtender = nameof(VGM_ShotgunTubeExtender);
     }
 }

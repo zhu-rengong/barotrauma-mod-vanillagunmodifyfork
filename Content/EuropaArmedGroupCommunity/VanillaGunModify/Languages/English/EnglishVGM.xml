@@ -10,4 +10,7 @@
   <entityname.VGM_AssaultRifleLongMagazine>Assault Rifle Extended Magazine</entityname.VGM_AssaultRifleLongMagazine>
   <entityname.VGM_AssaultRifleDrumMagazine>Assault Rifle Drum Magazine</entityname.VGM_AssaultRifleDrumMagazine>
   <entityname.VGM_HMGDrumMagazine>HMG Drum Magazine</entityname.VGM_HMGDrumMagazine>
+
+  <entityname.VGM_ShotgunTubeExtender>Tube Extender</entityname.VGM_ShotgunTubeExtender>
+  <entitydescription.VGM_ShotgunTubeExtender>Holds 3 shotgun shells.</entitydescription.VGM_ShotgunTubeExtender>
 </infotexts>

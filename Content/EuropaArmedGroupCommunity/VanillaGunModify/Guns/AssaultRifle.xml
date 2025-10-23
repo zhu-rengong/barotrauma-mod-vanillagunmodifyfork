@@ -238,7 +238,7 @@
       <StatusEffect type="OnSecondaryUse" target="This" statuseffecttags="PreventSpreadingOnADS" duration="0.15" stackable="false" />
     </Holdable>
     <Wearable slots="Bag" canbeselected="false" canbepicked="true" pickkey="Select" msg="ItemMsgEquipSelect">
-      <sprite name="VGM Assault Rifle Worn" texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png" canbehiddenbyotherwearables="false" rotation="90" depth="0.6" sourcerect="0,192,158,60" limb="Torso" depthlimb="LeftArm" scale="0.5" origin="0.5,0.8" />
+      <sprite name="VGM AssaultRifle Worn" texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png" canbehiddenbyotherwearables="false" rotation="90" depth="0.6" sourcerect="0,192,158,60" limb="Torso" depthlimb="LeftArm" scale="0.5" origin="0.5,0.8" />
     </Wearable>
     <StatusHUD drawhudwhenequipped="false" />
     <AiTarget sightrange="2000" soundrange="3000" fadeouttime="5" />

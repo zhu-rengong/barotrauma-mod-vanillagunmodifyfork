@@ -49,6 +49,7 @@ namespace AutoGenerateXML
                 { $@"entityname.{Identifiers.VGM_LongBarrelMuzzle}", [ (LanguageId.English, "Extended Barrel"), (LanguageId.SimplifiedChinese, "延长枪管") ] },
                 { $@"entityname.{Identifiers.VGM_FlashHiderMuzzle}", [ (LanguageId.English, "Flash Hider"), (LanguageId.SimplifiedChinese, "消焰器") ] },
                 { $@"entityname.{Identifiers.VGM_ChokeTubeMuzzle}", [ (LanguageId.English, "Choke Tube"), (LanguageId.SimplifiedChinese, "收束器") ] },
+                { $@"entityname.{Identifiers.VGM_DuckbillMuzzle}", [ (LanguageId.English, "Duckbill Muzzle"), (LanguageId.SimplifiedChinese, "鸭嘴型枪口") ] },
 
                 { $@"entityname.{Identifiers.VGM_AngledForeGrip}", [ (LanguageId.English, "Angled Foregrip"), (LanguageId.SimplifiedChinese, "直角握把") ] },
                 { $@"entityname.{Identifiers.VGM_VerticalGrip}", [ (LanguageId.English, "Vertical Grip"), (LanguageId.SimplifiedChinese, "垂直握把") ] },

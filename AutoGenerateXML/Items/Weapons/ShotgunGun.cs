@@ -53,6 +53,7 @@ namespace AutoGenerateXML.Items.Weapons
 
         public override List<ContainableMuzzle> ContainableMuzzles => [
             new(MuzzleXMLGenerator.All[Identifiers.VGM_ChokeTubeMuzzle]),
+            new(MuzzleXMLGenerator.All[Identifiers.VGM_DuckbillMuzzle]),
         ];
 
         public override List<ContainableAimingDevice> ContainableAimingDevices => [
@@ -140,7 +141,7 @@ $@"
             <ParticleEmitter particle=""casingfirearm"" colormultiplier=""0.5,0.5,0.5,1"" ScaleMultiplier=""1.5,1.5"" particleamount=""1"" anglemin=""90"" anglemax=""150"" velocitymin=""50"" velocitymax=""250"" CopyEntityAngle=""true"" />
         </StatusEffect>
 
-        <RequiredItems items=""shotgunammo"" type=""Contained"" targetslot=""0"" msg=""ItemMsgAmmoRequired"" />
+        <RequiredItems items=""shotgunammo"" type=""Contained"" msg=""ItemMsgAmmoRequired"" />
         {GenerateMajorRequiredWeaponsSkillXMLsString()}
     </RangedWeapon>
 
@@ -177,6 +178,10 @@ $@"
 
         <SubContainer capacity=""1"" maxstacksize=""1"">
             {GenerateScannerOnContainedXMLsString()}
+        </SubContainer>
+
+        <SubContainer capacity=""1"" maxstacksize=""1"">
+            <Containable identifier=""{Identifiers.VGM_ShotgunTubeExtender}"" hide=""false"" itempos=""31,0"" />
         </SubContainer>
         
         {GenerateSpawnOEMStockXMLsString()}

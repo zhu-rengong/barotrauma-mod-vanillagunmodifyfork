@@ -192,6 +192,10 @@
         <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="5" distancemax="5" />
         <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
       </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetslot="3">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="7" distancemax="7" />
+        <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+      </StatusEffect>
       <!-- [Gun] Gunfire -->
       <StatusEffect type="OnUse" target="This" forceplaysounds="true">
         <Sound file="Content/Items/Weapons/ShotgunShot1.ogg" range="3000" selectionmode="Random" />
@@ -292,7 +296,7 @@
         <Sound file="Content/Items/Weapons/ShotgunLoad3.ogg" type="OnUse" range="500" />
         <ParticleEmitter particle="casingfirearm" colormultiplier="0.5,0.5,0.5,1" ScaleMultiplier="1.5,1.5" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
       </StatusEffect>
-      <RequiredItems items="shotgunammo" type="Contained" targetslot="0" msg="ItemMsgAmmoRequired" />
+      <RequiredItems items="shotgunammo" type="Contained" msg="ItemMsgAmmoRequired" />
       <RequiredSkill identifier="weapons" level="50" />
     </RangedWeapon>
     <Propulsion usablein="None" applytohands="true">
@@ -312,6 +316,14 @@
         <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="2" setvalue="true" comparison="And">
           <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" spread="lt 2" />
           <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" statuseffecttags="Choked" duration="0.016" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gt 1" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="15" disabledeltatime="true">
+          <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
@@ -335,6 +347,9 @@
         <!-- [Muzzle] When inserted, modifies the gun's weapon damage (serializable) and continuously sets the gun's barrelpos (non-serializable). -->
         <Containable identifier="VGM_ChokeTubeMuzzle" hide="false" itempos="34,4">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="79,7" setvalue="true" />
+        </Containable>
+        <Containable identifier="VGM_DuckbillMuzzle" hide="false" itempos="38,4">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="91,7" setvalue="true" />
         </Containable>
         <Containable tag="VGM_MuzzleAttrShotgunCompatible" hide="false">
           <StatusEffect type="OnRemoved" target="This" weapondamagemodifier="1" penetration="0" barrelpos="66,7" setvalue="true" disabledeltatime="true" />
@@ -376,6 +391,9 @@
         <Containable identifier="VGM_ThermalScanner" hide="false" itempos="5,5">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" range="3000" thermalgoggles="True" showdeadcharacters="False" showtexts="False" overlaycolor="176,0,0,120" setvalue="true" interval="0.5" />
         </Containable>
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="VGM_ShotgunTubeExtender" hide="false" itempos="31,0" />
       </SubContainer>
       <!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
       <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.1" evententitytag="gun">

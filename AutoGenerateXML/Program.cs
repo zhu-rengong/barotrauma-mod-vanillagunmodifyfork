@@ -112,25 +112,32 @@ MuzzleXMLGenerator.All.Values.ForEach(muzzle =>
 
 void Generate(ObjectXMLGenerator gen)
 {
-    string xmlsString = gen.Generate();
-
-    string filePath = CleanUpPathCrossPlatform(Path.Combine(UserDefinedGlobal.WorkingDirectory, UserDefinedGlobal.ContentFolder, gen.OutputPath));
-    string folder = CleanUpPathCrossPlatform(Path.GetDirectoryName(filePath));
-    if (!Directory.Exists(folder)) { Directory.CreateDirectory(folder); }
-
-    if (!xmlsStringStore.TryGetValue(gen.Class, out var fileXMLsString))
+    try
     {
-        xmlsStringStore.Add(gen.Class, fileXMLsString = new());
-    }
+        string xmlsString = gen.Generate();
+        string filePath = CleanUpPathCrossPlatform(Path.Combine(UserDefinedGlobal.WorkingDirectory, UserDefinedGlobal.ContentFolder, gen.OutputPath));
+        string folder = CleanUpPathCrossPlatform(Path.GetDirectoryName(filePath));
+        if (!Directory.Exists(folder)) { Directory.CreateDirectory(folder); }
 
-    if (!fileXMLsString.TryGetValue(filePath, out var stringBuilder))
+        if (!xmlsStringStore.TryGetValue(gen.Class, out var fileXMLsString))
+        {
+            xmlsStringStore.Add(gen.Class, fileXMLsString = new());
+        }
+
+        if (!fileXMLsString.TryGetValue(filePath, out var stringBuilder))
+        {
+            fileXMLsString.Add(filePath, stringBuilder = new());
+        }
+
+        stringBuilder.AppendLine(xmlsString);
+
+        Console.WriteLine($"Generated {gen}");
+    }
+    catch (Exception ex)
     {
-        fileXMLsString.Add(filePath, stringBuilder = new());
+        Console.WriteLine($"Error processing {gen.GetType().Name}: {ex.Message}");
+        throw;
     }
-
-    stringBuilder.AppendLine(xmlsString);
-
-    Console.WriteLine($"Generated {gen}");
 }
 
 ObjectXMLGenerator.List.ForEach(Generate);
@@ -143,16 +150,24 @@ xmlsStringStore.ForEach(kv =>
     {
         string filePath = kv2.Key;
         var stringBuilder = kv2.Value;
-        var xml = XElement.Parse(
+        try
+        {
+            var xml = XElement.Parse(
 $@"
 <{@class}s>
     <!-- Auto Generated -->
     {stringBuilder}
 </{@class}s>");
-        xml.Save(
-            fileName: filePath,
-            options: SaveOptions.None
-        );
+            xml.Save(
+                fileName: filePath,
+                options: SaveOptions.None
+            );
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error processing in '{filePath}': {ex.Message}");
+            throw;
+        }
     });
 });
 

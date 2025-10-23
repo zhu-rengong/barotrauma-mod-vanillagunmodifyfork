@@ -11,7 +11,7 @@ using static AutoGenerateXML.ItemXMLExtensions;
 
 namespace AutoGenerateXML
 {
-    public abstract class GunXMLGenerator : ItemXMLGenerator
+    public abstract partial class GunXMLGenerator : ItemXMLGenerator
     {
         public static Dictionary<string, GunXMLGenerator> All = new();
 
@@ -1099,21 +1099,24 @@ $@"<Containable tag=""{Tags.VGM_Muzzle}Attr{Name}Compatible"" hide=""false"">
 
             ContainableMuzzles.ForEach(containable =>
             {
-                if (containable.Muzzle.SpreadChoke.HasValue)
+                if (containable.Muzzle.SpreadChoke.HasValue && containable.Muzzle.SpreadChoke.Value != 0)
                 {
+                    bool isTightened = containable.Muzzle.SpreadChoke.Value > 0.0f;
                     stringBuilder.AppendLine(
 $@"<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" statuseffecttags=""{StatusEffectTags.Choked}"" duration=""{GetTickDurationString(1)}"" comparison=""And"">
-    <Conditional targetitemcomponent=""Projectile"" hitscancount=""gt 1"" user=""! null"" spread=""gt {containable.Muzzle.SpreadChokeLimit}"" />
+    <Conditional targetitemcomponent=""Projectile"" hitscancount=""gt 1"" user=""! null"" {(isTightened ? $@"spread=""gt {containable.Muzzle.SpreadChokeLimit}""" : string.Empty)} />
     <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
 </StatusEffect>
 <StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{-containable.Muzzle.SpreadChoke.Value}"" disabledeltatime=""true"">
     <Conditional targetitemcomponent=""Projectile"" hasstatustag=""{StatusEffectTags.Choked}"" />
     <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
 </StatusEffect>
-<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{containable.Muzzle.SpreadChokeLimit}"" setvalue=""true"" comparison=""And"">
+{(isTightened
+? $@"<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{containable.Muzzle.SpreadChokeLimit}"" setvalue=""true"" comparison=""And"">
     <Conditional targetitemcomponent=""Projectile"" hasstatustag=""{StatusEffectTags.Choked}"" spread=""lt {containable.Muzzle.SpreadChokeLimit}"" />
     <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
-</StatusEffect>");
+</StatusEffect>"
+: string.Empty)}");
                     hasModifier = true;
                 }
             });

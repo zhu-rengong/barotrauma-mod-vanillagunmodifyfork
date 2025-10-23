@@ -120,6 +120,10 @@
         <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="5" distancemax="5" />
         <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
       </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetslot="3">
+        <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.7" scalemax="1.4" colormultiplier="0.95,1,0.65,0.34" copyentityangle="true" distancemin="7" distancemax="7" />
+        <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+      </StatusEffect>
       <!-- [FiringModeBurst] The number of shots fired during the gun's burst process is recorded, and a firing cooldown is applied. -->
       <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" tags="firingmodeburst_1,firingmodeburst_active" duration="0.183">
         <Conditional targetitemcomponent="RangedWeapon" hasstatustag="firingmodeburst_ready" />
@@ -246,6 +250,14 @@
           <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" spread="lt 2" />
           <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" statuseffecttags="Choked" duration="0.016" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gt 1" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="15" disabledeltatime="true">
+          <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
       <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
@@ -278,6 +290,9 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         <!-- [Muzzle] When inserted, modifies the gun's weapon damage (serializable) and continuously sets the gun's barrelpos (non-serializable). -->
         <Containable identifier="VGM_ChokeTubeMuzzle" hide="false" itempos="39,6">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="88,11" setvalue="true" />
+        </Containable>
+        <Containable identifier="VGM_DuckbillMuzzle" hide="false" itempos="43,6">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="100,11" setvalue="true" />
         </Containable>
         <Containable tag="VGM_MuzzleAttrShotgunUniqueCompatible" hide="false">
           <StatusEffect type="OnRemoved" target="This" weapondamagemodifier="1" penetration="0" barrelpos="75,11" setvalue="true" disabledeltatime="true" />

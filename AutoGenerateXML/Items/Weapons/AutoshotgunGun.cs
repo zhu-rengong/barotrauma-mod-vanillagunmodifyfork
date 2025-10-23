@@ -8,9 +8,9 @@ using static AutoGenerateXML.ItemXMLExtensions;
 
 namespace AutoGenerateXML.Items.Weapons
 {
-    public class Autoshotgun : GunXMLGenerator
+    public class AutoshotgunGun : GunXMLGenerator
     {
-        public Autoshotgun() : base()
+        public AutoshotgunGun() : base()
         {
             Name = "Autoshotgun";
             OutputPath = Path.Combine("Guns", $@"{Name}.xml");
@@ -52,6 +52,7 @@ namespace AutoGenerateXML.Items.Weapons
 
         public override List<ContainableMuzzle> ContainableMuzzles => [
             new(MuzzleXMLGenerator.All[Identifiers.VGM_ChokeTubeMuzzle]),
+            new(MuzzleXMLGenerator.All[Identifiers.VGM_DuckbillMuzzle]),
         ];
 
         public override List<ContainableAimingDevice> ContainableAimingDevices => [
@@ -84,7 +85,7 @@ $@"
     {GenerateRectangleBodyXMLString(width: 147, height: 57, density: 25)}
 
     <Holdable {GenerateHoldableXMLAttributesString(
-            slots: ["Any", "RightHand+LeftHand"],
+            slots: ["RightHand+LeftHand"],
             controlPos: true,
             holdPos: [36, -17],
             aimPos: [52, -5],
@@ -109,6 +110,10 @@ $@"
         {GenerateHotTagWasAimingXMLsString()}
         {GenerateHotTagPreventSpreadingOnADSXMLsString()}
     </Holdable>
+
+    <Wearable slots=""Bag"" canbeselected=""false"" canbepicked=""true"" pickkey=""Select"" msg=""ItemMsgEquipSelect"">
+        <sprite name=""{Name.FollowedByModPrefix()} Worn"" texture=""%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Guns.png"" canbehiddenbyotherwearables=""false"" rotation=""90"" depth=""0.6"" sourcerect=""256,0,151,61"" limb=""Torso"" depthlimb=""LeftArm"" scale=""{Scale}"" origin=""0.5,0.92"" />
+    </Wearable>
 
     {GenerateStatusHUDXMLsString()}
     {GenerateAiTargetXMLsString()}

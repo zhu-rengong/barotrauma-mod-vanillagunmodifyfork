@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!-- Auto Generated -->
+  <Item name="VGM ShotgunTubeExtender" identifier="VGM_ShotgunTubeExtender" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="35">
+      <RequiredSkill identifier="weapons" level="65" />
+      <RequiredItem identifier="aluminium" />
+      <RequiredItem identifier="steel" amount="2" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,416,48,9" depth="0.518" origin="0.5,0.5" />
+    <Body width="46" height="8" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+    <ItemContainer capacity="1" maxstacksize="3" hideitems="true" containedstateindicatorslot="0" containedstateindicatorstyle="bullet">
+      <Containable items="shotgunammo" />
+    </ItemContainer>
+  </Item>
+</Items>

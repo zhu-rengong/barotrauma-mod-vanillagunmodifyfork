@@ -10,4 +10,7 @@
   <entityname.VGM_AssaultRifleLongMagazine>突击步枪延长弹匣</entityname.VGM_AssaultRifleLongMagazine>
   <entityname.VGM_AssaultRifleDrumMagazine>突击步枪弹鼓</entityname.VGM_AssaultRifleDrumMagazine>
   <entityname.VGM_HMGDrumMagazine>重机枪弹鼓</entityname.VGM_HMGDrumMagazine>
+  
+  <entityname.VGM_ShotgunTubeExtender>弹管延长器</entityname.VGM_ShotgunTubeExtender>
+  <entitydescription.VGM_ShotgunTubeExtender>可容纳3发霰弹枪弹药。</entitydescription.VGM_ShotgunTubeExtender>
 </infotexts>
