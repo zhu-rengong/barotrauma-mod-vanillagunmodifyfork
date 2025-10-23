@@ -36,10 +36,10 @@ namespace AutoGenerateXML.Items.Weapons
         public override float CombatPriority => 80;
         public override float MinimumSpread => 6;
         public override float MinimumUnskilledSpread => 20;
-        public override float SpreadChangesOnAimDownSight => 17;
-        public override float SpreadRecovery => 0.3f;
-        public override float SpreadChangesOnShoot => 2.9f;
-        public override float SpreadLimit => 10.0f;
+        public override float SpreadChangesOnAimDownSight => 13;
+        public override float SpreadRecovery => 0.4f;
+        public override float SpreadChangesOnShoot => 5.3f;
+        public override float SpreadLimit => 19.0f;
         public override float Recoil => 350;
         public override float StockRecoilReductionEfficiency => 1.3f;
         public override float StocklessSpeedMultiplier => 0.95f;

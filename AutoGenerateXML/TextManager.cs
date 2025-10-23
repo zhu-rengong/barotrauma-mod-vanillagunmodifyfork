@@ -24,6 +24,7 @@ namespace AutoGenerateXML
                 { $@"entityname.{Identifiers.VGM_AssaultRifle}", [ (LanguageId.English, "Assault Rifle (Modifiable)"), (LanguageId.SimplifiedChinese, "突击步枪(可改装的)") ] },
                 { $@"entityname.{Identifiers.VGM_HMG}", [ (LanguageId.English, "HMG (Modifiable)"), (LanguageId.SimplifiedChinese, "重机枪(可改装的)") ] },
                 { $@"entityname.{Identifiers.VGM_Shotgun}", [ (LanguageId.English, "Riot Shotgun (Modifiable)"), (LanguageId.SimplifiedChinese, "防暴霰弹枪(可改装的)") ] },
+                { $@"entityname.{Identifiers.VGM_Autoshotgun}", [ (LanguageId.English, "Autoshotgun (Modifiable)"), (LanguageId.SimplifiedChinese, "自动霰弹枪(可改装的)") ] },
                 { $@"entityname.{Identifiers.VGM_ShotgunUnique}", [ (LanguageId.English, "Boom Stick (Modifiable)"), (LanguageId.SimplifiedChinese, "爆鸣(可改装的)") ] },
                 { $@"entityname.{Identifiers.VGM_Revolver}", [ (LanguageId.English, "Revolver (Modifiable)"), (LanguageId.SimplifiedChinese, "左轮手枪(可改装的)") ] },
                 { $@"entityname.{Identifiers.VGM_Handcannon}", [ (LanguageId.English, "Handcannon (Modifiable)"), (LanguageId.SimplifiedChinese, "手炮(可改装的)") ] },

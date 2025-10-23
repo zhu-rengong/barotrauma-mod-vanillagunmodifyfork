@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <!-- Auto Generated -->
-  <Item name="VGM AngledForeGrip" identifier="VGM_AngledForeGrip" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Grip,VGM_GripAttrAssaultRifleCompatible,VGM_GripAttrHMGCompatible,VGM_GripAttrRifleCompatible,VGM_GripAttrShotgunUniqueCompatible,VGM_GripAttrSMGCompatible,VGM_GripAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM AngledForeGrip" identifier="VGM_AngledForeGrip" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Grip,VGM_GripAttrAssaultRifleCompatible,VGM_GripAttrAutoshotgunCompatible,VGM_GripAttrHMGCompatible,VGM_GripAttrRifleCompatible,VGM_GripAttrShotgunUniqueCompatible,VGM_GripAttrSMGCompatible,VGM_GripAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
@@ -11,7 +11,7 @@
     <Body width="53" height="22" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
-  <Item name="VGM BipodGrip" identifier="VGM_BipodGrip" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Grip,VGM_GripAttrAssaultRifleCompatible,VGM_GripAttrHMGCompatible,VGM_GripAttrRifleCompatible,VGM_GripAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM BipodGrip" identifier="VGM_BipodGrip" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Grip,VGM_GripAttrAssaultRifleCompatible,VGM_GripAttrAutoshotgunCompatible,VGM_GripAttrHMGCompatible,VGM_GripAttrRifleCompatible,VGM_GripAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
@@ -21,7 +21,7 @@
     <Body width="20" height="54" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
-  <Item name="VGM VerticalGrip" identifier="VGM_VerticalGrip" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Grip,VGM_GripAttrAssaultRifleCompatible,VGM_GripAttrHMGCompatible,VGM_GripAttrRifleCompatible,VGM_GripAttrShotgunUniqueCompatible,VGM_GripAttrSMGCompatible,VGM_GripAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM VerticalGrip" identifier="VGM_VerticalGrip" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Grip,VGM_GripAttrAssaultRifleCompatible,VGM_GripAttrAutoshotgunCompatible,VGM_GripAttrHMGCompatible,VGM_GripAttrRifleCompatible,VGM_GripAttrShotgunUniqueCompatible,VGM_GripAttrSMGCompatible,VGM_GripAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />

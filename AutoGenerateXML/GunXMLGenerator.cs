@@ -1061,7 +1061,7 @@ $@"<Containable tag=""{Tags.VGM_AimingDevice}Attr{Name}Compatible"" hide=""false
                 if (containable.ItemPos.Length < 2 || !containable.ItemPos[1].HasValue) { containable.ItemPos[1] = MathF.Round(BarrelPos[1] * Scale); }
 
                 if (containable.BarrelPos is null) { containable.BarrelPos = []; }
-                if (containable.BarrelPos.Length < 1 || !containable.BarrelPos[0].HasValue) { containable.BarrelPos[0] = MathF.Floor(BarrelPos[0] + containable.Muzzle.BarrelLength - containable.Muzzle.BarrelEmbeddedDepth); }
+                if (containable.BarrelPos.Length < 1 || !containable.BarrelPos[0].HasValue) { containable.BarrelPos[0] = MathF.Floor((BarrelPos[0] * Scale + containable.Muzzle.Scale * (containable.Muzzle.BarrelLength - containable.Muzzle.BarrelEmbeddedDepth)) / Scale); }
                 if (containable.BarrelPos.Length < 2 || !containable.BarrelPos[1].HasValue) { containable.BarrelPos[1] = BarrelPos[1]; }
 
                 stringBuilder.AppendLine(

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <!-- Auto Generated -->
-  <Item name="VGM ACOGScope" identifier="VGM_ACOGScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrMachinePistolCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM ACOGScope" identifier="VGM_ACOGScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrAutoshotgunCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrMachinePistolCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
@@ -14,7 +14,7 @@
     <Body width="37" height="24" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
-  <Item name="VGM HolographicSight" identifier="VGM_HolographicSight" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrMachinePistolCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM HolographicSight" identifier="VGM_HolographicSight" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrAutoshotgunCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrMachinePistolCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
@@ -26,7 +26,7 @@
     <Body width="25" height="19" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
-  <Item name="VGM RedDotSight" identifier="VGM_RedDotSight" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrMachinePistolCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM RedDotSight" identifier="VGM_RedDotSight" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrAutoshotgunCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrMachinePistolCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />
@@ -38,7 +38,7 @@
     <Body width="20" height="12" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
-  <Item name="VGM RifleScope" identifier="VGM_RifleScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM RifleScope" identifier="VGM_RifleScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrAutoshotgunCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="40" />
@@ -50,7 +50,7 @@
     <Body width="62" height="18" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
-  <Item name="VGM SniperScope" identifier="VGM_SniperScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.66" impactsoundtag="impact_metal_light">
+  <Item name="VGM SniperScope" identifier="VGM_SniperScope" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_AimingDevice,VGM_AimingDeviceAttrAssaultRifleCompatible,VGM_AimingDeviceAttrAutoshotgunCompatible,VGM_AimingDeviceAttrHandcannonCompatible,VGM_AimingDeviceAttrHMGCompatible,VGM_AimingDeviceAttrRevolverCompatible,VGM_AimingDeviceAttrRifleCompatible,VGM_AimingDeviceAttrShotgunCompatible,VGM_AimingDeviceAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.66" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="50" />

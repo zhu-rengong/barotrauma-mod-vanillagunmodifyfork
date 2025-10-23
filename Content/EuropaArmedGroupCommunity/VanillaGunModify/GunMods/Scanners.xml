@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <!-- Auto Generated -->
-  <Item name="VGM HealthScanner" identifier="VGM_HealthScanner" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Scanner,VGM_ScannerAttrAssaultRifleCompatible,VGM_ScannerAttrHMGCompatible,VGM_ScannerAttrRifleCompatible,VGM_ScannerAttrShotgunCompatible,VGM_ScannerAttrShotgunUniqueCompatible,VGM_ScannerAttrSMGCompatible,VGM_ScannerAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM HealthScanner" identifier="VGM_HealthScanner" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Scanner,VGM_ScannerAttrAssaultRifleCompatible,VGM_ScannerAttrAutoshotgunCompatible,VGM_ScannerAttrHMGCompatible,VGM_ScannerAttrRifleCompatible,VGM_ScannerAttrShotgunCompatible,VGM_ScannerAttrShotgunUniqueCompatible,VGM_ScannerAttrSMGCompatible,VGM_ScannerAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Deconstruct time="20">
       <Item identifier="healthscanner" />
@@ -16,7 +16,7 @@
     <Body width="23" height="18" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
   </Item>
-  <Item name="VGM ThermalScanner" identifier="VGM_ThermalScanner" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Scanner,VGM_ScannerAttrAssaultRifleCompatible,VGM_ScannerAttrHMGCompatible,VGM_ScannerAttrRifleCompatible,VGM_ScannerAttrShotgunCompatible,VGM_ScannerAttrShotgunUniqueCompatible,VGM_ScannerAttrSMGCompatible,VGM_ScannerAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM ThermalScanner" identifier="VGM_ThermalScanner" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Scanner,VGM_ScannerAttrAssaultRifleCompatible,VGM_ScannerAttrAutoshotgunCompatible,VGM_ScannerAttrHMGCompatible,VGM_ScannerAttrRifleCompatible,VGM_ScannerAttrShotgunCompatible,VGM_ScannerAttrShotgunUniqueCompatible,VGM_ScannerAttrSMGCompatible,VGM_ScannerAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Deconstruct time="20">
       <Item identifier="thermalgoggles" />

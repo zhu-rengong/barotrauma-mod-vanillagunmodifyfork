@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <!-- Auto Generated -->
-  <Item name="VGM ChokeTubeMuzzle" identifier="VGM_ChokeTubeMuzzle" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Muzzle,VGM_MuzzleAttrShotgunCompatible,VGM_MuzzleAttrShotgunUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="VGM ChokeTubeMuzzle" identifier="VGM_ChokeTubeMuzzle" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Muzzle,VGM_MuzzleAttrAutoshotgunCompatible,VGM_MuzzleAttrShotgunCompatible,VGM_MuzzleAttrShotgunUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="armcab" secondary="secarmcab" />
     <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
       <RequiredSkill identifier="weapons" level="60" />

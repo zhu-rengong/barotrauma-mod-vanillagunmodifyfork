@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="VanillaGunModify (EuropaArmedGroupCommunity)" modversion="1.0.8" corepackage="False" steamworkshopid="3589812359" gameversion="1.10.7.0">
+<contentpackage name="VanillaGunModify (EuropaArmedGroupCommunity)" modversion="1.0.9" corepackage="False" steamworkshopid="3589812359" gameversion="1.10.7.0">
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Fabricator/Fabricator.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Rifle.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/SMG.xml" />
@@ -8,6 +8,7 @@
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/AssaultRifle.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/HMG.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Shotgun.xml" />
+  <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Autoshotgun.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/ShotgunUnique.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Revolver.xml" />
   <Item file="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/Guns/Handcannon.xml" />

@@ -9,6 +9,7 @@
         public static readonly string VGM_AssaultRifle = nameof(VGM_AssaultRifle);
         public static readonly string VGM_HMG = nameof(VGM_HMG);
         public static readonly string VGM_Shotgun = nameof(VGM_Shotgun);
+        public static readonly string VGM_Autoshotgun = nameof(VGM_Autoshotgun);
         public static readonly string VGM_ShotgunUnique = nameof(VGM_ShotgunUnique);
         public static readonly string VGM_Revolver = nameof(VGM_Revolver);
         public static readonly string VGM_Handcannon = nameof(VGM_Handcannon);
