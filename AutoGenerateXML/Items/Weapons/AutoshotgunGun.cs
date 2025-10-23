@@ -136,7 +136,7 @@ $@"
 
         {GenerateGunSimulatedRecoilXMLsString()}
 
-        <RequiredItems items=""shotgunammo"" type=""Contained"" targetslot=""0"" msg=""ItemMsgAmmoRequired"" />
+        <RequiredItems items=""shotgunammo"" type=""Contained"" msg=""ItemMsgAmmoRequired"" />
         {GenerateMajorRequiredWeaponsSkillXMLsString()}
     </RangedWeapon>
 
