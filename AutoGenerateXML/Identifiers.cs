@@ -27,7 +27,6 @@
         public static readonly string VGM_HeavyStock = nameof(VGM_HeavyStock);
         public static readonly string VGM_HeavySniperStock = nameof(VGM_HeavySniperStock);
 
-        public static readonly string VGM_MuzzleFlashDefaultOrigin = nameof(VGM_MuzzleFlashDefaultOrigin);
         public static readonly string VGM_LongSuppressorMuzzle = nameof(VGM_LongSuppressorMuzzle);
         public static readonly string VGM_ShortSuppressorMuzzle = nameof(VGM_ShortSuppressorMuzzle);
         public static readonly string VGM_SimpleSuppressorMuzzle = nameof(VGM_SimpleSuppressorMuzzle);

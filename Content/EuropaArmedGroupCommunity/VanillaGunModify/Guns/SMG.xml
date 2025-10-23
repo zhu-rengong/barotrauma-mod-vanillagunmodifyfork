@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <!--Auto Generated-->
-  <Item name="VGM SMG" identifier="VGM_SMG" category="Weapon" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,smg" scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+  <!-- Auto Generated -->
+  <Item name="VGM SMG" identifier="VGM_SMG" category="Weapon" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="weapon,gun,provocativetohumanai,mountableweapon,smallautoweapon,smallitem,gunsmith,SMG" scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
     <Deconstruct time="5.0" />
     <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false">

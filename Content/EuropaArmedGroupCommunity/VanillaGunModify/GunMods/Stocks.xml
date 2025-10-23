@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!-- Auto Generated -->
+  <Item name="VGM AssaultRifleStock" identifier="VGM_AssaultRifleStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrAssaultRifleCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="0,256,79,46" depth="0.554" origin="0.5,0.5" />
+    <Body width="75" height="42" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM HeavySniperStock" identifier="VGM_HeavySniperStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrAssaultRifleCompatible,VGM_StockAttrHMGCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="70" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="steel" amount="2" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="128,192,94,44" depth="0.554" origin="0.5,0.5" />
+    <Body width="90" height="40" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM HeavyStock" identifier="VGM_HeavyStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrAssaultRifleCompatible,VGM_StockAttrHMGCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="steel" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="128,128,85,47" depth="0.554" origin="0.5,0.5" />
+    <Body width="81" height="43" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM HMGStock" identifier="VGM_HMGStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrHMGCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="0,320,85,51" depth="0.554" origin="0.5,0.5" />
+    <Body width="81" height="47" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM LightSniperStock" identifier="VGM_LightSniperStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrRifleCompatible,VGM_StockAttrShotgunCompatible,VGM_StockAttrShotgunUniqueCompatible,VGM_StockAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="70" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="steel" amount="2" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="128,64,60,27" depth="0.554" origin="0.5,0.5" />
+    <Body width="56" height="25" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM LightStock" identifier="VGM_LightStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrRifleCompatible,VGM_StockAttrShotgunCompatible,VGM_StockAttrShotgunUniqueCompatible,VGM_StockAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredItem identifier="aluminium" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="128,0,61,30" depth="0.554" origin="0.5,0.5" />
+    <Body width="57" height="28" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM LightWrenchStock" identifier="VGM_LightWrenchStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrRifleCompatible,VGM_StockAttrShotgunCompatible,VGM_StockAttrShotgunUniqueCompatible,VGM_StockAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Fabricate suitablefabricators="VGM_Fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="10" />
+      <RequiredItem identifier="wrench" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,192,62,33" depth="0.554" origin="0.5,0.5" />
+    <Body width="58" height="31" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM RifleStock" identifier="VGM_RifleStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrRifleCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="0,0,56,42" depth="0.554" origin="0.5,0.5" />
+    <Body width="52" height="38" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM ShotgunStock" identifier="VGM_ShotgunStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrShotgunCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="0,192,58,40" depth="0.554" origin="0.5,0.5" />
+    <Body width="54" height="36" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM ShotgunUniqueStock" identifier="VGM_ShotgunUniqueStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrShotgunUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="0,64,49,39" depth="0.554" origin="0.5,0.5" />
+    <Body width="45" height="35" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="VGM SMGUniqueStock" identifier="VGM_SMGUniqueStock" category="Equipment" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="smallitem,tool,VGM_Accessory,VGM_Stock,VGM_StockAttrSMGUniqueCompatible" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="0,128,35,23" depth="0.554" origin="0.5,0.5" />
+    <Body width="33" height="21" density="15" />
+    <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
+  </Item>
+</Items>

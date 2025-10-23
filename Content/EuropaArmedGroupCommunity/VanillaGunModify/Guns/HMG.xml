@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <!--Auto Generated-->
-  <Item name="VGM HMG" identifier="VGM_HMG" category="Weapon" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,hmg" scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+  <!-- Auto Generated -->
+  <Item name="VGM HMG" identifier="VGM_HMG" category="Weapon" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="weapon,gun,provocativetohumanai,mountableweapon,mediumitem,gunsmith,HMG" scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
     <Deconstruct time="5.0" />
     <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false">
@@ -406,7 +406,7 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         <Containable identifier="VGM_VerticalGrip" hide="false" itempos="14,-5">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" holdangle="-15" setvalue="true" interval="0.5" />
         </Containable>
-        <Containable identifier="VGM_BipodGrip" hide="false" itempos="15,-12">
+        <Containable identifier="VGM_BipodGrip" hide="false" itempos="32,-12">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" holdangle="-50" setvalue="true" interval="0.5" />
         </Containable>
         <Containable tag="VGM_GripAttrHMGCompatible" hide="false">

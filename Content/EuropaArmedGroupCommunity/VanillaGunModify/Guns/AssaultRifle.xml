@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <!--Auto Generated-->
-  <Item name="VGM AssaultRifle" identifier="VGM_AssaultRifle" category="Weapon" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,provocativetohumanai,assaultrifle" scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+  <!-- Auto Generated -->
+  <Item name="VGM AssaultRifle" identifier="VGM_AssaultRifle" category="Weapon" subcategory="VanillaGunModify (EuropaArmedGroupCommunity)" tags="weapon,gun,provocativetohumanai,mountableweapon,mediumitem,gunsmith,AssaultRifle" scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
     <Deconstruct time="5.0" />
     <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false">
@@ -388,7 +388,7 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         <Containable identifier="VGM_VerticalGrip" hide="false" itempos="18,-2">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" holdangle="-15" setvalue="true" interval="0.5" />
         </Containable>
-        <Containable identifier="VGM_BipodGrip" hide="false" itempos="18,-9">
+        <Containable identifier="VGM_BipodGrip" hide="false" itempos="27,-9">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" holdangle="-50" setvalue="true" interval="0.5" />
         </Containable>
         <Containable tag="VGM_GripAttrAssaultRifleCompatible" hide="false">

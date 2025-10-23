@@ -1,5 +1,5 @@
 ﻿using AutoGenerateXML;
-
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -7,48 +7,165 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Xml.Linq;
 
-var generatorTypes = Assembly.GetExecutingAssembly().GetTypes()
-    .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(ItemXMLGenerator)));
+Dictionary<string, Dictionary<string, StringBuilder>> xmlsStringStore = new();
 
-var cachedGuns = new Dictionary<string, GunXMLGenerator>();
+Assembly.GetExecutingAssembly().GetTypes()
+    .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(ObjectXMLGenerator)))
+    .ToList()
+    .OrderBy(t => t switch
+    {
+        { Name: nameof(GunXMLGenerator) } => 100,
+        _ => 10,
+    })
+    .ForEach(t =>
+    {
+        if (Activator.CreateInstance(t) is ObjectXMLGenerator gen)
+        {
+            ObjectXMLGenerator.List.Add(gen);
 
-foreach (var type in generatorTypes)
+            switch (gen)
+            {
+                case GunXMLGenerator gun:
+                    GunXMLGenerator.All.Add(gun.Identifier, gun);
+                    break;
+                case GripXMLGenerator grip:
+                    GripXMLGenerator.All.Add(grip.Identifier, grip);
+                    break;
+                case StockXMLGenerator stock:
+                    StockXMLGenerator.All.Add(stock.Identifier, stock);
+                    break;
+                case MuzzleXMLGenerator muzzle:
+                    MuzzleXMLGenerator.All.Add(muzzle.Identifier, muzzle);
+                    break;
+                case AimingDeviceXMLGenerator aimingDevice:
+                    AimingDeviceXMLGenerator.All.Add(aimingDevice.Identifier, aimingDevice);
+                    break;
+                case ScannerXMLGenerator scanner:
+                    ScannerXMLGenerator.All.Add(scanner.Identifier, scanner);
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+
+ObjectXMLGenerator.List.Sort((t1, t2) =>
 {
-    string? xmlString = null;
+    return t1.GetType().Name.CompareTo(t2.GetType().Name);
+});
+
+GunXMLGenerator.All.Values.ForEach(gun =>
+{
+    if (gun.ContainableGrips is not null)
+    {
+        GripXMLGenerator.All.Values
+            .Where(grip => gun.ContainableGrips.Any(containable => containable.Grip == grip))
+            .ForEach(grip => grip.SelfTags.Add($@"{Tags.VGM_Grip}Attr{gun.Name}Compatible"));
+    }
+
+    if (gun.ContainableStocks is not null)
+    {
+        StockXMLGenerator.All.Values
+            .Where(stock => gun.ContainableStocks.Any(containable => containable.Stock == stock))
+            .ForEach(stock => stock.SelfTags.Add($@"{Tags.VGM_Stock}Attr{gun.Name}Compatible"));
+    }
+
+    if (gun.ContainableMuzzles is not null)
+    {
+        MuzzleXMLGenerator.All.Values
+            .Where(muzzle => gun.ContainableMuzzles.Any(containable => containable.Muzzle == muzzle))
+            .ForEach(muzzle => muzzle.SelfTags.Add($@"{Tags.VGM_Muzzle}Attr{gun.Name}Compatible"));
+    }
+
+    if (gun.ContainableAimingDevices is not null)
+    {
+        AimingDeviceXMLGenerator.All.Values
+            .Where(aimingDevice => gun.ContainableAimingDevices.Any(containable => containable.AimingDevice == aimingDevice))
+            .ForEach(aimingDevice => aimingDevice.SelfTags.Add($@"{Tags.VGM_AimingDevice}Attr{gun.Name}Compatible"));
+    }
+
+    if (gun.ContainableScanners is not null)
+    {
+        ScannerXMLGenerator.All.Values
+            .Where(scanner => gun.ContainableScanners.Any(containable => containable.Scanner == scanner))
+            .ForEach(scanner => scanner.SelfTags.Add($@"{Tags.VGM_Scanner}Attr{gun.Name}Compatible"));
+    }
+});
+
+MuzzleXMLGenerator.All.Values.ForEach(muzzle =>
+{
+    if (muzzle.IsSuppressor)
+    {
+        muzzle.SelfTags.Add(Tags.VGM_MuzzleAttrSuppressor);
+    }
+
+    if (muzzle.IsFlashHider)
+    {
+        muzzle.SelfTags.Add(Tags.VGM_MuzzleAttrFlashHider);
+    }
+
+    if (muzzle.SpreadChangesOnShootMultiplier.HasValue)
+    {
+        muzzle.SelfTags.Add(Tags.VGM_MuzzleAttrOverrideSpreadChangesOnShoot);
+    }
+});
+
+void Generate(ObjectXMLGenerator gen)
+{
+    string xmlsString = gen.Generate();
+
+    string filePath = CleanUpPathCrossPlatform(Path.Combine(UserDefinedGlobal.WorkingDirectory, UserDefinedGlobal.ContentFolder, gen.OutputPath));
+    string folder = CleanUpPathCrossPlatform(Path.GetDirectoryName(filePath));
+    if (!Directory.Exists(folder)) { Directory.CreateDirectory(folder); }
+
+    if (!xmlsStringStore.TryGetValue(gen.Class, out var fileXMLsString))
+    {
+        xmlsStringStore.Add(gen.Class, fileXMLsString = new());
+    }
+
+    if (!fileXMLsString.TryGetValue(filePath, out var stringBuilder))
+    {
+        fileXMLsString.Add(filePath, stringBuilder = new());
+    }
+
+    stringBuilder.AppendLine(xmlsString);
+
+    Console.WriteLine($"Generated {gen}");
+}
+
+ObjectXMLGenerator.List.ForEach(Generate);
+
+xmlsStringStore.ForEach(kv =>
+{
+    string @class = kv.Key;
+    var fileXMLsString = kv.Value;
+    fileXMLsString.ForEach(kv2 =>
+    {
+        string filePath = kv2.Key;
+        var stringBuilder = kv2.Value;
+        var xml = XElement.Parse(
+$@"
+<{@class}s>
+    <!-- Auto Generated -->
+    {stringBuilder}
+</{@class}s>");
+        xml.Save(
+            fileName: filePath,
+            options: SaveOptions.None
+        );
+    });
+});
+
+
+foreach (var gun in GunXMLGenerator.All.Values)
+{
     try
     {
-        if (Activator.CreateInstance(type) is GunXMLGenerator gunGen)
-        {
-            cachedGuns.Add(gunGen.Identifier, gunGen);
-
-            xmlString =
-$@"<Items>
-    {gunGen.Generate()}
-</Items>";
-
-            gunGen.VerifyPotentialErrors();
-
-            var xml = XElement.Parse(xmlString);
-            xml.AddFirst(new XComment("Auto Generated"));
-            string savePath = CleanUpPathCrossPlatform(Path.Combine(UserDefinedGlobal.WorkingDirectory, UserDefinedGlobal.ContentFolder, gunGen.OutputPath));
-            string saveFolder = CleanUpPathCrossPlatform(Path.GetDirectoryName(savePath));
-            if (!Directory.Exists(saveFolder)) { Directory.CreateDirectory(saveFolder); }
-            xml.Save(
-                fileName: savePath,
-                options: SaveOptions.None
-            );
-
-            Console.WriteLine($"Successfully generated and saved XML to {gunGen.OutputPath}");
-        }
-
+        gun.VerifyPotentialErrors();
     }
     catch (Exception ex)
     {
-        //if (!string.IsNullOrEmpty(xmlString) && xmlString.Length < 100000)
-        //{
-        //    Console.WriteLine(xmlString);
-        //}
-        Console.WriteLine($"Error processing {type.Name}: {ex.Message}");
+        Console.WriteLine($"Error Processing {gun.Name}: {ex.Message}");
         return;
     }
 }
@@ -62,33 +179,28 @@ foreach (var (languageName, languageId) in TextManager.AvailableLanguages)
         string saveFolder = CleanUpPathCrossPlatform(Path.GetDirectoryName(savePath));
         if (!Directory.Exists(saveFolder)) { Directory.CreateDirectory(saveFolder); }
 
-
-
         StringBuilder stringBuilder = new StringBuilder();
-        var gunList = cachedGuns.ToList();
-        gunList.Sort((kv1, kv2) => { return kv1.Key.CompareTo(kv2.Key); });
-        gunList.ForEach(kv =>
+        var gunList = GunXMLGenerator.All.Values.ToList();
+        gunList.Sort((g1, g2) => { return g1.Identifier.CompareTo(g2.Identifier); });
+        gunList.ForEach(gun =>
         {
-            string identifier = kv.Key;
-            GunXMLGenerator gunGen = kv.Value;
+            stringBuilder.AppendLine($@"<entityname.{gun.Identifier}>{TextManager.Get($@"entityname.{gun.Identifier}")}</entityname.{gun.Identifier}>");
 
-            stringBuilder.AppendLine($@"<entityname.{identifier}>{TextManager.Get($@"entityname.{identifier}")}</entityname.{identifier}>");
+            stringBuilder.Append($@"<entitydescription.{gun.Identifier}>");
 
-            stringBuilder.Append($@"<entitydescription.{identifier}>");
-
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.weapondamage")}:‖end‖ {gunGen.WeaponDamageModifier:0.##%}\n");
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.armorpenetration")}:‖end‖ {gunGen.Penetration:0.##%}\n");
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.reload")}:‖end‖ {gunGen.Reload}s{(gunGen.ReloadSkillRequirement.HasValue ? $@"~{gunGen.ReloadNoSkill.Value}s" : string.Empty)}\n");
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.minimumspread")}:‖end‖ {gunGen.MinimumSpread}°~{gunGen.MinimumUnskilledSpread}°\n");
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.spreadchangeswhenaimdownsight")}:‖end‖ {gunGen.SpreadChangesOnAimDownSight:+0.##;-0.##;0}°\n");
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.spreadrecoveryrate")}:‖end‖ {gunGen.SpreadRecovery * 60.0f}°/s\n");
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.spreadchangeswhenfire")}:‖end‖ {gunGen.SpreadChangesOnShoot:+0.##;-0.##;0}°\n");
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.recoil")}:‖end‖ {gunGen.Recoil}\n");
-            if (gunGen.CompatibleStocks is not null) { stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.stockrecoilreduction")}‖end‖ ×{gunGen.StockRecoilReductionEfficiency}\n"); }
-            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.movementspeed")}:‖end‖ {gunGen.StocklessSpeedMultiplier:0.##%}\n");
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.weapondamage")}:‖end‖ {gun.WeaponDamageModifier:0.##%}\n");
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.armorpenetration")}:‖end‖ {gun.Penetration:0.##%}\n");
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.reload")}:‖end‖ {gun.Reload}s{(gun.ReloadSkillRequirement.HasValue ? $@"~{gun.ReloadNoSkill.Value}s" : string.Empty)}\n");
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.minimumspread")}:‖end‖ {gun.MinimumSpread}°~{gun.MinimumUnskilledSpread}°\n");
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.spreadchangeswhenaimdownsight")}:‖end‖ {gun.SpreadChangesOnAimDownSight:+0.##;-0.##;0}°\n");
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.spreadrecoveryrate")}:‖end‖ {gun.SpreadRecovery * 60.0f}°/s\n");
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.spreadchangeswhenfire")}:‖end‖ {gun.SpreadChangesOnShoot:+0.##;-0.##;0}°\n");
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.recoil")}:‖end‖ {gun.Recoil}\n");
+            if (gun.ContainableStocks is not null) { stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.stockrecoilreduction")}‖end‖ ×{gun.StockRecoilReductionEfficiency}\n"); }
+            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunstatname.movementspeed")}:‖end‖ {gun.StocklessSpeedMultiplier:0.##%}\n");
 
             stringBuilder.Replace(@"\n", "", stringBuilder.Length - 2, 2);
-            stringBuilder.AppendLine($@"</entitydescription.{identifier}>");
+            stringBuilder.AppendLine($@"</entitydescription.{gun.Identifier}>");
         });
 
         var xmlElementString = XElement.Parse(
@@ -111,135 +223,123 @@ $@"<infotexts {TextManager.TextFileRootXMLAttributesString}>
         StringBuilder stringBuilder = new StringBuilder();
 
         {
-            var statList = AccessoryGrip.Stats.ToList();
-            statList.Sort((kv1, kv2) => { return kv1.Key.CompareTo(kv2.Key); });
-            statList.ForEach(kv =>
+            var gripList = GripXMLGenerator.All.Values.ToList();
+            gripList.Sort((grip1, grip2) => { return grip1.Identifier.CompareTo(grip2.Identifier); });
+            gripList.ForEach(grip =>
             {
-                string identifier = kv.Key;
-                AccessoryGrip stat = kv.Value;
+                stringBuilder.AppendLine($@"<entityname.{grip.Identifier}>{TextManager.Get($@"entityname.{grip.Identifier}")}</entityname.{grip.Identifier}>");
 
-                stringBuilder.AppendLine($@"<entityname.{identifier}>{TextManager.Get($@"entityname.{identifier}")}</entityname.{identifier}>");
+                stringBuilder.Append($@"<entitydescription.{grip.Identifier}>");
 
-                stringBuilder.Append($@"<entitydescription.{identifier}>");
-
-                if (stat.SpreadChangesOnAimDownSightMultiplier.HasValue)
+                if (grip.SpreadChangesOnAimDownSightMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadchangeswhenaimdownsightmodifier")}‖end‖ ×{stat.SpreadChangesOnAimDownSightMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadchangeswhenaimdownsightmodifier")}‖end‖ ×{grip.SpreadChangesOnAimDownSightMultiplier.Value}\n");
                 }
 
-                if (stat.SpreadRecoveryMultiplier.HasValue)
+                if (grip.SpreadRecoveryMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadrecoveryratemodifier")}‖end‖ ×{stat.SpreadRecoveryMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadrecoveryratemodifier")}‖end‖ ×{grip.SpreadRecoveryMultiplier.Value}\n");
                 }
 
-                if (stat.MinimumSpreadOnRecoveringMultiplier.HasValue)
+                if (grip.MinimumSpreadOnRecoveringMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.minimumspreadonrecoveringmodifier")}‖end‖ ×{stat.MinimumSpreadOnRecoveringMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.minimumspreadonrecoveringmodifier")}‖end‖ ×{grip.MinimumSpreadOnRecoveringMultiplier.Value}\n");
                 }
 
                 stringBuilder.Replace(@"\n", "", stringBuilder.Length - 2, 2);
-                stringBuilder.AppendLine($@"</entitydescription.{identifier}>");
+                stringBuilder.AppendLine($@"</entitydescription.{grip.Identifier}>");
             });
         }
 
         {
-            var statList = AccessoryStock.Stats.ToList();
-            statList.Sort((kv1, kv2) => { return kv1.Key.CompareTo(kv2.Key); });
-            statList.ForEach(kv =>
+            var stockList = StockXMLGenerator.All.Values.ToList();
+            stockList.Sort((stock1, stock2) => { return stock1.Identifier.CompareTo(stock2.Identifier); });
+            stockList.ForEach(stock =>
             {
-                string identifier = kv.Key;
-                AccessoryStock stat = kv.Value;
+                stringBuilder.AppendLine($@"<entityname.{stock.Identifier}>{TextManager.Get($@"entityname.{stock.Identifier}")}</entityname.{stock.Identifier}>");
 
-                stringBuilder.AppendLine($@"<entityname.{identifier}>{TextManager.Get($@"entityname.{identifier}")}</entityname.{identifier}>");
+                stringBuilder.Append($@"<entitydescription.{stock.Identifier}>");
 
-                stringBuilder.Append($@"<entitydescription.{identifier}>");
-
-                if (stat.RecoilReduction.HasValue)
+                if (stock.RecoilReduction.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.stockrecoilreduction")}‖end‖: {stat.RecoilReduction.Value:0.##}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.stockrecoilreduction")}‖end‖: {stock.RecoilReduction.Value:0.##}\n");
                 }
 
-                if (stat.StocklessBasedSpeedMultiplier.HasValue)
+                if (stock.StocklessBasedSpeedMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.movementspeedmodifier")}‖end‖ ×{stat.StocklessBasedSpeedMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.movementspeedmodifier")}‖end‖ ×{stock.StocklessBasedSpeedMultiplier.Value}\n");
                 }
 
                 stringBuilder.Replace(@"\n", "", stringBuilder.Length - 2, 2);
-                stringBuilder.AppendLine($@"</entitydescription.{identifier}>");
+                stringBuilder.AppendLine($@"</entitydescription.{stock.Identifier}>");
             });
         }
 
         {
-            var statList = AccessoryMuzzle.Stats.ToList();
-            statList.Sort((kv1, kv2) => { return kv1.Key.CompareTo(kv2.Key); });
-            statList.ForEach(kv =>
+            var muzzleList = MuzzleXMLGenerator.All.Values.ToList();
+            muzzleList.Sort((gen1, gen2) => { return gen1.Identifier.CompareTo(gen2.Identifier); });
+            muzzleList.ForEach(muzzle =>
             {
-                string identifier = kv.Key;
-                AccessoryMuzzle stat = kv.Value;
+                stringBuilder.AppendLine($@"<entityname.{muzzle.Identifier}>{TextManager.Get($@"entityname.{muzzle.Identifier}")}</entityname.{muzzle.Identifier}>");
 
-                stringBuilder.AppendLine($@"<entityname.{identifier}>{TextManager.Get($@"entityname.{identifier}")}</entityname.{identifier}>");
+                stringBuilder.Append($@"<entitydescription.{muzzle.Identifier}>");
 
-                stringBuilder.Append($@"<entitydescription.{identifier}>");
-
-                if (stat.WeaponDamageMultiplier.HasValue)
+                if (muzzle.WeaponDamageMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.weapondamagemodifier")}‖end‖ ×{stat.WeaponDamageMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.weapondamagemodifier")}‖end‖ ×{muzzle.WeaponDamageMultiplier.Value}\n");
                 }
 
-                if (stat.PenetrationModifier.HasValue)
+                if (muzzle.PenetrationModifier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.armorpenetrationmodifier")}‖end‖ {stat.PenetrationModifier.Value:+0.##%;-0.##%;0%}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.armorpenetrationmodifier")}‖end‖ {muzzle.PenetrationModifier.Value:+0.##%;-0.##%;0%}\n");
                 }
 
-                if (stat.SpreadChangesOnShootMultiplier.HasValue)
+                if (muzzle.SpreadChangesOnShootMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadchangeswhenfiremodifier")}‖end‖ ×{stat.SpreadChangesOnShootMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadchangeswhenfiremodifier")}‖end‖ ×{muzzle.SpreadChangesOnShootMultiplier.Value}\n");
                 }
-                
-                if (stat.SpreadChoke.HasValue)
+
+                if (muzzle.SpreadChoke.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.maximumshotschoke")}‖end‖: {stat.SpreadChoke.Value}°\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.maximumshotschoke")}‖end‖: {muzzle.SpreadChoke.Value}°\n");
                 }
 
                 stringBuilder.Replace(@"\n", "", stringBuilder.Length - 2, 2);
-                stringBuilder.AppendLine($@"</entitydescription.{identifier}>");
+                stringBuilder.AppendLine($@"</entitydescription.{muzzle.Identifier}>");
             });
         }
 
         {
-            var statList = AccessoryAimingDevice.Stats.ToList();
-            statList.Sort((kv1, kv2) => { return kv1.Key.CompareTo(kv2.Key); });
-            statList.ForEach(kv =>
+            var aimingDeviceList = AimingDeviceXMLGenerator.All.Values.ToList();
+            aimingDeviceList.Sort((gen1, gen2) => { return gen1.Identifier.CompareTo(gen2.Identifier); });
+            aimingDeviceList.ForEach(aimingDevice =>
             {
-                string identifier = kv.Key;
-                AccessoryAimingDevice stat = kv.Value;
+                stringBuilder.AppendLine($@"<entityname.{aimingDevice.Identifier}>{TextManager.Get($@"entityname.{aimingDevice.Identifier}")}</entityname.{aimingDevice.Identifier}>");
 
-                stringBuilder.AppendLine($@"<entityname.{identifier}>{TextManager.Get($@"entityname.{identifier}")}</entityname.{identifier}>");
+                stringBuilder.Append($@"<entitydescription.{aimingDevice.Identifier}>");
 
-                stringBuilder.Append($@"<entitydescription.{identifier}>");
-
-                if (stat.SpreadChangesOnAimDownSightMultiplier.HasValue)
+                if (aimingDevice.SpreadChangesOnAimDownSightMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadchangeswhenaimdownsightmodifier")}‖end‖ ×{stat.SpreadChangesOnAimDownSightMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadchangeswhenaimdownsightmodifier")}‖end‖ ×{aimingDevice.SpreadChangesOnAimDownSightMultiplier.Value}\n");
                 }
 
-                if (stat.SpreadRecoveryMultiplier.HasValue)
+                if (aimingDevice.SpreadRecoveryMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadrecoveryratemodifier")}‖end‖ ×{stat.SpreadRecoveryMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.spreadrecoveryratemodifier")}‖end‖ ×{aimingDevice.SpreadRecoveryMultiplier.Value}\n");
                 }
 
-                if (stat.MinimumSpreadOnRecoveringMultiplier.HasValue)
+                if (aimingDevice.MinimumSpreadOnRecoveringMultiplier.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.minimumspreadonrecoveringmodifier")}‖end‖ ×{stat.MinimumSpreadOnRecoveringMultiplier.Value}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.minimumspreadonrecoveringmodifier")}‖end‖ ×{aimingDevice.MinimumSpreadOnRecoveringMultiplier.Value}\n");
                 }
 
-                if (stat.ObstructVisionAmount.HasValue)
+                if (aimingDevice.ObstructVisionAmount.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.obstructvisionamount")}‖end‖: {stat.ObstructVisionAmount.Value:0.##%}\n");
+                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.obstructvisionamount")}‖end‖: {aimingDevice.ObstructVisionAmount.Value:0.##%}\n");
                 }
 
                 stringBuilder.Replace(@"\n", "", stringBuilder.Length - 2, 2);
-                stringBuilder.AppendLine($@"</entitydescription.{identifier}>");
+                stringBuilder.AppendLine($@"</entitydescription.{aimingDevice.Identifier}>");
             });
         }
 
@@ -257,8 +357,6 @@ $@"<infotexts {TextManager.TextFileRootXMLAttributesString}>
 }
 
 Console.ReadKey();
-
-
 
 
 static string CleanUpPathCrossPlatform([AllowNull] string path, string directory = "")

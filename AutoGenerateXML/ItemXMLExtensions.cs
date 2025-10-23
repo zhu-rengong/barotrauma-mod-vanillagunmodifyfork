@@ -2,7 +2,7 @@
 {
     public static class ItemXMLExtensions
     {
-        public static string ConcatValues<T>(T[] objects) => string.Join(",", objects);
+        public static string ConcatValues<T>(IEnumerable<T> objects) => string.Join(",", objects);
         public static string GetTickDurationString(int tick) => (tick * 1.0f / 60.0f).ToString("0.0000").Substring(0, "0.000".Length);
 
         public static string GenerateItemSpriteXMLString(
@@ -26,6 +26,11 @@ $@"<Body
 width=""{width}""
 height=""{height}""
 density=""{density}""/>";
+        }
+
+        public static string FollowedByModPrefix(this string name)
+        {
+            return $@"{UserDefinedGlobal.ModNameAbbreviation} {name}";
         }
 
         public static string GenerateSlotIconStockXMLString(int index)
@@ -56,6 +61,16 @@ density=""{density}""/>";
         public static string GenerateSlotIconFlashlightXMLString(int index)
         {
             return $@"<SlotIcon slotindex=""{index}"" texture=""Content/UI/StatusMonitorUI.png"" sourcerect=""320,448,64,64"" origin=""0.5,0.5"" />";
+        }
+
+        public static string GenerateAccessoryThrowableXMLsString()
+        {
+            return $@"<Throwable characterusable=""false"" slots=""Any,LeftHand,RightHand"" throwforce=""4.5"" aimpos=""35,-10"" holdangle=""70"" msg=""ItemMsgPickUpSelect"" />";
+        }
+
+        public static string GenerateAccessoryPreferredContainerXMLsString()
+        {
+            return $@"<PreferredContainer primary=""armcab"" secondary=""secarmcab"" />";
         }
     }
 }
