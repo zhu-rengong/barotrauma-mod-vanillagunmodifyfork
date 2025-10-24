@@ -11,8 +11,32 @@
     <Sprite texture="%ModDir%/EuropaArmedGroupCommunity/VanillaGunModify/GunMods/GunMods.png" sourcerect="256,416,48,9" depth="0.518" origin="0.5,0.5" />
     <Body width="46" height="8" density="15" />
     <Throwable characterusable="false" slots="Any,LeftHand,RightHand" throwforce="4.5" aimpos="35,-10" holdangle="70" msg="ItemMsgPickUpSelect" />
-    <ItemContainer capacity="1" maxstacksize="3" hideitems="true" containedstateindicatorslot="0" containedstateindicatorstyle="bullet">
-      <Containable items="shotgunammo" />
+    <ItemContainer characterusable="false" capacity="1" maxstacksize="3" hideitems="true" containedstateindicatorslot="0" containedstateindicatorstyle="bullet">
+      <!-- [Shotgun Tube Extender] Activate -->
+      <StatusEffect type="OnUse" target="Contained" targetitemcomponent="Projectile" statuseffecttags="WouldBeAppliedByChokeTubeMuzzleEffect" duration="0.016" comparison="And">
+        <Conditional targetcontainer="true" targetitemcomponent="ItemContainer" hasstatustag="WouldApplyChokeTubeMuzzleEffectToAmmo" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetitemcomponent="Projectile" statuseffecttags="WouldBeAppliedByDuckbillMuzzleEffect" duration="0.016" comparison="And">
+        <Conditional targetcontainer="true" targetitemcomponent="ItemContainer" hasstatustag="WouldApplyDuckbillMuzzleEffectToAmmo" />
+      </StatusEffect>
+      <Containable items="shotgunammo">
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" statuseffecttags="Choked" duration="0.016" comparison="And">
+          <Conditional targetitemcomponent="Projectile" user="! null" spread="gt 2" />
+          <Conditional targetitemcomponent="Projectile" hasstatustag="WouldBeAppliedByChokeTubeMuzzleEffect" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="-8" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" />
+          <Conditional targetitemcomponent="Projectile" hasstatustag="WouldBeAppliedByChokeTubeMuzzleEffect" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="2" setvalue="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" spread="lt 2" />
+          <Conditional targetitemcomponent="Projectile" hasstatustag="WouldBeAppliedByChokeTubeMuzzleEffect" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="15" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" user="! null" />
+          <Conditional targetitemcomponent="Projectile" hasstatustag="WouldBeAppliedByDuckbillMuzzleEffect" />
+        </StatusEffect>
+      </Containable>
     </ItemContainer>
   </Item>
 </Items>

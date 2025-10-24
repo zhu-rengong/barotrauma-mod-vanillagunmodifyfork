@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static AutoGenerateXML.GunXMLGenerator;
 using static AutoGenerateXML.ItemXMLExtensions;
 
 namespace AutoGenerateXML.Items.Accessories
@@ -44,6 +45,164 @@ $@"<Item name=""{Name.FollowedByModPrefix()}"" identifier=""{Identifier}"" categ
 </Item>";
 
             return xmlString;
+        }
+
+        public static string GenerateMuzzleSpreadChokeForShotgunTubeExtenderAtSlefContainerXMLsString()
+        {
+            var allChokes = All.Values.Where(muzzle => muzzle.SpreadChoke.HasValue && muzzle.SpreadChoke.Value != 0).ToList();
+
+            StringBuilder codePart1 = new();
+            StringBuilder codePart2 = new();
+            bool hasModifier = false;
+
+            allChokes.ForEach(muzzle =>
+            {
+                bool isTightened = muzzle.SpreadChoke.Value > 0.0f;
+
+                codePart1.AppendLine(
+$@"<StatusEffect type=""OnUse"" target=""Contained"" targetitemcomponent=""Projectile"" statuseffecttags=""WouldBeAppliedBy{muzzle.Name}Effect"" duration=""{GetTickDurationString(1)}"" comparison=""And"">
+    <Conditional targetcontainer=""true"" targetitemcomponent=""ItemContainer"" hasstatustag=""WouldApply{muzzle.Name}EffectToAmmo"" />
+</StatusEffect>");
+
+                if (isTightened)
+                {
+                    codePart2.AppendLine(
+$@"<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" statuseffecttags=""{StatusEffectTags.Choked}"" duration=""{GetTickDurationString(1)}"" comparison=""And"">
+    <Conditional targetitemcomponent=""Projectile"" user=""! null"" spread=""gt {muzzle.SpreadChokeLimit}"" />
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""WouldBeAppliedBy{muzzle.Name}Effect"" />
+</StatusEffect>
+<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{-muzzle.SpreadChoke}"" disabledeltatime=""true"" comparison=""And"">
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""{StatusEffectTags.Choked}"" />
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""WouldBeAppliedBy{muzzle.Name}Effect"" />
+</StatusEffect>
+<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{muzzle.SpreadChokeLimit}"" setvalue=""true"" comparison=""And"">
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""{StatusEffectTags.Choked}"" spread=""lt {muzzle.SpreadChokeLimit}"" />
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""WouldBeAppliedBy{muzzle.Name}Effect"" />
+</StatusEffect>");
+                }
+                else
+                {
+                    codePart2.AppendLine(
+$@"<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{-muzzle.SpreadChoke}"" disabledeltatime=""true"" comparison=""And"">
+    <Conditional targetitemcomponent=""Projectile"" user=""! null"" />
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""WouldBeAppliedBy{muzzle.Name}Effect"" />
+</StatusEffect>");
+                }
+
+                hasModifier = true;
+            });
+
+            if (hasModifier)
+            {
+                return
+$@"<!-- [Shotgun Tube Extender] Activate -->
+{codePart1}
+<Containable items=""shotgunammo"">
+    {codePart2}
+</Containable>";
+            }
+
+            return string.Empty;
+        }
+    }
+}
+
+namespace AutoGenerateXML
+{
+    public abstract partial class GunXMLGenerator
+    {
+        public int ShotgunTuberExtenderSlotIndex = -1;
+
+        private bool hasCalledGenerateMuzzleSpreadChokeXMLsString = false;
+        public string GenerateMuzzleSpreadChokeXMLsString()
+        {
+            hasCalledGenerateMuzzleSpreadChokeXMLsString = true;
+
+            if (ContainableMuzzles is null) { throw new NullReferenceException($@"Unable to generate muzzle code because '{Name}' has no muzzle defined."); }
+
+            StringBuilder stringBuilder = new();
+
+            bool hasModifier = false;
+
+            ContainableMuzzles.ForEach(containable =>
+            {
+                if (containable.Muzzle.SpreadChoke.HasValue && containable.Muzzle.SpreadChoke.Value != 0)
+                {
+                    bool isTightened = containable.Muzzle.SpreadChoke.Value > 0.0f;
+
+                    if (isTightened)
+                    {
+                        stringBuilder.AppendLine(
+$@"<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" statuseffecttags=""{StatusEffectTags.Choked}"" duration=""{GetTickDurationString(1)}"" comparison=""And"">
+    <Conditional targetitemcomponent=""Projectile"" user=""! null"" spread=""gt {containable.Muzzle.SpreadChokeLimit}"" />
+    <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{-containable.Muzzle.SpreadChoke.Value}"" disabledeltatime=""true"">
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""{StatusEffectTags.Choked}"" />
+    <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{containable.Muzzle.SpreadChokeLimit}"" setvalue=""true"" comparison=""And"">
+    <Conditional targetitemcomponent=""Projectile"" hasstatustag=""{StatusEffectTags.Choked}"" spread=""lt {containable.Muzzle.SpreadChokeLimit}"" />
+    <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>");
+                    }
+                    else
+                    {
+                        stringBuilder.AppendLine(
+$@"<StatusEffect type=""OnRemoved"" target=""Contained"" targetitemcomponent=""Projectile"" spread=""{-containable.Muzzle.SpreadChoke.Value}"" disabledeltatime=""true"">
+    <Conditional targetitemcomponent=""Projectile"" user=""! null"" />
+    <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>");
+                    }
+
+                    hasModifier = true;
+                }
+            });
+
+            if (hasModifier)
+            {
+                stringBuilder.Insert(0, "<!-- [Muzzle] Spread choke -->\n");
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        private bool hasCalledGenerateMuzzleSpreadChokeForShotgunTubeExtenderAtParentHoldableXMLsString = false;
+        public string GenerateMuzzleSpreadChokeForShotgunTubeExtenderAtParentHoldableXMLsString()
+        {
+            hasCalledGenerateMuzzleSpreadChokeForShotgunTubeExtenderAtParentHoldableXMLsString = true;
+
+            if (ContainableMuzzles is null) { throw new NullReferenceException($@"Unable to generate muzzle code because '{Name}' has no muzzle defined."); }
+
+            StringBuilder stringBuilder = new();
+
+            bool hasModifier = false;
+
+            ContainableMuzzles.ForEach(containable =>
+            {
+                if (containable.Muzzle.SpreadChoke.HasValue && containable.Muzzle.SpreadChoke.Value != 0)
+                {
+                    stringBuilder.AppendLine(
+$@"<StatusEffect type=""OnUse"" target=""Contained"" targetslot=""{ShotgunTuberExtenderSlotIndex}"" statuseffecttags=""WouldApply{containable.Muzzle.Name}EffectToAmmo"" duration=""{GetTickDurationString(1)}"" comparison=""And"">
+    <Conditional targetcontainer=""true"" targetitemcomponent=""RangedWeapon"" isactive=""false"" reloadtimer=""0.0"" />
+    <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>
+<StatusEffect type=""OnUse"" target=""Contained"" targetslot=""{ShotgunTuberExtenderSlotIndex}"" comparison=""And"">
+    <Use />
+    <Conditional targetcontainer=""true"" targetitemcomponent=""RangedWeapon"" isactive=""false"" reloadtimer=""0.0"" />
+    <RequiredItem identifier=""{containable.Muzzle.Identifier}"" type=""Contained"" targetslot=""{MuzzleSlotIndex}"" />
+</StatusEffect>");
+
+                    hasModifier = true;
+                }
+            });
+
+            if (hasModifier)
+            {
+                stringBuilder.Insert(0, "<!-- [Shotgun Tube Extender] Activate -->\n");
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }

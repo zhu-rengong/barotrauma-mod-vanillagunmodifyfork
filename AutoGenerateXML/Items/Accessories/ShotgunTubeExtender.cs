@@ -44,8 +44,8 @@ $@"<Item name=""{Name.FollowedByModPrefix()}"" identifier=""{Identifier}"" categ
     )}
     {GenerateRectangleBodyXMLString(width: 46, height: 8, density: 15)}
     {GenerateAccessoryThrowableXMLsString()}
-    <ItemContainer capacity=""1"" maxstacksize=""{Capacity}"" hideitems=""true"" containedstateindicatorslot=""0"" containedstateindicatorstyle=""bullet"">
-        <Containable items=""shotgunammo"" />
+    <ItemContainer characterusable=""false"" capacity=""1"" maxstacksize=""{Capacity}"" hideitems=""true"" containedstateindicatorslot=""0"" containedstateindicatorstyle=""bullet"">
+        {ChokeTubeMuzzle.GenerateMuzzleSpreadChokeForShotgunTubeExtenderAtSlefContainerXMLsString()}
     </ItemContainer>
 </Item>";
 

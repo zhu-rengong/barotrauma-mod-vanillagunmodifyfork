@@ -286,7 +286,7 @@
       <Containable items="shotgunammo" hide="true">
         <!-- [Muzzle] Spread choke -->
         <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" statuseffecttags="Choked" duration="0.016" comparison="And">
-          <Conditional targetitemcomponent="Projectile" hitscancount="gt 1" user="! null" spread="gt 2" />
+          <Conditional targetitemcomponent="Projectile" user="! null" spread="gt 2" />
           <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
         <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="-8" disabledeltatime="true">
@@ -297,12 +297,8 @@
           <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" spread="lt 2" />
           <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
-        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" statuseffecttags="Choked" duration="0.016" comparison="And">
-          <Conditional targetitemcomponent="Projectile" hitscancount="gt 1" user="! null" />
-          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
-        </StatusEffect>
         <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" spread="15" disabledeltatime="true">
-          <Conditional targetitemcomponent="Projectile" hasstatustag="Choked" />
+          <Conditional targetitemcomponent="Projectile" user="! null" />
           <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
       </Containable>

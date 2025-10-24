@@ -23,6 +23,7 @@ namespace AutoGenerateXML.Items.Weapons
             MuzzleSlotIndex = 3;
             UpperAccessorySlotIndex = 4;
             ScannerSlotIndex = 5;
+            ShotgunTuberExtenderSlotIndex = 6;
         }
 
         public override float? HoldAngle => -40;
@@ -106,6 +107,8 @@ $@"
         {GenerateAimingDeviceObstructVisionXMLsString()}
         
         {GenerateScannerActivationXMLsString()}
+
+        {GenerateMuzzleSpreadChokeForShotgunTubeExtenderAtParentHoldableXMLsString()}
 
         {GenerateHotTagWasAimingXMLsString()}
         {GenerateHotTagPreventSpreadingOnADSXMLsString()}
