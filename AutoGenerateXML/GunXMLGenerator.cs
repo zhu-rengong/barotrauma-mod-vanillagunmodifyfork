@@ -1022,7 +1022,7 @@ $@"<Containable tag=""{Tags.VGM_Grip}Attr{Name}Compatible"" hide=""false"">
                 stringBuilder.AppendLine(
 $@"<Containable identifier=""{containable.AimingDevice.Identifier}"" hide=""false"" itempos=""{ConcatValues(containable.ItemPos)}"">
     {(containable.AimingDevice.CameraAimOffset.HasValue
-? $@"<StatusEffect type=""OnInserted"" target=""This"" targetitemcomponent=""Holdable"" cameraaimoffset=""{containable.AimingDevice.CameraAimOffset.Value}"" setvalue=""true"" />
+? $@"<StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""Holdable"" cameraaimoffset=""{containable.AimingDevice.CameraAimOffset.Value}"" setvalue=""true"" />
     <StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""RangedWeapon"" crosshairscale=""{CrosshairScale * containable.AimingDevice.CameraAimOffset.Value / 240}"" setvalue=""true"" interval=""0.5"" />"
 : string.Empty)}
 </Containable>");
@@ -1073,14 +1073,11 @@ $@"<Containable tag=""{Tags.VGM_AimingDevice}Attr{Name}Compatible"" hide=""false
 
                 stringBuilder.AppendLine(
 $@"<Containable identifier=""{containable.Muzzle.Identifier}"" hide=""false"" itempos=""{ConcatValues(containable.ItemPos)}"">
-    {(containable.Muzzle.WeaponDamageMultiplier.HasValue || containable.Muzzle.PenetrationModifier.HasValue
-        ? $@"<StatusEffect type=""OnInserted"" target=""This"" targetitemcomponent=""RangedWeapon""
-            {(containable.Muzzle.WeaponDamageMultiplier.HasValue ? $@"weapondamagemodifier=""{containable.Muzzle.WeaponDamageMultiplier.Value * WeaponDamageModifier}""" : string.Empty)}
-            {(containable.Muzzle.PenetrationModifier.HasValue ? $@"penetration=""{Penetration + containable.Muzzle.PenetrationModifier.Value}""" : string.Empty)}
-            setvalue=""true"" delay=""{GetTickDurationString(1)}"" />"
-        : string.Empty
-    )}
-    <StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""RangedWeapon"" barrelpos=""{ConcatValues(containable.BarrelPos)}"" setvalue=""true"" />
+    <StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""RangedWeapon""
+        barrelpos=""{ConcatValues(containable.BarrelPos)}""
+        {(containable.Muzzle.WeaponDamageMultiplier.HasValue ? $@"weapondamagemodifier=""{containable.Muzzle.WeaponDamageMultiplier.Value * WeaponDamageModifier}""" : string.Empty)}
+        {(containable.Muzzle.PenetrationModifier.HasValue ? $@"penetration=""{Penetration + containable.Muzzle.PenetrationModifier.Value}""" : string.Empty)}
+        setvalue=""true"" />
 </Containable>");
 
             });

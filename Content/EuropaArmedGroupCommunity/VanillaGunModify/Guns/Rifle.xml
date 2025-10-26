@@ -445,19 +445,16 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="136,6" setvalue="true" />
         </Containable>
         <Containable identifier="VGM_ShortSuppressorMuzzle" hide="false" itempos="44,3">
-          <StatusEffect type="OnInserted" target="This" targetitemcomponent="RangedWeapon" weapondamagemodifier="1.1" setvalue="true" delay="0.016" />
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="105,6" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="105,6" weapondamagemodifier="1.1" setvalue="true" />
         </Containable>
         <Containable identifier="VGM_LongSuppressorMuzzle" hide="false" itempos="51,3">
-          <StatusEffect type="OnInserted" target="This" targetitemcomponent="RangedWeapon" weapondamagemodifier="1.2" setvalue="true" delay="0.016" />
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="132,6" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="132,6" weapondamagemodifier="1.2" setvalue="true" />
         </Containable>
         <Containable identifier="VGM_FlashHiderMuzzle" hide="false" itempos="40,3">
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="88,6" setvalue="true" />
         </Containable>
         <Containable identifier="VGM_LongBarrelMuzzle" hide="false" itempos="52,3">
-          <StatusEffect type="OnInserted" target="This" targetitemcomponent="RangedWeapon" weapondamagemodifier="1.2" penetration="0.1" setvalue="true" delay="0.016" />
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="136,6" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" barrelpos="136,6" weapondamagemodifier="1.2" penetration="0.1" setvalue="true" />
         </Containable>
         <Containable tag="VGM_MuzzleAttrRifleCompatible" hide="false">
           <StatusEffect type="OnRemoved" target="This" weapondamagemodifier="1" penetration="0" barrelpos="72,6" setvalue="true" disabledeltatime="true" />
@@ -466,23 +463,23 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
       <SubContainer capacity="1" maxstacksize="1">
         <!-- [AimingDevice] -->
         <Containable identifier="VGM_RedDotSight" hide="false" itempos="-18,9">
-          <StatusEffect type="OnInserted" target="This" targetitemcomponent="Holdable" cameraaimoffset="350" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" cameraaimoffset="350" setvalue="true" />
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" crosshairscale="0.21875001" setvalue="true" interval="0.5" />
         </Containable>
         <Containable identifier="VGM_HolographicSight" hide="false" itempos="-15,10">
-          <StatusEffect type="OnInserted" target="This" targetitemcomponent="Holdable" cameraaimoffset="350" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" cameraaimoffset="350" setvalue="true" />
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" crosshairscale="0.21875001" setvalue="true" interval="0.5" />
         </Containable>
         <Containable identifier="VGM_ACOGScope" hide="false" itempos="-17,12">
-          <StatusEffect type="OnInserted" target="This" targetitemcomponent="Holdable" cameraaimoffset="450" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" cameraaimoffset="450" setvalue="true" />
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" crosshairscale="0.28125" setvalue="true" interval="0.5" />
         </Containable>
         <Containable identifier="VGM_RifleScope" hide="false" itempos="-15,9">
-          <StatusEffect type="OnInserted" target="This" targetitemcomponent="Holdable" cameraaimoffset="625" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" cameraaimoffset="625" setvalue="true" />
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" crosshairscale="0.390625" setvalue="true" interval="0.5" />
         </Containable>
         <Containable identifier="VGM_SniperScope" hide="false" itempos="-6,11">
-          <StatusEffect type="OnInserted" target="This" targetitemcomponent="Holdable" cameraaimoffset="800" setvalue="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" cameraaimoffset="800" setvalue="true" />
           <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" crosshairscale="0.50000006" setvalue="true" interval="0.5" />
         </Containable>
         <Containable tag="VGM_AimingDeviceAttrRifleCompatible" hide="false">
