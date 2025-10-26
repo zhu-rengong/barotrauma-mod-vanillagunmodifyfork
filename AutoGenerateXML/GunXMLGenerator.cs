@@ -1022,7 +1022,7 @@ $@"<Containable tag=""{Tags.VGM_Grip}Attr{Name}Compatible"" hide=""false"">
                 stringBuilder.AppendLine(
 $@"<Containable identifier=""{containable.AimingDevice.Identifier}"" hide=""false"" itempos=""{ConcatValues(containable.ItemPos)}"">
     {(containable.AimingDevice.CameraAimOffset.HasValue
-? $@"<StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""Holdable"" cameraaimoffset=""{containable.AimingDevice.CameraAimOffset.Value}"" setvalue=""true"" />
+? $@"<StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""Holdable"" cameraaimoffset=""{containable.AimingDevice.CameraAimOffset.Value}"" setvalue=""true"" interval=""0.5"" />
     <StatusEffect type=""OnContaining"" target=""This"" targetitemcomponent=""RangedWeapon"" crosshairscale=""{CrosshairScale * containable.AimingDevice.CameraAimOffset.Value / 240}"" setvalue=""true"" interval=""0.5"" />"
 : string.Empty)}
 </Containable>");
