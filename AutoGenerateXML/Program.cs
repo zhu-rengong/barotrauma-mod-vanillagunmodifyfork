@@ -316,15 +316,25 @@ $@"<infotexts {TextManager.TextFileRootXMLAttributesString}>
 
                 if (muzzle.SpreadChoke.HasValue)
                 {
-                    stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.maximumshotschoke")}‖end‖: {muzzle.SpreadChoke.Value}°\n");
+                    switch (Math.Sign(muzzle.SpreadChoke.Value))
+                    {
+                        case 1:
+                            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.maximumshotschoke")}‖end‖: {muzzle.SpreadChoke.Value}°\n");
+                            break;
+                        case -1:
+                            stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.negativeshotschoke")}‖end‖: {-muzzle.SpreadChoke.Value:+0.##;-0.##;0}°\n");
+                            break;
+                        default:
+                            break;
+                    }
                 }
-                
+
                 if (muzzle.ShotAmountModifierPerXShots is not null)
                 {
                     string description = TextManager.GetWithVariables("gunmodsstatname.shotamountmodifierperxshots",
                         ("[perxshots]", muzzle.ShotAmountModifierPerXShots[1]),
                         ("[modifier]", muzzle.ShotAmountModifierPerXShots[0].ToString("+0;-0")),
-                        ("[maximum]", muzzle.ShotAmountModifierPerXShots[0] * muzzle.ShotAmountModifiationTimes)); 
+                        ("[maximum]", muzzle.ShotAmountModifierPerXShots[0] * muzzle.ShotAmountModifiationTimes));
                     stringBuilder.Append($@"‖color:gui.blue‖{description}‖end‖\n");
                 }
 

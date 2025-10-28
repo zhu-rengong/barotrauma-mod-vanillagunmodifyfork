@@ -86,6 +86,7 @@ namespace AutoGenerateXML
                 { $@"gunmodsstatname.minimumspreadonrecoveringmodifier", [ (LanguageId.English, "Minimum Spread"), (LanguageId.SimplifiedChinese, "散布下限") ] },
                 { $@"gunmodsstatname.obstructvisionamount", [ (LanguageId.English, "Obstruct Vision"), (LanguageId.SimplifiedChinese, "视野阻挡") ] },
                 { $@"gunmodsstatname.maximumshotschoke", [ (LanguageId.English, "Maximum Shots Choke"), (LanguageId.SimplifiedChinese, "最大弹丸收束") ] },
+                { $@"gunmodsstatname.negativeshotschoke", [ (LanguageId.English, "Shots Spread"), (LanguageId.SimplifiedChinese, "弹丸散布") ] },
                 { $@"gunmodsstatname.shotamountmodifierperxshots", [
                     (LanguageId.English, "When fire, for every [perxshots] pellets in the ammo, pellet amount [modifier], up to [maximum]"),
                     (LanguageId.SimplifiedChinese, "开火时，弹药中每有[perxshots]颗弹丸，弹丸量[modifier]，至多[maximum]颗")

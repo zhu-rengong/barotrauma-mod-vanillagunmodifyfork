@@ -31,7 +31,7 @@
   <entityname.VGM_ChokeTubeMuzzle>Choke Tube</entityname.VGM_ChokeTubeMuzzle>
   <entitydescription.VGM_ChokeTubeMuzzle>‖color:gui.orange‖Maximum Shots Choke‖end‖: 8°</entitydescription.VGM_ChokeTubeMuzzle>
   <entityname.VGM_DuckbillMuzzle>Duckbill Muzzle</entityname.VGM_DuckbillMuzzle>
-  <entitydescription.VGM_DuckbillMuzzle>‖color:gui.orange‖Maximum Shots Choke‖end‖: -15°\n‖color:gui.blue‖When fire, for every 4 pellets in the ammo, pellet amount +1, up to 3‖end‖</entitydescription.VGM_DuckbillMuzzle>
+  <entitydescription.VGM_DuckbillMuzzle>‖color:gui.orange‖Shots Spread‖end‖: +15°\n‖color:gui.blue‖When fire, for every 4 pellets in the ammo, pellet amount +1, up to 3‖end‖</entitydescription.VGM_DuckbillMuzzle>
   <entityname.VGM_FlashHiderMuzzle>Flash Hider</entityname.VGM_FlashHiderMuzzle>
   <entitydescription.VGM_FlashHiderMuzzle>‖color:gui.orange‖Spread Changes When Fire‖end‖ ×0.8</entitydescription.VGM_FlashHiderMuzzle>
   <entityname.VGM_LongBarrelMuzzle>Extended Barrel</entityname.VGM_LongBarrelMuzzle>
