@@ -36,6 +36,18 @@
           <Conditional targetitemcomponent="Projectile" user="! null" />
           <Conditional targetitemcomponent="Projectile" hasstatustag="WouldBeAppliedByDuckbillMuzzleEffect" />
         </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 12" user="! null" />
+          <Conditional targetitemcomponent="Projectile" hasstatustag="WouldBeAppliedByDuckbillMuzzleEffect" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 8" user="! null" />
+          <Conditional targetitemcomponent="Projectile" hasstatustag="WouldBeAppliedByDuckbillMuzzleEffect" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 4" user="! null" />
+          <Conditional targetitemcomponent="Projectile" hasstatustag="WouldBeAppliedByDuckbillMuzzleEffect" />
+        </StatusEffect>
       </Containable>
     </ItemContainer>
   </Item>

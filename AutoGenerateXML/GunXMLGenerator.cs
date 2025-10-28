@@ -72,6 +72,9 @@ namespace AutoGenerateXML
 
         public bool CompatibleWithAnyMuzzleAttrChoke => ContainableMuzzles is not null
                 && ContainableMuzzles.Any(v => v.Muzzle.SpreadChoke.HasValue);
+        
+        public bool CompatibleWithAnyMuzzleAttrShotAmountModification => ContainableMuzzles is not null
+                && ContainableMuzzles.Any(v => v.Muzzle.ShotAmountModifierPerXShots is not null);
 
         public static readonly float MaxSpreadPerTickOnShoot = 1.0f;
 
@@ -128,6 +131,11 @@ namespace AutoGenerateXML
             {
                 ThrowError("The functionality of Spread Choke is incomplete.");
             }
+            
+            if (NotAllSame(hasCalledGenerateMuzzleShotAmountModificationXMLsString, CompatibleWithAnyMuzzleAttrShotAmountModification))
+            {
+                ThrowError("The functionality of Shot amount modification is incomplete.");
+            }
 
             if (NotAllSame(ContainableAimingDevices is not null,
                 hasCalledGenerateAimingDeviceModifySpreadChangesOnAimDownSightXMLsString,
@@ -164,7 +172,7 @@ namespace AutoGenerateXML
             }
 
             if (NotAllSame(ShotgunTuberExtenderSlotIndex > -1,
-                hasCalledGenerateMuzzleSpreadChokeForShotgunTubeExtenderAtParentHoldableXMLsString))
+                hasCalledGenerateShotgunTubeExtenderFunctionalityAtParentHoldableXMLsString))
             {
                 ThrowError("The functionality of Shotgun Tube Extender is incomplete.");
             }
@@ -197,7 +205,7 @@ $@"<PreferredContainer primary=""secarmcab"" secondary=""armcab,weaponholder"" /
             {
                 return
 $@"<!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
-<StatusEffect type=""OnSpawn"" target=""This"" statuseffecttags=""{StatusEffectTags.FirstInitialized}"" duration=""0.1"" evententitytag=""gun"">
+<StatusEffect type=""OnSpawn"" target=""This"" statuseffecttags=""{StatusEffectTags.FirstInitialized}"" duration=""{GetTickDurationString(2)}"" evententitytag=""gun"">
     <Conditional HasBeenInstantiatedOnce=""false"" />
     <TriggerEvent>
         <ScriptedEvent identifier=""VGM_TrySpawn{Name}OEMStock"">
@@ -1131,13 +1139,13 @@ $@"<Containable identifier=""{containable.Scanner.Identifier}"" hide=""false"" i
 
             return
 $@"<!-- [FiringModeBurst] When the gun is loaded and not in bursting state, it is ready  -->
-<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" tags=""firingmodeburst_ready"" duration=""{GetTickDurationString(1)}"" comparison=""And"">
+<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" tags=""FiringModeBurst_Ready"" duration=""{GetTickDurationString(1)}"" comparison=""And"">
     <Conditional targetitemcomponent=""RangedWeapon"" isactive=""false"" />
-    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""! firingmodeburst_active"" />
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""! FiringModeBurst_Active"" />
 </StatusEffect>
 <StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" reloadtimer=""0.0"" isactive=""false"" setvalue=""true"" comparison=""And"">
-    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""firingmodeburst_active"" />
-    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""! firingmodeburst_reloading"" />
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""FiringModeBurst_Active"" />
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""! FiringModeBurst_Reloading"" />
 </StatusEffect>";
         }
 
@@ -1159,20 +1167,20 @@ $@"<!-- [FiringModeBurst] When the gun is loaded and not in bursting state, it i
                 if (numberOfRounds > 1)
                 {
                     stringBuilder.AppendLine(
-$@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" tags=""firingmodeburst_{numberOfRounds},firingmodeburst_active"" duration=""{GetTickDurationString(keepBurstingDuration)}"">
-    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""firingmodeburst_{numberOfRounds - 1}"" />
+$@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" tags=""FiringModeBurst_{numberOfRounds},FiringModeBurst_Active"" duration=""{GetTickDurationString(keepBurstingDuration)}"">
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""FiringModeBurst_{numberOfRounds - 1}"" />
 </StatusEffect>");
                 }
                 else
                 {
                     stringBuilder.AppendLine(
-$@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" tags=""firingmodeburst_{numberOfRounds},firingmodeburst_active"" duration=""{GetTickDurationString(keepBurstingDuration)}"">
-    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""firingmodeburst_ready"" />
+$@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" tags=""FiringModeBurst_{numberOfRounds},FiringModeBurst_Active"" duration=""{GetTickDurationString(keepBurstingDuration)}"">
+    <Conditional targetitemcomponent=""RangedWeapon"" hasstatustag=""FiringModeBurst_Ready"" />
 </StatusEffect>");
                 }
             }
 
-            stringBuilder.AppendLine($@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" tags=""firingmodeburst_reloading"" duration=""{GetTickDurationString(reloadInTicks)}"" />");
+            stringBuilder.AppendLine($@"<StatusEffect type=""OnUse"" target=""This"" targetitemcomponent=""RangedWeapon"" tags=""FiringModeBurst_Reloading"" duration=""{GetTickDurationString(reloadInTicks)}"" />");
 
             return stringBuilder.ToString();
         }

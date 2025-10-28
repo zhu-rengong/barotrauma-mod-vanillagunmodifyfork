@@ -462,7 +462,7 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         </Containable>
       </SubContainer>
       <!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
-      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.1" evententitytag="gun">
+      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.033" evententitytag="gun">
         <Conditional HasBeenInstantiatedOnce="false" />
         <TriggerEvent>
           <ScriptedEvent identifier="VGM_TrySpawnAssaultRifleOEMStock">

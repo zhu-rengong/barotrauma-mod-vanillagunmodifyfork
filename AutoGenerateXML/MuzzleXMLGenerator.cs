@@ -18,6 +18,8 @@ namespace AutoGenerateXML
         public float? PenetrationModifier;
         public float? SpreadChangesOnShootMultiplier;
         public float? SpreadChoke;
+        public int[]? ShotAmountModifierPerXShots;
+        public int ShotAmountModifiationTimes = 1;
         public float SpreadChokeLimit = 0.0f;
         public string? FlashOverrideParticle;
         public float[]? FlashScaleMultiplier;

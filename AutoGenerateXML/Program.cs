@@ -318,6 +318,15 @@ $@"<infotexts {TextManager.TextFileRootXMLAttributesString}>
                 {
                     stringBuilder.Append($@"‖color:gui.orange‖{TextManager.Get("gunmodsstatname.maximumshotschoke")}‖end‖: {muzzle.SpreadChoke.Value}°\n");
                 }
+                
+                if (muzzle.ShotAmountModifierPerXShots is not null)
+                {
+                    string description = TextManager.GetWithVariables("gunmodsstatname.shotamountmodifierperxshots",
+                        ("[perxshots]", muzzle.ShotAmountModifierPerXShots[1]),
+                        ("[modifier]", muzzle.ShotAmountModifierPerXShots[0].ToString("+0;-0")),
+                        ("[maximum]", muzzle.ShotAmountModifierPerXShots[0] * muzzle.ShotAmountModifiationTimes)); 
+                    stringBuilder.Append($@"‖color:gui.blue‖{description}‖end‖\n");
+                }
 
                 stringBuilder.Replace(@"\n", "", stringBuilder.Length - 2, 2);
                 stringBuilder.AppendLine($@"</entitydescription.{muzzle.Identifier}>");

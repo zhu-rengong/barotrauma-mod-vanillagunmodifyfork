@@ -176,20 +176,24 @@
       <!-- [Shotgun Tube Extender] Activate -->
       <StatusEffect type="OnUse" target="Contained" targetslot="6" statuseffecttags="WouldApplyChokeTubeMuzzleEffectToAmmo" duration="0.016" comparison="And">
         <Conditional targetcontainer="true" targetitemcomponent="RangedWeapon" isactive="false" reloadtimer="0.0" />
+        <RequiredItem identifier="VGM_ShotgunTubeExtender" type="Contained" targetslot="6" />
         <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
       </StatusEffect>
       <StatusEffect type="OnUse" target="Contained" targetslot="6" comparison="And">
         <Use />
         <Conditional targetcontainer="true" targetitemcomponent="RangedWeapon" isactive="false" reloadtimer="0.0" />
+        <RequiredItem identifier="VGM_ShotgunTubeExtender" type="Contained" targetslot="6" />
         <RequiredItem identifier="VGM_ChokeTubeMuzzle" type="Contained" targetslot="3" />
       </StatusEffect>
       <StatusEffect type="OnUse" target="Contained" targetslot="6" statuseffecttags="WouldApplyDuckbillMuzzleEffectToAmmo" duration="0.016" comparison="And">
         <Conditional targetcontainer="true" targetitemcomponent="RangedWeapon" isactive="false" reloadtimer="0.0" />
+        <RequiredItem identifier="VGM_ShotgunTubeExtender" type="Contained" targetslot="6" />
         <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
       </StatusEffect>
       <StatusEffect type="OnUse" target="Contained" targetslot="6" comparison="And">
         <Use />
         <Conditional targetcontainer="true" targetitemcomponent="RangedWeapon" isactive="false" reloadtimer="0.0" />
+        <RequiredItem identifier="VGM_ShotgunTubeExtender" type="Contained" targetslot="6" />
         <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
       </StatusEffect>
       <!-- [HotTag] Activated when aiming -->
@@ -340,6 +344,19 @@
           <Conditional targetitemcomponent="Projectile" user="! null" />
           <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
+        <!-- [Muzzle] Shot amount modification -->
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 12" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 8" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 4" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
       <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
@@ -411,7 +428,7 @@
         <Containable identifier="VGM_ShotgunTubeExtender" hide="false" itempos="31,0" />
       </SubContainer>
       <!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
-      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.1" evententitytag="gun">
+      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.033" evententitytag="gun">
         <Conditional HasBeenInstantiatedOnce="false" />
         <TriggerEvent>
           <ScriptedEvent identifier="VGM_TrySpawnShotgunOEMStock">

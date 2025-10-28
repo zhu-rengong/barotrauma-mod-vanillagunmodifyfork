@@ -31,7 +31,7 @@
   <entityname.VGM_ChokeTubeMuzzle>收束器</entityname.VGM_ChokeTubeMuzzle>
   <entitydescription.VGM_ChokeTubeMuzzle>‖color:gui.orange‖最大弹丸收束‖end‖: 8°</entitydescription.VGM_ChokeTubeMuzzle>
   <entityname.VGM_DuckbillMuzzle>鸭嘴型枪口</entityname.VGM_DuckbillMuzzle>
-  <entitydescription.VGM_DuckbillMuzzle>‖color:gui.orange‖最大弹丸收束‖end‖: -15°</entitydescription.VGM_DuckbillMuzzle>
+  <entitydescription.VGM_DuckbillMuzzle>‖color:gui.orange‖最大弹丸收束‖end‖: -15°\n‖color:gui.blue‖开火时，弹药中每有4颗弹丸，弹丸量+1，至多3颗‖end‖</entitydescription.VGM_DuckbillMuzzle>
   <entityname.VGM_FlashHiderMuzzle>消焰器</entityname.VGM_FlashHiderMuzzle>
   <entitydescription.VGM_FlashHiderMuzzle>‖color:gui.orange‖开火时散布变化‖end‖ ×0.8</entitydescription.VGM_FlashHiderMuzzle>
   <entityname.VGM_LongBarrelMuzzle>延长枪管</entityname.VGM_LongBarrelMuzzle>

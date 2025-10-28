@@ -18,6 +18,8 @@ namespace AutoGenerateXML.Items.Accessories
             BarrelLength = 28;
             BarrelEmbeddedDepth = 3;
             SpreadChoke = -15;
+            ShotAmountModifierPerXShots = [1, 4];
+            ShotAmountModifiationTimes = 3;
         }
 
         public override string Generate()

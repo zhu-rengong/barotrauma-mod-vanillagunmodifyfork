@@ -301,6 +301,19 @@
           <Conditional targetitemcomponent="Projectile" user="! null" />
           <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
+        <!-- [Muzzle] Shot amount modification -->
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 12" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 8" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 4" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
       <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />

@@ -97,13 +97,13 @@
       <!-- [HotTag] Activated when aiming -->
       <StatusEffect type="OnSecondaryUse" target="This" statuseffecttags="PreventSpreadingOnADS" duration="0.15" stackable="false" />
       <!-- [FiringModeBurst] When the gun is loaded and not in bursting state, it is ready  -->
-      <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" tags="firingmodeburst_ready" duration="0.016" comparison="And">
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" tags="FiringModeBurst_Ready" duration="0.016" comparison="And">
         <Conditional targetitemcomponent="RangedWeapon" isactive="false" />
-        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="! firingmodeburst_active" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="! FiringModeBurst_Active" />
       </StatusEffect>
       <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" reloadtimer="0.0" isactive="false" setvalue="true" comparison="And">
-        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="firingmodeburst_active" />
-        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="! firingmodeburst_reloading" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="FiringModeBurst_Active" />
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="! FiringModeBurst_Reloading" />
       </StatusEffect>
     </Holdable>
     <StatusHUD drawhudwhenequipped="false" />
@@ -125,10 +125,10 @@
         <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
       </StatusEffect>
       <!-- [FiringModeBurst] The number of shots fired during the gun's burst process is recorded, and a firing cooldown is applied. -->
-      <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" tags="firingmodeburst_1,firingmodeburst_active" duration="0.183">
-        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="firingmodeburst_ready" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" tags="FiringModeBurst_1,FiringModeBurst_Active" duration="0.183">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="FiringModeBurst_Ready" />
       </StatusEffect>
-      <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" tags="firingmodeburst_reloading" duration="0.100" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" tags="FiringModeBurst_Reloading" duration="0.100" />
       <!-- [Gun] Gunfire -->
       <StatusEffect type="OnUse" target="This" forceplaysounds="true">
         <Sound file="Content/Items/Weapons/ShotgunShot1.ogg" range="3000" selectionmode="Random" />
@@ -254,6 +254,19 @@
           <Conditional targetitemcomponent="Projectile" user="! null" />
           <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
         </StatusEffect>
+        <!-- [Muzzle] Shot amount modification -->
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 12" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 8" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
+        <StatusEffect type="OnRemoved" target="Contained" targetitemcomponent="Projectile" hitscancount="1" disabledeltatime="true" comparison="And">
+          <Conditional targetitemcomponent="Projectile" hitscancount="gte 4" user="! null" />
+          <RequiredItem identifier="VGM_DuckbillMuzzle" type="Contained" targetslot="3" />
+        </StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
       <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
@@ -304,7 +317,7 @@ and sets the sub-item's condition to full on round loaded to prevent the accesso
         </Containable>
       </SubContainer>
       <!-- [Stock] If the gun is initialized for the first time, it will come with an OEM stock. -->
-      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.1" evententitytag="gun">
+      <StatusEffect type="OnSpawn" target="This" statuseffecttags="FirstInitialized" duration="0.033" evententitytag="gun">
         <Conditional HasBeenInstantiatedOnce="false" />
         <TriggerEvent>
           <ScriptedEvent identifier="VGM_TrySpawnShotgunUniqueOEMStock">

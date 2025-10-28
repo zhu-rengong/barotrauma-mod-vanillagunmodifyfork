@@ -150,6 +150,7 @@ $@"
     <ItemContainer capacity=""2"" maxstacksize=""12"" hideitems=""false"" ShowTotalStackCapacityInContainedStateIndicator=""true"" containedstateindicatorslot=""0"" containedstateindicatorstyle=""bullet"">
         <Containable items=""shotgunammo"" hide=""true"">
             {GenerateMuzzleSpreadChokeXMLsString()}
+            {GenerateMuzzleShotAmountModificationXMLsString()}
         </Containable>
 
         {GenerateSlotIconBulletsXMLString(0)}
